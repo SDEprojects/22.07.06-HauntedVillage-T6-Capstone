@@ -17,8 +17,13 @@ class Engine {
 
     public void execute() {
         Console.clear();
+        splash();
+        Console.clear();
         presentInfo();
         Console.clear();
+    }
+
+    private void splash() {
     }
 
 
