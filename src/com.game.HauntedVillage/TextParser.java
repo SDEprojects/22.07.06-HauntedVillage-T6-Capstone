@@ -25,8 +25,6 @@ class TextParser {
         // Now convert string into ArrayList
         ArrayList<String> words = new ArrayList<>(Arrays.asList(strSplit));
 
-        System.out.println(words);
-
         //for (String word: words) {
             try (JsonParser jParser = new JsonFactory()
                     .createParser(new File("22.07.06-HauntedVillage/resources/textParse.json"))) {
