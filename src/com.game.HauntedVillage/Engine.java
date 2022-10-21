@@ -8,15 +8,19 @@ import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 class Engine {
 
     // initialize scanner. takes system input
-//    static Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
+    private String userInput;
 
     public Engine() {
     }
@@ -24,11 +28,46 @@ class Engine {
     public void execute() {
         Console.clear();
         splashScreen();
+        Menu.startNewGame();
         Console.clear();
         presentInfo();
         Console.clear();
+        gameLoop();
+
+
     }
 
+    public void gameLoop(){
+        boolean endGame = false;
+        com.games.hauntedvillage2.Player player = new com.games.hauntedvillage2.Player();
+
+        while(!endGame){
+            player.prompt();
+            userPromptInput();
+
+            if(Player.end() == true){
+                endGame = true;
+            }
+        }
+    }
+
+
+    private void userPromptInput() {
+        boolean validInput = false;
+        while (!validInput) {
+            userInput = scanner.nextLine().trim().toLowerCase();
+            TextParser parser= new TextParser();
+            ArrayList<String> result =  parser.textParser(userInput);
+
+            if (!"verb".equals(result.get(0))){
+                validInput = true;
+                EventHandler.eventHandler(userInput);
+            }
+            else {
+                System.out.println("Invalid Input: Enter as Prompted (verb and noun)");
+            }
+        }
+    }
 
     private void presentInfo() {
 
@@ -68,8 +107,7 @@ class Engine {
 
             // print
             System.out.println(splash.get(0).getTitle());
-//            System.out.println("\nEnter anything to continue");
-//            scanner.next();
+
             Console.pause(3000);
         } catch (Exception e) {
             e.printStackTrace();
