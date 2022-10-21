@@ -39,7 +39,7 @@ class Engine {
 
     public void gameLoop(){
         boolean endGame = false;
-        com.games.hauntedvillage2.Player player = new com.games.hauntedvillage2.Player();
+      Player player = new Player();
 
         while(!endGame){
             player.prompt();
