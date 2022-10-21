@@ -42,6 +42,7 @@ class Engine {
       Player player = new Player();
 
         while(!endGame){
+            player.playerCurrentInfo();
             player.prompt();
             userPromptInput();
 
