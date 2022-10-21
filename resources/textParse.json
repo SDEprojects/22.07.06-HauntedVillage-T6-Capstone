@@ -1,0 +1,22 @@
+{
+  "verb": [
+    "go",
+    "run",
+    "quit",
+    "help",
+    "search",
+    "look",
+    "inspect",
+    "examine",
+    "take",
+    "use"
+  ],
+  "noun": [
+    "north",
+    "east",
+    "west",
+    "south",
+    "items",
+    "item"
+  ]
+}

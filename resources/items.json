@@ -1,0 +1,23 @@
+{
+  "amulet": {
+    "name": "triangular amulet",
+    "location": "church",
+    "use_location": "well",
+    "health_reduction": "0",
+    "boss_kill": "False"
+  },
+  "blue_gem": {
+    "name": "blue stone",
+    "location": "well",
+    "use_location": "woods",
+    "health_reduction": "0",
+    "boss_kill": "True"
+  },
+  "rifle": {
+    "name": "rifle",
+    "location": "farm",
+    "use_location": "all",
+    "health_reduction": "3",
+    "boss_kill": "False"
+  }
+}
