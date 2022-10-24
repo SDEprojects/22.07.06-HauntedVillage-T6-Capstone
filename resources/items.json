@@ -1,4 +1,53 @@
 {
+  "matches": {
+    "name": "matches",
+    "location": "home",
+    "use_location": "church",
+    "health_reduction": "0",
+    "boss_kill": "False"
+  },
+  "cross ": {
+    "name": "cross ",
+    "location": "home",
+    "use_location": "church",
+    "health_reduction": "-1",
+    "boss_kill": "False"
+  },
+  "knife": {
+    "name": "knife",
+    "location": "home",
+    "use_location": "all",
+    "health_reduction": "3",
+    "boss_kill": "False"
+  },
+  "shovel": {
+    "name": "shovel",
+    "location": "farm",
+    "use_location": "all",
+    "health_reduction": "2",
+    "boss_kill": "False"
+  },
+  "musket": {
+    "name": "musket",
+    "location": "farm",
+    "use_location": "all",
+    "health_reduction": "3",
+    "boss_kill": "False"
+  },
+  "silver_bullet": {
+    "name": "silver bullet",
+    "location": "townHall",
+    "use_location": "farm",
+    "health_reduction": "3",
+    "boss_kill": "False"
+  },
+  "birds_food": {
+    "name": "birds food",
+    "location": "tavern",
+    "use_location": "townHall",
+    "health_reduction": "0",
+    "boss_kill": "False"
+  },
   "amulet": {
     "name": "triangular amulet",
     "location": "church",
@@ -13,11 +62,11 @@
     "health_reduction": "0",
     "boss_kill": "True"
   },
-  "rifle": {
-    "name": "rifle",
-    "location": "farm",
-    "use_location": "all",
-    "health_reduction": "3",
+  "water": {
+    "name": "water",
+    "location": "well",
+    "use_location": "well",
+    "health_reduction": "-1",
     "boss_kill": "False"
   }
 }
