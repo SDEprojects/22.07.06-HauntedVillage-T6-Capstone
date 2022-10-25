@@ -1,26 +1,29 @@
-{
-  "home":
+[
   {
-    "name": "Home",
-    "description": "\n\nYou are at home in your familiar log cabin. You look around and see some items that may be of use. \n\nYou can search the house for some useful items, rest to heal, or go east outside.\n\n",
-    "actions": ["search", "rest", "go"],
-    "items": ["matches", "crucifix", "knife"],
-    "directions": {
-      "east": "Center Courtyard"
+    "Home":
+    {
+      "name": "Home",
+      "description": "You are at home in your familiar log cabin. You look around and see some items that may be of use. \n\nYou can search the house for some useful items, rest to heal, or go east outside. ",
+      "actions": ["search", "rest", "go"],
+      "items": ["matches", "crucifix", "knife"],
+      "directions": {
+        "east": "Center Courtyard"
+      }
     }
   },
-  "Center Courtyard":
   {
-    "name": "Center Courtyard",
-    "description": "\n\nYou are in the center courtyard. You see some of the villagers gathering there. They all look very concerned.  \n\nTo the West is your house. To the north is the well. To the South is further outside. To the East is the tavern. \n\nYou may speak to the villagers or go in a direction.\n\n",
-    "actions": ["speak", "go"],
-    "items": [],
-    "directions": {
-      "north": "Northern Square",
-      "east": "Tavern",
-      "south": "Southern Square",
-      "west": "Home"
+    "Center Courtyard": {
+      "name": "Center Courtyard",
+      "description": "You are in the center courtyard. You see some of the villagers gathering there. They all look very concerned.  \n\nTo the West is your house. To the north is the well. To the South is further outside. To the East is the tavern. \n\nYou may speak to the villagers or go in a direction.",
+      "actions": ["speak", "go"],
+      "items": [],
+      "directions": {
+        "north": "Northern Square",
+        "east": "Tavern",
+        "south": "Southern Square",
+        "west": "Home"
+      }
     }
   }
 
-}
+]

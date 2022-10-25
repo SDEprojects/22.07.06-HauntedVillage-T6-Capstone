@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 class Engine {
@@ -21,6 +22,8 @@ class Engine {
     // initialize scanner. takes system input
     Scanner scanner = new Scanner(System.in);
     private String userInput;
+    private ArrayList<String> verbNoun = new ArrayList<>(List.of("verb", "noun"));
+
 
     public Engine() {
     }
@@ -33,18 +36,23 @@ class Engine {
         presentInfo();
         Console.clear();
         gameLoop();
-
-
     }
 
     public void gameLoop(){
         boolean endGame = false;
       Player player = new Player();
 
-        while(!endGame){
+        while(endGame == false){
             player.playerCurrentInfo();
             player.prompt();
             userPromptInput();
+            if ("go".equals(getVerbNoun().get(0))){
+                String newLocation = Map.moveFinder(player.getLocation(), getVerbNoun().get(1));
+                if (!Objects.equals(newLocation, "")) {
+                    player.setLocation(newLocation);
+                }
+            }
+            Console.clear();
 
             if(Player.end() == true){
                 endGame = true;
@@ -61,11 +69,14 @@ class Engine {
             ArrayList<String> result =  parser.textParser(userInput);
 
             if (!"verb".equals(result.get(0))){
-                validInput = true;
-                EventHandler.eventHandler(userInput);
-            }
-            else {
-                System.out.println("Invalid Input: Enter as Prompted (verb and noun)");
+                if(!"noun".equals(result.get(1))) {
+                    validInput = true;
+                    EventHandler.eventHandler(userInput);
+                    setVerbNoun(result);
+                }
+                else {
+                    System.out.println("Invalid Input: Enter as Prompted (verb and noun)");
+                }
             }
         }
     }
@@ -84,10 +95,9 @@ class Engine {
                     jParser.nextToken();
                     System.out.println(jParser.getText());
                 }
-
             }
 
-            Console.pause(3000);
+            Console.pause(13000);
 
         } catch (JsonGenerationException e) {
             e.printStackTrace();
@@ -113,5 +123,14 @@ class Engine {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+
+    public ArrayList<String> getVerbNoun() {
+        return verbNoun;
+    }
+
+    public void setVerbNoun(ArrayList<String> verbNoun) {
+        this.verbNoun = verbNoun;
     }
 }

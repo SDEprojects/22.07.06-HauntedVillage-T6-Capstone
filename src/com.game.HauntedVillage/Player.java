@@ -1,17 +1,15 @@
 package com.game.HauntedVillage;
 
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class Player {
-    private String location = "home";
+    private String location = "Home";
 
     public Player() {
     }
@@ -19,25 +17,27 @@ public class Player {
 
 
     public void prompt() {
-        try (JsonParser jParser = new JsonFactory()
-                .createParser(new File("22.07.06-HauntedVillage/resources/location.json"))) {
+        ObjectMapper mapper = new ObjectMapper();
 
-            // loop until token equal to "}"
-            while (jParser.nextToken() != JsonToken.END_OBJECT) {
+        try{
 
-                String fieldName = jParser.getCurrentName();
+            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/location.json"));
+
+            for (JsonNode root : rootArray) {
 
                 String location = getLocation();
+                // Get Name
+                JsonNode nameNode = root.path(location);
 
-                if (location.equals(fieldName)) {
-                    // loop until token equal to "}"
-                    while (jParser.nextToken() != JsonToken.END_OBJECT) {
-                        String elementName = jParser.getCurrentName();
-                        if ("description".equals(elementName)) {
-                            // current token is "description",
-                            // move to next, which is "description"'s value
-                            jParser.nextToken();
-                            System.out.println(jParser.getText());
+                if (!nameNode.isMissingNode()) {  // if "name" node is not missing
+
+                    for (JsonNode node : nameNode){
+                        // Get Description
+                        JsonNode descriptionNode = nameNode.path("description");
+
+                        if(descriptionNode.equals(node)){
+                            System.out.println("\n\n");
+                            System.out.println(node.asText());
                         }
                     }
                 }
@@ -54,63 +54,65 @@ public class Player {
     }
 
     void playerCurrentInfo(){
-        try (JsonParser jParser = new JsonFactory()
-                .createParser(new File("22.07.06-HauntedVillage/resources/location.json"))) {
+        ObjectMapper mapper = new ObjectMapper();
 
-            // loop until token equal to "}"
-            while (jParser.nextToken() != JsonToken.END_OBJECT) {
+        try{
 
-                String fieldName = jParser.getCurrentName();
+            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/location.json"));
+
+            for (JsonNode root : rootArray) {
 
                 String location = getLocation();
+                // Get Name
+                JsonNode nameNode = root.path(location);
 
+                if (!nameNode.isMissingNode()) {  // if "name" node is not missing
 
-                if (location.equals(fieldName)) {
-                    // loop until token equal to "}"
-                    while (jParser.nextToken() != JsonToken.END_OBJECT) {
-                        String elementName = jParser.getCurrentName();
-                        if ("name".equals(elementName)) {
-                            // current token is "description",
-                            // move to next, which is "description"'s value
-                            jParser.nextToken();
-                            System.out.println("Location: "+ jParser.getText());
+                    for (JsonNode node : nameNode){
+                        // Get node names
+                        JsonNode locationNode = nameNode.path("name");
+                        JsonNode itemsNode = nameNode.path("items");
+                        JsonNode directionsNode = nameNode.path("directions");
+
+                        if(locationNode.equals(node)){
+                            System.out.println("Location: " + node.asText());
                         }
-                        if ("items".equals(elementName)) {
-                            //jParser.nextToken(); // current token is "[", move next
-                            if (jParser.nextToken() == JsonToken.START_ARRAY) {
-                                ArrayList<String> itemList = new ArrayList<>(0);
-                                // messages is array, loop until token equal to "]"
-                                while (jParser.nextToken() != JsonToken.END_ARRAY) {
-                                    itemList.add(jParser.getText());
-                                }
-                                System.out.println("Items: " + itemList);
+
+                        if(itemsNode.equals(node)){
+                            ArrayList<String> itemsList = new ArrayList<>(0);
+                            for (JsonNode item: itemsNode){
+                                itemsList.add(item.asText());
                             }
+                            System.out.println("Items: " + itemsList);
                         }
-                        if ("directions".equals(elementName)) {
-                            ArrayList<String> directionList = new ArrayList<>(0);
 
-                            while (jParser.nextToken() != JsonToken.END_OBJECT) {
-                                String direction = jParser.getCurrentName();
-                                if ("north".equals(direction)){
+                        if(directionsNode.equals(node)){
+                            ArrayList<String> directionList = new ArrayList<>(0);
+                            for (JsonNode direction: directionsNode){
+                                JsonNode northNode = node.path("north");
+                                JsonNode eastNode = node.path("east");
+                                JsonNode southNode = node.path("south");
+                                JsonNode westNode = node.path("west");
+
+                                if (northNode.equals(direction)){
                                     directionList.add("north");
                                 }
-                                if ("east".equals(direction)){
-                                    directionList.add(direction);
+                                if (eastNode.equals(direction)){
+                                    directionList.add("east");
                                 }
-                                if ("south".equals(direction)){
+                                if (southNode.equals(direction)){
                                     directionList.add("south");
                                 }
-                                if ("west".equals(direction)){
+                                if (westNode.equals(direction)){
                                     directionList.add("west");
                                 }
                             }
-                            List<String> directionListReduced = directionList.stream()
-                                    .distinct()
-                                    .collect(Collectors.toList());
-                            System.out.println("Directions: " + directionListReduced);
+                            System.out.println("Directions: " + directionList);
                         }
+
                     }
                 }
+
             }
 
         } catch (IOException e) {
