@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class Player {
     private String location = "Home";
+    private ArrayList<String> inventory = new ArrayList<>(0);
 
     public Player() {
     }
@@ -109,10 +110,8 @@ public class Player {
                             }
                             System.out.println("Directions: " + directionList);
                         }
-
                     }
                 }
-
             }
 
         } catch (IOException e) {
@@ -128,5 +127,13 @@ public class Player {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public ArrayList<String> getInventory() {
+        return inventory;
+    }
+
+    public void addInventory(String item) {
+        inventory.add(item);
     }
 }
