@@ -109,7 +109,7 @@ class Engine {
 
         try{
             JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/location.json"));
-            ArrayList<String> actionsList = new ArrayList<>(0);
+            ArrayList<String> actionsList = new ArrayList<>(List.of("help","quit","look"));
             for (JsonNode root : rootArray) {
                 // Get Name
                 JsonNode nameNode = root.path(location);
