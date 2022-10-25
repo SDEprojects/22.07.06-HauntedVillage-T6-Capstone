@@ -4,7 +4,7 @@
     {
       "name": "Home",
       "description": "You are at home in your familiar log cabin. You look around and see some items that may be of use. \n\nYou can search the house for some useful items, rest to heal, or go east outside. ",
-      "actions": ["search", "rest", "go"],
+      "actions": ["search", "rest", "go", "take"],
       "items": ["matches", "crucifix", "knife"],
       "directions": {
         "east": "Center Courtyard"
