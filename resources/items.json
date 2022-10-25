@@ -1,14 +1,17 @@
-{
+[
+  {
   "matches": {
     "name": "matches",
     "location": "home",
+    "description": "some matches",
     "use_location": "church",
     "health_reduction": "0",
     "boss_kill": "False"
   },
-  "cross ": {
-    "name": "cross ",
+  "cross": {
+    "name": "cross",
     "location": "home",
+    "description": "a cross",
     "use_location": "church",
     "health_reduction": "-1",
     "boss_kill": "False"
@@ -16,6 +19,7 @@
   "knife": {
     "name": "knife",
     "location": "home",
+    "description": "a knife",
     "use_location": "all",
     "health_reduction": "3",
     "boss_kill": "False"
@@ -23,6 +27,7 @@
   "shovel": {
     "name": "shovel",
     "location": "farm",
+    "description": "a shovel",
     "use_location": "all",
     "health_reduction": "2",
     "boss_kill": "False"
@@ -30,6 +35,7 @@
   "musket": {
     "name": "musket",
     "location": "farm",
+    "description": "a musket",
     "use_location": "all",
     "health_reduction": "3",
     "boss_kill": "False"
@@ -37,6 +43,7 @@
   "silver_bullet": {
     "name": "silver bullet",
     "location": "townHall",
+    "description": "a silver bullet",
     "use_location": "farm",
     "health_reduction": "3",
     "boss_kill": "False"
@@ -44,6 +51,7 @@
   "birds_food": {
     "name": "birds food",
     "location": "tavern",
+    "description": "some bird food",
     "use_location": "townHall",
     "health_reduction": "0",
     "boss_kill": "False"
@@ -51,6 +59,7 @@
   "amulet": {
     "name": "triangular amulet",
     "location": "church",
+    "description" : "an amulet",
     "use_location": "well",
     "health_reduction": "0",
     "boss_kill": "False"
@@ -58,6 +67,7 @@
   "blue_gem": {
     "name": "blue stone",
     "location": "well",
+    "description" : "a blue gem",
     "use_location": "woods",
     "health_reduction": "0",
     "boss_kill": "True"
@@ -65,8 +75,10 @@
   "water": {
     "name": "water",
     "location": "well",
+    "description": "some water",
     "use_location": "well",
     "health_reduction": "-1",
     "boss_kill": "False"
   }
 }
+]

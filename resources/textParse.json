@@ -17,6 +17,17 @@
     "west",
     "south",
     "items",
-    "item"
+    "amulet",
+    "matches",
+    "item",
+    "cross",
+    "knife",
+    "shovel",
+    "musket",
+    "silver bullet",
+    "birds food",
+    "triangular amulet",
+    "blue stone",
+    "water"
   ]
 }
