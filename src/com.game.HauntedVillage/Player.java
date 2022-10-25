@@ -113,6 +113,7 @@ public class Player {
                     }
                 }
             }
+            System.out.println("Inventory: " + getInventory());
 
         } catch (IOException e) {
             e.printStackTrace();
