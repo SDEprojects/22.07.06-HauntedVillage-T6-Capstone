@@ -40,24 +40,40 @@ class Engine {
         gameLoop();
     }
 
+    //game loop
     public void gameLoop(){
         boolean endGame = false;
       Player player = new Player();
 
+        //game continues if player is alive
         while(endGame == false){
+
+            //returns player information at top of screen
             player.playerCurrentInfo();
+
+            //returns location description and player prompt
             player.prompt();
+
+            //takes user input, specific to players location
             userPromptInput(player.getLocation());
+
+            //go command, player moves to given direction
             if ("go".equals(getVerbNoun().get(0))) {
+                //finds new location given cardinal direction
                 String newLocation = Map.moveFinder(player.getLocation(), getVerbNoun().get(1));
+                //if new location is not blank the location is updated
                 if (!Objects.equals(newLocation, "")) {
                     player.setLocation(newLocation);
                 }
             }
+
+            //search command, player looks for items
             if ("search".equals(getVerbNoun().get(0))) {
+                //found items retrieves locations item list
                 System.out.println("You found " + foundItems(player.getLocation()));
                 System.out.println("Take an item to add to your inventory");
                 userPromptInput(player.getLocation());
+                //take command, player adds item to inventory
                 for (String item:foundItems(player.getLocation())) {
                     if (item.equals(getVerbNoun().get(1))){
                         Sound.runFX();
@@ -65,6 +81,7 @@ class Engine {
                     }
                 }
             }
+            //speak command, player speaks to NPCs
             if ("speak".equals(getVerbNoun().get(0))) {
                 String character = getVerbNoun().get(1);
                 if (NPC.npcLocation(player.getLocation(), character)){
@@ -73,14 +90,17 @@ class Engine {
                 }
             }
 
+            //clears console before update
             Console.clear();
 
+            //if player is dead, end game
             if(Player.end() == true){
                 endGame = true;
             }
         }
     }
 
+    //returns location specific items
     private ArrayList<String> foundItems(String location) {
         ObjectMapper mapper = new ObjectMapper();
         ArrayList<String> itemsList = new ArrayList<>(0);
@@ -111,12 +131,14 @@ class Engine {
         return itemsList;
     }
 
+    //checks if action is allowed for given location
     private boolean actionChecker(String location, String inputAction) {
         boolean result = false;
         ObjectMapper mapper = new ObjectMapper();
 
         try{
             JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/location.json"));
+            //Always-allowed actions are hard coded
             ArrayList<String> actionsList = new ArrayList<>(List.of("help","quit","look"));
             for (JsonNode root : rootArray) {
                 // Get Name
@@ -148,18 +170,21 @@ class Engine {
         return result;
     }
 
-
+    //user input processor, sets verbNoun attribute array
     private void userPromptInput(String location) {
         boolean validInput = false;
         while (!validInput) {
             userInput = scanner.nextLine().trim().toLowerCase();
             TextParser parser= new TextParser();
+            //verb-noun pair array using text parser
             ArrayList<String> result =  parser.textParser(userInput);
 
+            //checks verbs and nouns for validity
             if (!"verb".equals(result.get(0))){
                 if(!"noun".equals(result.get(1))) {
                     if (actionChecker(location, result.get(0))) {
                         validInput = true;
+                        //sends to event handler if a global command
                         EventHandler.eventHandler(userInput);
                         setVerbNoun(result);
                     }
@@ -171,6 +196,7 @@ class Engine {
         }
     }
 
+    //prints game background information before game
     private void presentInfo() {
 
         try (JsonParser jParser = new JsonFactory()
