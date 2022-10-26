@@ -9,7 +9,9 @@
     "inspect",
     "examine",
     "take",
-    "use"
+    "use",
+    "talk",
+    "speak"
   ],
   "noun": [
     "north",
@@ -30,6 +32,14 @@
     "blue stone",
     "water",
     "area",
-    "house"
+    "house",
+    "children",
+    "villagers",
+    "werewolf",
+    "farmer",
+    "keep",
+    "clerk",
+    "pastor",
+    "demon"
   ]
 }

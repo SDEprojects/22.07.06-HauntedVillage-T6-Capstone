@@ -24,6 +24,7 @@ class Engine {
     Scanner scanner = new Scanner(System.in);
     private String userInput;
     private ArrayList<String> verbNoun = new ArrayList<>(List.of("verb", "noun"));
+    private String npcResponse;
 
 
     public Engine() {
@@ -59,10 +60,17 @@ class Engine {
                 userPromptInput(player.getLocation());
                 for (String item:foundItems(player.getLocation())) {
                     if (item.equals(getVerbNoun().get(1))){
+                        Sound.runFX();
                         player.addInventory(getVerbNoun().get(1));
                     }
                 }
-
+            }
+            if ("speak".equals(getVerbNoun().get(0))) {
+                String character = getVerbNoun().get(1);
+                if (NPC.npcLocation(player.getLocation(), character)){
+                    System.out.println(NPC.npcConversation(character));
+                    Console.pause(10000);
+                }
             }
 
             Console.clear();
@@ -214,5 +222,13 @@ class Engine {
 
     public void setVerbNoun(ArrayList<String> verbNoun) {
         this.verbNoun = verbNoun;
+    }
+
+    public String getNpcResponse() {
+        return npcResponse;
+    }
+
+    public void setNpcResponse(String npcResponse) {
+        this.npcResponse = npcResponse;
     }
 }
