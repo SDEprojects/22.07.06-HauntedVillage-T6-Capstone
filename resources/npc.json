@@ -1,0 +1,85 @@
+
+[
+  {
+  "Children":
+  {
+    "name": "Children",
+    "description": "You attempt to speak to the children, but they are too caught up in their game of tag. You hear one of the children teases, “If you get caught you will go missing too!”",
+    "actions": "speak to children",
+    "items": "children playing"
+  }
+},
+  {
+    "Villagers":
+    {
+      "name": "Villagers",
+      "description": "The villagers tell you that another child went missing last night and that sightings of monsters have been becoming more frequent over the last week near the woods. ",
+      "actions": "Speak to villagers "
+    }
+  },
+
+  {
+    "Werewolf":
+    {
+      "name": "Werewolf",
+      "description": "A werewolf is tearing a cow apart, drinking its blood, eating its flesh. ",
+      "actions": "eating"
+    }
+  },
+
+  {
+    "Farmer":
+    {
+      "name": "Farmer",
+      "description": "Farmer brings his musket, you pick up a shovel, you give the farmer your silver bullet if you have one. You two fight against the werewolf together.  The werewolf loses and runs away, heading to the north. The farmer gives you his musket. ",
+      "actions": "wake up the farmer",
+      "items":["shovel, musket"]
+    }
+  },
+
+  {
+    "Scarecrow":
+    {
+      "name": "Scarecrow",
+      "description": "A scarecrow’s head is twisted and hand points to the north.   ",
+      "actions": "giving directions"
+    }
+  },
+
+  {
+    "Clerk":
+    {
+      "name": "Clerk",
+      "description": " An old clerk holding a candle in the hand walks slowly out of the shadow. You come forward and talk with the clerk. The clerk tells you the recent abnormality",
+      "actions": "talk to old clerk",
+      "items":["candle, silver bullet"]
+    }
+  },
+
+  {
+    "Pastor":
+    {
+      "name": "Pastor",
+      "description": " “The pastor turns to you but he’s not who he seems. He’s covered in blood with two fangs sneaking from his grin. “I think you have too many sins!” he cries, as has lunges at you.” ",
+      "actions": "fight"
+    }
+  },
+
+  {
+    "Cat":
+    {
+      "name": "Cat",
+      "description": "meow",
+      "actions": "moving in the background"
+    }
+  },
+
+  {
+    "Demon":
+    {
+      "name": "Demon",
+      "description": " “I have been watching you, but you can’t stop me now!”, he roars. ",
+      "actions": "fight"
+    }
+  }
+]
