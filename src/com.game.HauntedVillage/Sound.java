@@ -8,8 +8,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-class Sound {
+public class Sound {
 
+    static Boolean SFX_On = true;
 
     public static void runMusic(){
         File file = new File("22.07.06-HauntedVillage/resources/music.wav");
@@ -25,8 +26,13 @@ class Sound {
             String response = "";
 
             while (!response.equals("C")) {
-                System.out.println("Music Options: C = Continue with music, V = Change Volume, Q = Continue without music");
-                System.out.println("Enter your choice:");
+                if (SFX_On == true) {
+                    System.out.println("Music Options: C = Continue with music, V = Change Volume, Q = Continue without music, S = Turn Off");
+                    System.out.println("Enter your choice:");
+                } else {
+                    System.out.println("Music Options: C = Continue with music, V = Change Volume, Q = Continue without music, S = Turn On");
+                    System.out.println("Enter your choice:");
+                }
 
                 response = scanner.next();
                 response = response.toUpperCase();
@@ -49,7 +55,10 @@ class Sound {
                     case ("Q"):
                         clip.close();
                         response = "C";
-                    break;
+                        break;
+                    case ("S"):
+                        SFX_On = false;
+                        break;
                     default:
                         System.out.println("not a valid response");
                 }
@@ -69,26 +78,26 @@ class Sound {
 
     public static void runFX(){
         File file = new File("22.07.06-HauntedVillage/resources/inventorySFX.wav");
-        try {
-            Scanner scanner = new Scanner(System.in);
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioStream);
-            clip.start();
-            FloatControl gainFXControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            gainFXControl.setValue(20f * (float) Math.log10(1)); // set volume to 50% to start
+        if (SFX_On == true){
+            try {
+                Scanner scanner = new Scanner(System.in);
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioStream);
+                clip.start();
+                FloatControl gainFXControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                gainFXControl.setValue(20f * (float) Math.log10(1)); // set volume to 50% to start
 
-
-        } catch (UnsupportedAudioFileException e) {
-            System.out.println("runMusic() UnsupportedAudioFileException");
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            System.out.println("runMusic() IOException");
-            throw new RuntimeException(e);
-        } catch (LineUnavailableException e) {
-            throw new RuntimeException(e);
+            } catch (UnsupportedAudioFileException e) {
+                System.out.println("runMusic() UnsupportedAudioFileException");
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                System.out.println("runMusic() IOException");
+                throw new RuntimeException(e);
+            } catch (LineUnavailableException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
-
 
 }
