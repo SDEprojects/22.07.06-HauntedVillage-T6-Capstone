@@ -24,6 +24,143 @@
         "west": "Home"
       }
     }
-  }
+  },
 
+  {
+    "Norther Square": {
+      "name": "Northern Square",
+      "description": " You are in the northern square. You see some children playing nearby. \n To the North is the well and to the East is the Church. \n You may search the area, speak to the child, or go North, East, or South.  \n\n,,,,
+      "actions": ["search", "leave", "speak"],
+      "items": [],
+      "directions": {
+        "north": "well",
+        "east": "church",
+        "south": "center courtyard",
+        "west": "empty"
+      }
+    }
+  },
+
+  {
+    "South Square": {
+      "name": "South Square",
+      "description": " You are in the south square.   \n To the East is the town hall. To the north is the center courtyard.  \n  To the South is your neighbor's farm. \n\n ",
+      "actions": ["leave"],
+      "items": [""],
+      "directions": {
+        "north": "Center Courtyard",
+        "east": "Townhall",
+        "south": "Farm",
+        "west": ""
+      }
+    }
+  },
+
+<<<<<<< HEAD
+  {
+    "Farm": {
+      "name": "Farm",
+      "description": "You find yourself in the farm. You see cows are lying on the floor, bleeding. A werewolf is tearing a cow apart, drinking its blood, eating its flesh. A scarecrow’s head is twisted and hand points to the north.",
+      "actions": ["hide", "fight solo", "wake up Farmer", "put weapon away", "fight with farmer"],
+      "items": ["shovel", "musket"],
+      "directions": {
+        "north": "Southern Square",
+        "east": "",
+        "south": "",
+        "west": "hide behind the door"
+      }
+    }
+  },
+
+  {
+    "Townhall": {
+      "name": "Townhall",
+      "description": "You find yourself in the townhall, cool wind in the hair. It is quiet and dark.  Wind blows through broken windows and makes squeaky noises. An old clerk holding a candle in the hand walks slowly out of the shadow. You come forward and talk with the clerk. The clerk tells you the recent abnormality. Crows from the woods hide in the townhall day and night, staying away from their home, the woods in the north. Obviously, there is something unspeakable in the woods. ",
+      "actions": ["Take the gift", "Leave"],
+      "items": [""],
+      "directions": {
+        "north": "Tavern",
+        "east": "",
+        "south": "",
+        "west": "Southern Square"
+      }
+    }
+  },
+
+  {
+    "Tavern": {
+      "name": "Tavern",
+      "description": " There are broken chairs on the floor and the tavern is empty except for the bar keep. “Sorry but we have no Ale or food. Nothing left here but some animal feed”.  ",
+      "actions": ["take feed", "leave"],
+      "items": [""],
+      "directions": {
+        "north": "",
+        "east": "",
+        "south": "",
+        "west": "Center Courtyard"
+      }
+    }
+  },
+
+  {
+    "Church": {
+      "name": "Church",
+      "description": "You hear a cat >>meow<< in the background behind the stage, but don’t get startled. It is a bit dark for an early afternoon visit, but you remember seeing clouds up above, possibly signaling some rain later that evening \n Here you can make conversation with the pastor, mend your mind through prayer or you can light some candles for good luck during the next full moon. ",
+      "actions": ["Talk to Pastor", "Pray with cross", "Light candles", "leave"],
+      "items": ["magic corn", "note"],
+      "directions": {
+        "north": "",
+        "east": "",
+        "south": "",
+        "west": "Northern Square"
+      }
+    }
+  },
+
+  {
+    "Well": {
+      "name": "Well",
+      "description": "The air is remarkably colder here. You’ve been avoiding this area due to the shrieks at night.  It is a rough stone circle with a seemingly bottomless pit in the center. The sky seems to have become dim. To the North the tall trees block out the light and there is only the sound of creaking wood and the rustle of leaves. A discarded bucket and rope lay in the yellow grass.",
+      "actions": ["Inspect the area", "Use the well", " Return south to your troubled village"],
+      "items": [""],
+      "directions": {
+        "north": "Woods",
+        "east": "",
+        "south": "Northern Square",
+        "west": ""
+      }
+    }
+  },
+
+  {
+    "Woods": {
+      "name": "Woods",
+      "description": "There is hardly any light in this place, only the pale-yellow glow of the moon. Snickers can be heard as the wind blows hard. You make out a familiar black cat in a clearing ahead...  \n As you approach, black smoke consumes the cat, transforms, and rises into a large dark beast, eyes burning red. \n “I have been watching you, but you can’t stop me now!”, he roars. \nThe beast raises his arms and a flaming vortex bursts from the ground as he murmurs an incantation. \n You can fight the demon with something from your inventory or you can run south to the well. \n (Health is reduced over time)  ",
+      "actions": ["Fight", "Run"],
+      "items": ["blue stone", "no stone"],
+      "directions": {
+        "north": "",
+        "east": "",
+        "south": "",
+        "west": ""
+      }
+    }
+  },
+
+  {
+    "End of Game": {
+      "name": "End of Game",
+      "description": "You through the blue stone at the beast. It locks into space in the flame and radiates in bright blue light! \n“No!!!”, roars the demon. \nThe demon is destroyed in a burst of white light. You can finally rest now that the curse has lifted. \n",
+      "actions": ["end game"],
+      "items": ["end"],
+      "directions": {
+        "north": "exit",
+        "east": "exit",
+        "south": "exit",
+        "west": "exit"
+      }
+    }
+  }
+=======
+>>>>>>> dd73dc0eedcd3e692d43a603efcd759ad5f787ea
 ]
