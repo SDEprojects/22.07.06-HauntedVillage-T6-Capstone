@@ -1,85 +1,91 @@
 
 [
   {
-  "Children":
+  "children":
   {
-    "name": "Children",
-    "description": "You attempt to speak to the children, but they are too caught up in their game of tag. You hear one of the children teases, “If you get caught you will go missing too!”",
-    "actions": "speak to children",
-    "items": "children playing"
+    "name": "children",
+    "location": "Northern Square",
+    "conversations": ["You attempt to speak to the children, but they are too caught up in their game of tag. \nYou hear one of the children teases, “If you get caught you will go missing too!”"],
+    "actions": []
   }
 },
   {
-    "Villagers":
+    "villagers":
     {
-      "name": "Villagers",
-      "description": "The villagers tell you that another child went missing last night and that sightings of monsters have been becoming more frequent over the last week near the woods. ",
-      "actions": "Speak to villagers "
+      "name": "villagers",
+      "location": "Center Courtyard",
+      "conversations": ["The villagers tell you that another child went missing last night and that sightings \nof monsters have been becoming more frequent over the last week near the woods."],
+      "actions": []
     }
   },
 
   {
-    "Werewolf":
+    "werewolf":
     {
-      "name": "Werewolf",
-      "description": "A werewolf is tearing a cow apart, drinking its blood, eating its flesh. ",
-      "actions": "eating"
+      "name": "werewolf",
+      "location": "Farm",
+      "conversations": [],
+      "actions": []
     }
   },
 
   {
-    "Farmer":
+    "farmer":
     {
-      "name": "Farmer",
-      "description": "Farmer brings his musket, you pick up a shovel, you give the farmer your silver bullet if you have one. You two fight against the werewolf together.  The werewolf loses and runs away, heading to the north. The farmer gives you his musket. ",
-      "actions": "wake up the farmer",
-      "items":["shovel, musket"]
+      "name": "farmer",
+      "location": "Farm",
+      "conversations": [],
+      "actions": []
     }
   },
 
   {
-    "Scarecrow":
+    "clerk":
     {
-      "name": "Scarecrow",
-      "description": "A scarecrow’s head is twisted and hand points to the north.   ",
-      "actions": "giving directions"
+      "name": "clerk",
+      "location": "Town hall",
+      "conversations": [],
+      "actions": []
     }
   },
 
   {
-    "Clerk":
+    "keep":
     {
-      "name": "Clerk",
-      "description": " An old clerk holding a candle in the hand walks slowly out of the shadow. You come forward and talk with the clerk. The clerk tells you the recent abnormality",
-      "actions": "talk to old clerk",
-      "items":["candle, silver bullet"]
+      "name": "keep",
+      "location": "Tavern",
+      "conversations": [],
+      "actions": []
     }
   },
 
   {
-    "Pastor":
+    "pastor":
     {
-      "name": "Pastor",
-      "description": " “The pastor turns to you but he’s not who he seems. He’s covered in blood with two fangs sneaking from his grin. “I think you have too many sins!” he cries, as has lunges at you.” ",
-      "actions": "fight"
+      "name": "pastor",
+      "location": "Church",
+      "conversations": ["The pastor turns to you but he’s not who he seems. \nHe’s covered in blood with two fangs sneaking from his grin. \n“I think you have too many sins,“ he cries! as has lunges at you."],
+      "actions": []
     }
   },
 
   {
-    "Cat":
+    "cat":
     {
-      "name": "Cat",
-      "description": "meow",
-      "actions": "moving in the background"
+      "name": "cat",
+      "location": "",
+      "conversations": ["meow"],
+      "actions": []
     }
   },
 
   {
-    "Demon":
+    "demon":
     {
-      "name": "Demon",
-      "description": " “I have been watching you, but you can’t stop me now!”, he roars. ",
-      "actions": "fight"
+      "name": "demon",
+      "location": "",
+      "conversations": [],
+      "actions": []
     }
   }
 ]

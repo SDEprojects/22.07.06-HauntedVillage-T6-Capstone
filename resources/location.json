@@ -94,8 +94,8 @@
   {
     "Church": {
       "name": "Church",
-      "description": "You hear a cat >>meow<< in the background behind the stage, but don’t get startled. \nIt is a bit dark for an early afternoon visit, but you remember seeing clouds up above, possibly signaling some rain later that evening. \nHere you can talk with the pastor, mend your mind through prayer, or you can light some candles for good luck during the next full moon. \n\n Talk to pastor, say prayer, light candle, or go west to leave.",
-      "actions": ["talk", "say", "light", "go"],
+      "description": "You hear a cat >>meow<< in the background behind the stage, but don’t get startled. \nIt is a bit dark for an early afternoon visit, but you remember seeing clouds up above, possibly signaling some rain later that evening. \nHere you can speak with the pastor, mend your mind through prayer, or you can light some candles for good luck during the next full moon. \n\n Speak to pastor, say prayer, light candle, or go west to leave.",
+      "actions": ["speak", "say", "light", "go"],
       "items": ["corn", "note"],
       "directions": {
         "west": "Northern Square"
