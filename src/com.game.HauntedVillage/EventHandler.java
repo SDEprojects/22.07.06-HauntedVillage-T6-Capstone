@@ -16,5 +16,8 @@ class EventHandler {
         if ("quit".equals(result.get(0))){
             Menu.quit();
         }
+        if ("look".equals(result.get(0))){
+            Item.checkForItem(result.get(1));
+        }
     }
 }

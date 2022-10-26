@@ -3,8 +3,8 @@
     "Home":
     {
       "name": "Home",
-      "description": "You are at home in your familiar log cabin. You look around and see some items that may be of use. \n\nYou can search the house for some useful items, rest to heal, or go east outside. ",
-      "actions": ["search", "rest", "go"],
+      "description": "You are at home in your familiar log cabin. You look around and see some items that may be of use. \n\nYou can search the house for some useful items, rest to heal, or go east outside.",
+      "actions": ["search", "rest", "go", "take"],
       "items": ["matches", "crucifix", "knife"],
       "directions": {
         "east": "Center Courtyard"
@@ -14,7 +14,7 @@
   {
     "Center Courtyard": {
       "name": "Center Courtyard",
-      "description": "You are in the center courtyard. You see some of the villagers gathering there. They all look very concerned.  \n\nTo the West is your house. To the north is the well. To the South is further outside. To the East is the tavern. \n\nYou may speak to the villagers or go in a direction.",
+      "description": "You are in the center courtyard. You see some of the villagers gathering there. They all look very concerned.  \nTo the West is your house. To the north is the Northern Square. To the South is further outside. To the East is the tavern. \n\nYou may speak to the villagers or go in a direction.",
       "actions": ["speak", "go"],
       "items": [],
       "directions": {
@@ -24,6 +24,107 @@
         "west": "Home"
       }
     }
-  }
+  },
 
+  {
+    "Northern Square": {
+      "name": "Northern Square",
+      "description": "You are in the northern square. You see some children playing nearby. \nTo the North is the well and to the East is the Church. \n\nYou may search the area, speak to the child, or go North, East, or South.",
+      "actions": ["search", "leave", "speak"],
+      "items": [],
+      "directions": {
+        "north": "Well",
+        "east": "Church",
+        "south": "Center Courtyard"
+      }
+    }
+  },
+
+  {
+    "Southern Square": {
+      "name": "Southern Square",
+      "description": "You are in the south square.   \nTo the East is the town hall. To the north is the center courtyard.  \nTo the South is your neighbor's farm. \n\n Go on to the direction you'd like.",
+      "actions": ["go"],
+      "items": [],
+      "directions": {
+        "north": "Center Courtyard",
+        "east": "Town hall",
+        "south": "Farm"
+      }
+    }
+  },
+
+  {
+    "Farm": {
+      "name": "Farm",
+      "description": "You find yourself in the farm. You see cows are lying on the floor, bleeding. \nA werewolf is tearing a cow apart, drinking its blood, eating its flesh. \nA scarecrow’s head is twisted and hand points to the north. \n\nFight the werewolf, wake farmer, or go back north.",
+      "actions": ["go", "take", "fight", "wake"],
+      "items": ["shovel", "musket"],
+      "directions": {
+        "north": "Southern Square"
+      }
+    }
+  },
+
+  {
+    "Town hall": {
+      "name": "Town hall",
+      "description": "You find yourself in the town hall, cool wind in the hair. It is quiet and dark.  \nWind blows through broken windows and makes squeaky noises. \nAn old clerk holding a candle in the hand walks slowly out of the shadow. \nYou come forward and talk with the clerk. The clerk tells you the recent abnormality. \nCrows from the woods hide in the town hall day and night, staying away from their home, \nthe woods in the north. Obviously, there is something unspeakable in the woods. \nThe old clerk offers you a gift. \n\nTake the gift or go west.",
+      "actions": ["take", "go"],
+      "items": ["gift"],
+      "directions": {
+        "north": "Tavern",
+        "west": "Southern Square"
+      }
+    }
+  },
+
+  {
+    "Tavern": {
+      "name": "Tavern",
+      "description": "There are broken chairs on the floor and the tavern is empty except for the bar keep. \nSorry but we have no Ale or food. Nothing left here but some animal feed.  \n\n",
+      "actions": ["take", "go"],
+      "items": ["feed"],
+      "directions": {
+        "west": "Center Courtyard"
+      }
+    }
+  },
+
+  {
+    "Church": {
+      "name": "Church",
+      "description": "You hear a cat >>meow<< in the background behind the stage, but don’t get startled. \nIt is a bit dark for an early afternoon visit, but you remember seeing clouds up above, possibly signaling some rain later that evening. \nHere you can speak with the pastor, mend your mind through prayer, or you can light some candles for good luck during the next full moon. \n\n Speak to pastor, say prayer, light candle, or go west to leave.",
+      "actions": ["speak", "say", "light", "go"],
+      "items": ["corn", "note"],
+      "directions": {
+        "west": "Northern Square"
+      }
+    }
+  },
+
+  {
+    "Well": {
+      "name": "Well",
+      "description": "The air is remarkably colder here. You’ve been avoiding this area due to the shrieks at night.  \nIt is a rough stone circle with a seemingly bottomless pit in the center. The sky seems to have become dim. \nTo the North the tall trees block out the light and there is only the sound of creaking wood and the rustle of leaves. \nA discarded bucket and rope lay in the yellow grass. \n\nSearch the area, use the well, or go back south to your troubled village.",
+      "actions": ["search", "use", "go"],
+      "items": [],
+      "directions": {
+        "north": "Woods",
+        "south": "Northern Square"
+      }
+    }
+  },
+
+  {
+    "Woods": {
+      "name": "Woods",
+      "description": "There is hardly any light in this place, only the pale-yellow glow of the moon. \nSnickers can be heard as the wind blows hard. You make out a familiar black cat in a clearing ahead...  \n\nAs you approach, black smoke consumes the cat, transforms, and rises into a large dark beast, eyes burning red. \nI have been watching you, but you can’t stop me now, he roars! \nThe beast raises his arms and a flaming vortex bursts from the ground as he murmurs an incantation. \n\nYou can fight the demon with something from your inventory or you can go back south to the well.",
+      "actions": ["fight", "go"],
+      "items": [],
+      "directions": {
+        "west": "Well"
+      }
+    }
+  }
 ]

@@ -9,7 +9,9 @@
     "inspect",
     "examine",
     "take",
-    "use"
+    "use",
+    "talk",
+    "speak"
   ],
   "noun": [
     "north",
@@ -17,6 +19,27 @@
     "west",
     "south",
     "items",
-    "item"
+    "amulet",
+    "matches",
+    "item",
+    "cross",
+    "knife",
+    "shovel",
+    "musket",
+    "silver bullet",
+    "birds food",
+    "triangular amulet",
+    "blue stone",
+    "water",
+    "area",
+    "house",
+    "children",
+    "villagers",
+    "werewolf",
+    "farmer",
+    "keep",
+    "clerk",
+    "pastor",
+    "demon"
   ]
 }
