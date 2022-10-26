@@ -19,7 +19,8 @@ class Sound {
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
             clip.start();
-            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            FloatControl gainMusicControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            gainMusicControl.setValue(20f * (float) Math.log10(1)); // set volume to 50% to start
 
             String response = "";
 
@@ -34,14 +35,14 @@ class Sound {
                     case ("C"):
                     break;
                     case ("V"):
-                        System.out.println(gainControl.getValue());
-                        System.out.println("The current volume is " + Math.pow(10f, gainControl.getValue()/20f) +"/2.0" );
+                        System.out.println(gainMusicControl.getValue());
+                        System.out.println("The current volume is " + Math.pow(10f, gainMusicControl.getValue()/20f) +"/2.0" );
                         System.out.println("What would you like to set the volume to? ");
                         Scanner volScanner = new Scanner(System.in);
                         float volumeEntry = 0;
                         volumeEntry = Float.parseFloat(volScanner.next());
                         if (volumeEntry <= 100 && volumeEntry >=0){
-                            gainControl.setValue(20f * (float) Math.log10(2*(volumeEntry/100)));
+                            gainMusicControl.setValue(20f * (float) Math.log10(2*(volumeEntry/100)));
                         } else
                             System.out.println("Not valid entry. Please enter a value between 0 and 100.");
                         break;
@@ -66,8 +67,28 @@ class Sound {
         }
     }
 
-    public static void setVolume(){
+    public static void runFX(){
+        File file = new File("22.07.06-HauntedVillage/resources/inventorySFX.wav");
+        try {
+            Scanner scanner = new Scanner(System.in);
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+            FloatControl gainFXControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            gainFXControl.setValue(20f * (float) Math.log10(1)); // set volume to 50% to start
 
+
+        } catch (UnsupportedAudioFileException e) {
+            System.out.println("runMusic() UnsupportedAudioFileException");
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            System.out.println("runMusic() IOException");
+            throw new RuntimeException(e);
+        } catch (LineUnavailableException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 
 }
