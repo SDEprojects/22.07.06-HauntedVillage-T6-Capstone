@@ -109,7 +109,6 @@ class Engine {
             if ("use".equals(getVerbNoun().get(0))) {
                 String interactionItem = getVerbNoun().get(1);
                 if (Item.checkStationaryItemLocation(player.getLocation(), interactionItem)) {
-                    System.out.println("within");
                     System.out.println(Item.stationaryItems(interactionItem));
                     player.setHealthLevel(player.getHealthLevel() + 3);
                     Console.pause(10000);
