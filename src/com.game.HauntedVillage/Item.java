@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 class Item {
@@ -45,4 +46,65 @@ class Item {
         }
     }
 
+    //returns stationary interactive items
+    public static String stationaryItems(String interactionItem) {
+        String result = "";
+        ObjectMapper mapper = new ObjectMapper();
+
+        try{
+            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/stationaryItems.json"));
+            ArrayList<String> useDescList = new ArrayList<>(0);
+            for (JsonNode root : rootArray) {
+                // Get Name
+                JsonNode nameNode = root.path(interactionItem);
+
+                if (!nameNode.isMissingNode()) {  // if "name" node is not missing
+                    for (JsonNode node : nameNode){
+                        // Get node names
+                        JsonNode useNode = nameNode.path("use_description");
+                        if(useNode.equals(node)){
+                            result = node.asText();
+                        }
+                    }
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static boolean checkStationaryItemLocation(String location, String interactionItem) {
+        boolean result = false;
+        ObjectMapper mapper = new ObjectMapper();
+
+        try{
+            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/stationaryItems.json"));
+
+            for (JsonNode root : rootArray) {
+                // Get Name
+                JsonNode nameNode = root.path(interactionItem);
+
+                if (!nameNode.isMissingNode()) {  // if "name" node is not missing
+
+                    for (JsonNode node : nameNode){
+                        // Get node names
+                        JsonNode actionsNode = nameNode.path("location");
+
+                        if(actionsNode.equals(node)){
+                            String stationaryItemLocation = node.asText();
+                            if (location.equals(stationaryItemLocation)){
+                                result = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

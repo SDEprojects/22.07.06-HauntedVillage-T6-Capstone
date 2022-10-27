@@ -105,6 +105,16 @@ class Engine {
                 }
             }
 
+            // use command, used to interact with static location items (ex. well)
+            if ("use".equals(getVerbNoun().get(0))) {
+                String interactionItem = getVerbNoun().get(1);
+                if (Item.checkStationaryItemLocation(player.getLocation(), interactionItem)) {
+                    System.out.println(Item.stationaryItems(interactionItem));
+                    player.setHealthLevel(player.getHealthLevel() + 3);
+                    Console.pause(10000);
+                }
+            }
+
             //clears console before update
             Console.clear();
 
