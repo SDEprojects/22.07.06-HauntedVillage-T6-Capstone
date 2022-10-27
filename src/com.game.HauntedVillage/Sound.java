@@ -179,7 +179,6 @@ public class Sound {
                     default:
                         System.out.println("not a valid response");
                 }
-                System.out.println("left music menu...");
                 Console.pause(1000);
             }
         } catch (UnsupportedAudioFileException e) {
