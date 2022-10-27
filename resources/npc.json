@@ -5,7 +5,11 @@
   {
     "name": "children",
     "location": "Northern Square",
-    "conversations": ["You attempt to speak to the children, but they are too caught up in their game of tag. \nYou hear one of the children teases, “If you get caught you will go missing too!”"],
+    "conversations": [
+      "You attempt to speak to the children, but they are too caught up in their game of tag. \nYou hear one of the children teases, “If you get caught you will go missing too!”",
+      "I've never seen that cat before",
+      "My papa told me that the pastor won't come outside"
+    ],
     "actions": []
   }
 },
@@ -14,7 +18,11 @@
     {
       "name": "villagers",
       "location": "Center Courtyard",
-      "conversations": ["The villagers tell you that another child went missing last night and that sightings \nof monsters have been becoming more frequent over the last week near the woods."],
+      "conversations": [
+        "The villagers tell you that another child went missing last night and that sightings \nof monsters have been becoming more frequent over the last week near the woods.",
+        "I wouldn't go to the Farm, if I were you. \nThere's been strange happenings at night.",
+        "No one can be trusted these days. I saw my servant whispering spells"
+      ],
       "actions": []
     }
   },
