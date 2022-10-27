@@ -86,7 +86,6 @@ public class Player {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-
             JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/location.json"));
 
             for (JsonNode root : rootArray) {
@@ -103,10 +102,12 @@ public class Player {
                         JsonNode itemsNode = nameNode.path("items");
                         JsonNode directionsNode = nameNode.path("directions");
 
+                        //location
                         if (locationNode.equals(node)) {
                             System.out.println("Location: " + node.asText());
                         }
 
+                        //direction
                         if (directionsNode.equals(node)) {
                             ArrayList<String> directionList = new ArrayList<>(0);
                             for (JsonNode direction : directionsNode) {
