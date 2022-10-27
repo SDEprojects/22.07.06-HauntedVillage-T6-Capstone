@@ -30,7 +30,7 @@
     "Northern Square": {
       "name": "Northern Square",
       "description": "You are in the northern square. You see some children playing nearby. \nTo the North is the well and to the East is the Church. \n\nYou may search the area, speak to the child, or go North, East, or South.",
-      "actions": ["search", "leave", "speak"],
+      "actions": ["search", "leave", "speak", "go"],
       "items": [],
       "directions": {
         "north": "Well",
