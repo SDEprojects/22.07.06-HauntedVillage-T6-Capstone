@@ -19,5 +19,13 @@ class EventHandler {
         if ("look".equals(result.get(0))){
             Item.checkForItem(result.get(1));
         }
+
+        if ("restore".equals(result.get(0))){
+            Engine.restoreGame();
+        }
+
+        if ("save".equals(result.get(0))){
+            Engine.saveGame();
+        }
     }
 }
