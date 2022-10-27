@@ -107,14 +107,6 @@ public class Player {
                             System.out.println("Location: " + node.asText());
                         }
 
-                        if (itemsNode.equals(node)) {
-                            ArrayList<String> itemsList = new ArrayList<>(0);
-                            for (JsonNode item : itemsNode) {
-                                itemsList.add(item.asText());
-                            }
-                            System.out.println("Items: " + itemsList);
-                        }
-
                         if (directionsNode.equals(node)) {
                             ArrayList<String> directionList = new ArrayList<>(0);
                             for (JsonNode direction : directionsNode) {
@@ -141,8 +133,17 @@ public class Player {
                     }
                 }
             }
+            //Inventory
             System.out.println("Inventory: " + getInventory());
-            System.out.println("Health: " + getHealthLevel());
+
+            //Health bar
+            ArrayList<String> healthIconList = new ArrayList<>(0);
+            for (int i = 0; i < getHealthLevel(); i++) {
+                healthIconList.add("♥");
+            }
+            String healthBar = healthIconList.toString().replaceAll("[\\[\\]]", "").replaceAll(",", "");
+            System.out.println("Health: " + healthBar);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
