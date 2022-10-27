@@ -11,7 +11,9 @@
     "take",
     "use",
     "talk",
-    "speak"
+    "speak",
+    "restore",
+    "save"
   ],
   "noun": [
     "north",
@@ -40,6 +42,7 @@
     "keep",
     "clerk",
     "pastor",
-    "demon"
+    "demon",
+    "crucifix"
   ]
 }

@@ -5,14 +5,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Player {
+public class Player implements Serializable {
     private String location = "Home";
     private ArrayList<String> inventory = new ArrayList<>(0);
     private int healthLevel = 10;
+
+    public Player(String location, ArrayList<String> inventory, int healthLevel) {
+        this.location = location;
+        this.inventory = inventory;
+        this.healthLevel = healthLevel;
+    }
 
     public Player() {
     }
@@ -173,5 +180,9 @@ public class Player {
 
     public void addInventory(String item) {
         inventory.add(item);
+    }
+
+    public void setInventory(ArrayList<String> inventory) {
+        this.inventory = inventory;
     }
 }

@@ -25,9 +25,24 @@ class Engine {
     private String userInput;
     private ArrayList<String> verbNoun = new ArrayList<>(List.of("verb", "noun"));
     private String npcResponse;
-
+    static Player player = new Player();
 
     public Engine() {
+    }
+
+    public static void restoreGame() {
+        ArrayList<ArrayList<String>> playerInfoList = new ArrayList<>();
+        playerInfoList = RestorePlayer.restorePlayer();
+        String location = playerInfoList.get(0).get(0);
+        ArrayList<String> inventory = playerInfoList.get(1);
+        int healthLevel = Integer.parseInt(playerInfoList.get(2).get(0));
+        player.setLocation(location);
+        player.setInventory(inventory);
+        player.setHealthLevel(healthLevel);
+    }
+
+    public static void saveGame() {
+        SavePlayer.savePlayer(player.getLocation(), player.getInventory(), player.getHealthLevel());
     }
 
     public void execute() {
@@ -40,13 +55,13 @@ class Engine {
         gameLoop();
     }
 
+
     //game loop
-    public void gameLoop(){
+    public void gameLoop() {
         boolean endGame = false;
-      Player player = new Player();
 
         //game continues if player is alive
-        while(endGame == false){
+        while (endGame == false) {
 
             //returns player information at top of screen
             player.playerCurrentInfo();
@@ -74,8 +89,8 @@ class Engine {
                 System.out.println("Take an item to add to your inventory");
                 userPromptInput(player.getLocation());
                 //take command, player adds item to inventory
-                for (String item:foundItems(player.getLocation(), player.getInventory())) {
-                    if (item.equals(getVerbNoun().get(1))){
+                for (String item : foundItems(player.getLocation(), player.getInventory())) {
+                    if (item.equals(getVerbNoun().get(1))) {
                         Sound.runFX();
                         player.addInventory(getVerbNoun().get(1));
                     }
@@ -84,7 +99,7 @@ class Engine {
             //speak command, player speaks to NPCs
             if ("speak".equals(getVerbNoun().get(0))) {
                 String character = getVerbNoun().get(1);
-                if (NPC.npcLocation(player.getLocation(), character)){
+                if (NPC.npcLocation(player.getLocation(), character)) {
                     System.out.println(NPC.npcConversation(character));
                     Console.pause(10000);
                 }
@@ -94,18 +109,19 @@ class Engine {
             Console.clear();
 
             //if player is dead, end game
-            if(Player.end() == true){
+            if (Player.end() == true) {
                 endGame = true;
             }
         }
     }
+
 
     //returns location specific items
     private ArrayList<String> foundItems(String location, ArrayList<String> inventory) {
         ObjectMapper mapper = new ObjectMapper();
         ArrayList<String> itemsList = new ArrayList<>(0);
 
-        try{
+        try {
             JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/location.json"));
 
             for (JsonNode root : rootArray) {
@@ -113,11 +129,11 @@ class Engine {
                 JsonNode nameNode = root.path(location);
 
                 if (!nameNode.isMissingNode()) {  // if "name" node is not missing
-                    for (JsonNode node : nameNode){
+                    for (JsonNode node : nameNode) {
                         // Get node names
                         JsonNode itemsNode = nameNode.path("items");
-                        if(itemsNode.equals(node)){
-                            for (JsonNode item: itemsNode){
+                        if (itemsNode.equals(node)) {
+                            for (JsonNode item : itemsNode) {
                                 itemsList.add(item.asText());
                             }
                         }
@@ -136,30 +152,30 @@ class Engine {
         boolean result = false;
         ObjectMapper mapper = new ObjectMapper();
 
-        try{
+        try {
             JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/location.json"));
             //Always-allowed actions are hard coded
-            ArrayList<String> actionsList = new ArrayList<>(List.of("help","quit","look"));
+            ArrayList<String> actionsList = new ArrayList<>(List.of("help", "quit", "look", "restore", "save"));
             for (JsonNode root : rootArray) {
                 // Get Name
                 JsonNode nameNode = root.path(location);
 
                 if (!nameNode.isMissingNode()) {  // if "name" node is not missing
 
-                    for (JsonNode node : nameNode){
+                    for (JsonNode node : nameNode) {
                         // Get node names
                         JsonNode actionsNode = nameNode.path("actions");
 
-                        if(actionsNode.equals(node)){
-                            for (JsonNode item: actionsNode){
+                        if (actionsNode.equals(node)) {
+                            for (JsonNode item : actionsNode) {
                                 actionsList.add(item.asText());
                             }
                         }
                     }
                 }
             }
-            for (String action: actionsList) {
-                if (inputAction.equals(action)){
+            for (String action : actionsList) {
+                if (inputAction.equals(action)) {
                     result = true;
                 }
             }
@@ -175,21 +191,18 @@ class Engine {
         boolean validInput = false;
         while (!validInput) {
             userInput = scanner.nextLine().trim().toLowerCase();
-            TextParser parser= new TextParser();
+            TextParser parser = new TextParser();
             //verb-noun pair array using text parser
-            ArrayList<String> result =  parser.textParser(userInput);
+            ArrayList<String> result = parser.textParser(userInput);
 
             //checks verbs and nouns for validity
-            if (!"verb".equals(result.get(0))){
-                if(!"noun".equals(result.get(1))) {
-                    if (actionChecker(location, result.get(0))) {
-                        validInput = true;
-                        //sends to event handler if a global command
-                        EventHandler.eventHandler(userInput);
-                        setVerbNoun(result);
-                    }
-                }
-                else {
+            if (!"verb".equals(result.get(0))) {
+                if (actionChecker(location, result.get(0))) {
+                    validInput = true;
+                    //sends to event handler if a global command
+                    EventHandler.eventHandler(userInput);
+                    setVerbNoun(result);
+                } else {
                     System.out.println("Invalid Input: Enter as Prompted (verb and noun)");
                 }
             }
