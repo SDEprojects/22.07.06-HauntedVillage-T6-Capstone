@@ -10,7 +10,105 @@ import java.util.Scanner;
 
 public class Sound {
 
-    static Boolean SFX_On = true;
+    private static Boolean SFX_On = true;
+    private static Boolean musicOn = true;
+    private static double musicLevel = 1;
+    private static double soundFXLevel = 1;
+    static String answer = "";
+
+    static File musicFile = new File("22.07.06-HauntedVillage/resources/music.wav");
+    static File soundFXFile = new File("22.07.06-HauntedVillage/resources/inventorySFX.wav");
+
+    public static void musicPlayer(File file) {
+        if(getMusicOn()){
+            try {
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioStream);
+                clip.start();
+                FloatControl gainMusicControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                gainMusicControl.setValue(20f * (float) Math.log10(getMusicLevel())); // set volume to 50% to start
+
+            } catch (UnsupportedAudioFileException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (LineUnavailableException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public static void soundFXPlayer(File file) {
+        if(getSFX_On()){
+            try {
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioStream);
+                clip.start();
+                FloatControl gainMusicControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                gainMusicControl.setValue(20f * (float) Math.log10(getSoundFXLevel())); // set volume to 50% to start
+
+            } catch (UnsupportedAudioFileException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (LineUnavailableException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public static void musicMenu() {
+        Scanner scanner = new Scanner(System.in);
+
+        while (!answer.equals("C")) {
+            if (getSFX_On()) {
+                System.out.println("Music Options: C = Continue with music, V = Change Volume, Q = Continue without music, S = Turn Off Sound Effects");
+                System.out.println("Enter your choice:");
+            } else {
+                System.out.println("Music Options: C = Continue with music, V = Change Volume, Q = Continue without music, S = Turn On Sound Effects");
+                System.out.println("Enter your choice:");
+            }
+            answer = scanner.nextLine();
+            answer= answer.toUpperCase();
+        }
+        switch(answer){
+            case ("C"):
+                break;
+            case ("V"):
+                System.out.println("What would you like to set the music volume to? (0 to 100) ");
+                Scanner volScanner = new Scanner(System.in);
+                double volumeEntry = 0;
+                double SFXEntry = 0;
+                volumeEntry = Float.parseFloat(volScanner.next());
+                if (volumeEntry <= 100 && volumeEntry >=0){
+                    setMusicLevel(volumeEntry);
+                } else {
+                    System.out.println("Not valid entry. Please enter a value between 0 and 100.");
+                }
+                SFXEntry = Float.parseFloat(volScanner.next());
+                System.out.println("What would you like to set the sound effects volume to? (0 to 100)");
+                if (SFXEntry <= 100 && SFXEntry >=0){
+                    setSoundFXLevel(SFXEntry);
+                } else {
+                    System.out.println("Not valid entry. Please enter a value between 0 and 100.");
+                }
+                break;
+            case ("Q"):
+                setMusicOn(false);
+                answer = "C";
+                break;
+            case ("S"):
+                setSFX_On(false);
+                break;
+            default:
+                System.out.println("not a valid response");
+        }
+        System.out.println("left music menu...");
+        Console.pause(1000);
+
+    }
 
     public static void runMusic(){
         File file = new File("22.07.06-HauntedVillage/resources/music.wav");
@@ -100,4 +198,35 @@ public class Sound {
         }
     }
 
+    public static double getMusicLevel() {
+        return musicLevel;
+    }
+
+    public static void setMusicLevel(double musicLevel) {
+        Sound.musicLevel = musicLevel;
+    }
+
+    public static double getSoundFXLevel() {
+        return soundFXLevel;
+    }
+
+    public static void setSoundFXLevel(double soundFXLevel) {
+        Sound.soundFXLevel = soundFXLevel;
+    }
+
+    public static Boolean getMusicOn() {
+        return musicOn;
+    }
+
+    public static void setMusicOn(Boolean musicOn) {
+        Sound.musicOn = musicOn;
+    }
+
+    public static Boolean getSFX_On() {
+        return SFX_On;
+    }
+
+    public static void setSFX_On(Boolean SFX_On) {
+        Sound.SFX_On = SFX_On;
+    }
 }
