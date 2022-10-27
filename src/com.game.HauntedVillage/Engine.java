@@ -70,11 +70,11 @@ class Engine {
             //search command, player looks for items
             if ("search".equals(getVerbNoun().get(0))) {
                 //found items retrieves locations item list
-                System.out.println("You found " + foundItems(player.getLocation()));
+                System.out.println("You found " + foundItems(player.getLocation(), player.getInventory()));
                 System.out.println("Take an item to add to your inventory");
                 userPromptInput(player.getLocation());
                 //take command, player adds item to inventory
-                for (String item:foundItems(player.getLocation())) {
+                for (String item:foundItems(player.getLocation(), player.getInventory())) {
                     if (item.equals(getVerbNoun().get(1))){
                         Sound.runFX();
                         player.addInventory(getVerbNoun().get(1));
@@ -101,7 +101,7 @@ class Engine {
     }
 
     //returns location specific items
-    private ArrayList<String> foundItems(String location) {
+    private ArrayList<String> foundItems(String location, ArrayList<String> inventory) {
         ObjectMapper mapper = new ObjectMapper();
         ArrayList<String> itemsList = new ArrayList<>(0);
 
@@ -124,7 +124,7 @@ class Engine {
                     }
                 }
             }
-
+            itemsList.removeIf(inventory::contains);
         } catch (IOException e) {
             e.printStackTrace();
         }
