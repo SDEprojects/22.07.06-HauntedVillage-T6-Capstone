@@ -15,6 +15,8 @@ public class Sound {
     private static double musicLevel = 1;
     private static double soundFXLevel = 1;
     static String answer = "";
+    private static String musicOnOrOff;
+    private static String sfxOnOrOff;
 
     static File musicFile = new File("22.07.06-HauntedVillage/resources/music.wav");
     static File soundFXFile = new File("22.07.06-HauntedVillage/resources/inventorySFX.wav");
@@ -119,18 +121,14 @@ public class Sound {
             clip.open(audioStream);
             clip.start();
             FloatControl gainMusicControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            gainMusicControl.setValue(20f * (float) Math.log10(1)); // set volume to 50% to start
+            gainMusicControl.setValue(20f * (float) Math.log10(getMusicLevel())); // set volume to 50% to start
 
             String response = "";
 
             while (!response.equals("C")) {
-                if (SFX_On == true) {
-                    System.out.println("Music Options: C = Continue with music, V = Change Volume, Q = Continue without music, S = Turn Off");
-                    System.out.println("Enter your choice:");
-                } else {
-                    System.out.println("Music Options: C = Continue with music, V = Change Volume, Q = Continue without music, S = Turn On");
-                    System.out.println("Enter your choice:");
-                }
+                System.out.println("Music Options: C = Continue with current settings, V = Change Volume, Q = "+ musicStatus() +", S = "+sfxStatus());
+                System.out.println("Enter your choice:");
+
 
                 response = scanner.next();
                 response = response.toUpperCase();
@@ -139,23 +137,44 @@ public class Sound {
                     case ("C"):
                     break;
                     case ("V"):
-                        System.out.println(gainMusicControl.getValue());
-                        System.out.println("The current volume is " + Math.pow(10f, gainMusicControl.getValue()/20f) +"/2.0" );
+                        System.out.println("The current music volume is " + (float) (Math.pow(10f, gainMusicControl.getValue()/20f))*50 +"/100" );
                         System.out.println("What would you like to set the volume to? ");
                         Scanner volScanner = new Scanner(System.in);
                         float volumeEntry = 0;
                         volumeEntry = Float.parseFloat(volScanner.next());
                         if (volumeEntry <= 100 && volumeEntry >=0){
-                            gainMusicControl.setValue(20f * (float) Math.log10(2*(volumeEntry/100)));
-                        } else
+                            setMusicLevel(volumeEntry);
+                            gainMusicControl.setValue(20f * (float) Math.log10(2*(getMusicLevel()/100)));
+                        } else {
                             System.out.println("Not valid entry. Please enter a value between 0 and 100.");
+                        }
+                        System.out.println("The current SFX volume is " + getSoundFXLevel()*50 +"/100" );
+                        System.out.println("What would you like to set the SFX volume to? ");
+                        Scanner SFXScanner = new Scanner(System.in);
+                        float SFXEntry = 0;
+                        SFXEntry = Float.parseFloat(SFXScanner.next());
+                        if (SFXEntry <= 100 && SFXEntry >=0){
+                            setSoundFXLevel(SFXEntry);
+                            gainMusicControl.setValue(20f * (float) Math.log10(2*(getSoundFXLevel()/100)));
+                        } else {
+                            System.out.println("Not valid entry. Please enter a value between 0 and 100.");
+                        }
                         break;
                     case ("Q"):
-                        clip.close();
-                        response = "C";
+                        if (getMusicOn()){
+                            clip.stop();
+                            setMusicOn(false);
+                        } else{
+                         setMusicOn(true);
+                         clip.start();
+                        }
                         break;
                     case ("S"):
-                        SFX_On = false;
+                        if (getSFX_On()){
+                            setSFX_On(false);
+                        } else {
+                            setSFX_On(true);
+                        }
                         break;
                     default:
                         System.out.println("not a valid response");
@@ -176,15 +195,14 @@ public class Sound {
 
     public static void runFX(){
         File file = new File("22.07.06-HauntedVillage/resources/inventorySFX.wav");
-        if (SFX_On == true){
+        if (getSFX_On()){
             try {
-                Scanner scanner = new Scanner(System.in);
                 AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioStream);
                 clip.start();
                 FloatControl gainFXControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-                gainFXControl.setValue(20f * (float) Math.log10(1)); // set volume to 50% to start
+                gainFXControl.setValue(20f * (float) Math.log10(getSoundFXLevel())); // set volume to 50% to start
 
             } catch (UnsupportedAudioFileException e) {
                 System.out.println("runMusic() UnsupportedAudioFileException");
@@ -198,6 +216,25 @@ public class Sound {
         }
     }
 
+    public static String musicStatus(){
+        if (getMusicOn()){
+            musicOnOrOff = "Toggle music OFF";
+        } else {
+            musicOnOrOff = "Toggle music ON";
+        }
+        return musicOnOrOff;
+    }
+
+    public static String sfxStatus(){
+        if(getSFX_On()) {
+            sfxOnOrOff = "Toggle SFX OFF";
+        } else {
+            sfxOnOrOff = "Toggle SFX ON";
+        }
+        return sfxOnOrOff;
+    }
+
+    // ACCESSOR METHODS
     public static double getMusicLevel() {
         return musicLevel;
     }
