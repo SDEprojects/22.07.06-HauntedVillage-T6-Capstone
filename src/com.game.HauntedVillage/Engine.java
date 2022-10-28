@@ -126,6 +126,7 @@ class Engine {
 
             //light command, player lights candle for amulet
             if ("light".equals(getVerbNoun().get(0))) {
+                Art.showArt("candle");
                 System.out.println("The illumination reveals a triangular amulet, this may come in handy.  (amulet added to inventory)");
                 player.addInventory("amulet");
                 Console.pause(5000);
@@ -202,6 +203,7 @@ class Engine {
     }
 
     private void finalBattle() {
+        Art.showArt("demon");
         System.out.println("You through the blue stone at the beast. \nIt locks into space in the flame and radiates in bright blue light! \n\n“No!!!”, he roars");
         Console.pause(8000);
         Console.clear();
@@ -321,7 +323,7 @@ class Engine {
 
     //prints game background information before game
     private void presentInfo() {
-
+        Art.showArt("house");
         try (JsonParser jParser = new JsonFactory()
                 .createParser(new File("22.07.06-HauntedVillage/resources/info.json"))) {
 

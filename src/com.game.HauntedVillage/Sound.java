@@ -126,6 +126,7 @@ public class Sound {
             String response = "";
 
             while (!response.equals("C")) {
+                Art.showArt("music_note");
                 System.out.println("Music Options: C = Continue with current settings, V = Change Volume, Q = "+ musicStatus() +", S = "+sfxStatus());
                 System.out.println("Enter your choice:");
 
