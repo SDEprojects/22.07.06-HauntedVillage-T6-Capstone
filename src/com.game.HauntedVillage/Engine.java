@@ -312,7 +312,7 @@ class Engine {
                 if (actionChecker(location, result.get(0))) {
                     validInput = true;
                     //sends to event handler if a global command
-                    EventHandler.eventHandler(userInput);
+                    EventHandler.eventHandler(userInput, location);
                     setVerbNoun(result);
                 } else {
                     System.out.println("Invalid Input: Enter as Prompted (verb and noun)");
