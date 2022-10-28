@@ -29,6 +29,8 @@ class Engine {
     private ArrayList<String> verbNoun = new ArrayList<>(List.of("verb", "noun"));
     private String npcResponse;
     static Player player = new Player();
+    private boolean wellActivation = false;
+    private boolean endGame = false;
 
     public Engine() {
     }
@@ -61,7 +63,6 @@ class Engine {
 
     //game loop
     public void gameLoop() {
-        boolean endGame = false;
 
         //game continues if player is alive
         while (endGame == false) {
@@ -88,17 +89,32 @@ class Engine {
             //search command, player looks for items
             if ("search".equals(getVerbNoun().get(0))) {
                 //found items retrieves locations item list
-                System.out.println("You found " + foundItems(player.getLocation(), player.getInventory()));
-                System.out.println("Take an item to add to your inventory");
-                userPromptInput(player.getLocation());
-                //take command, player adds item to inventory
-                for (String item : foundItems(player.getLocation(), player.getInventory())) {
-                    if (item.equals(getVerbNoun().get(1))) {
-                        Sound.runFX();
-                        player.addInventory(getVerbNoun().get(1));
+                ArrayList<String> items = foundItems(player.getLocation(), player.getInventory());
+                if (items.size() > 0) {
+                    System.out.println("You found " + items);
+                    System.out.println("Take an item to add to your inventory");
+                    userPromptInput(player.getLocation());
+                    //take command, player adds item to inventory
+                    for (String item : foundItems(player.getLocation(), player.getInventory())) {
+                        if (item.equals(getVerbNoun().get(1))) {
+                            Sound.runFX();
+                            player.addInventory(getVerbNoun().get(1));
+                        }
                     }
                 }
+                if("Well".equals(player.getLocation())){
+                    System.out.println("There is a triangular indentation in the stone.");
+                    if(player.getInventory().contains("amulet")){
+                        setWellActivation(true);
+                        System.out.println("You insert the triangular amulet. The ground rumbles and a grown comes from within the well.");
+                    }
+                    else {
+                        System.out.println("Something must fit here.");
+                    }
+                    Console.pause(8000);
+                }
             }
+
             //speak command, player speaks to NPCs
             if ("speak".equals(getVerbNoun().get(0))) {
                 String character = getVerbNoun().get(1);
@@ -108,23 +124,38 @@ class Engine {
                 }
             }
 
+            //light command, player lights candle for amulet
+            if ("light".equals(getVerbNoun().get(0))) {
+                System.out.println("The illumination reveals a triangular amulet, this may come in handy.  (amulet added to inventory)");
+                player.addInventory("amulet");
+                Console.pause(5000);
+            }
+
+
             // use command, used to interact with static location items (ex. well)
             if ("use".equals(getVerbNoun().get(0))) {
                 String interactionItem = getVerbNoun().get(1);
                 if (Item.checkStationaryItemLocation(player.getLocation(), interactionItem)) {
-                    ArrayList<ArrayList<String>> result;
-                    result = Item.stationaryItems(interactionItem);
-                    String useDesc = result.get(0).get(2);
-                    System.out.println(useDesc);
-
-                    // if item heals
-                    int healthDelta = parseInt(result.get(0).get(4));
-                    if((player.getHealthLevel()+healthDelta > 10)){
-                        player.setHealthLevel(10);
-                    } else{
-                        player.setHealthLevel(player.getHealthLevel() + healthDelta);
+                    if(amuletWellCondition(interactionItem)){
+                        System.out.println("You retrieve a dark blue stone");
+                        player.addInventory("stone");
                     }
-                    Console.pause(10000);
+                    else {
+
+                        ArrayList<ArrayList<String>> result;
+                        result = Item.stationaryItems(interactionItem);
+                        String useDesc = result.get(0).get(2);
+                        System.out.println(useDesc);
+
+                        // if item heals
+                        int healthDelta = parseInt(result.get(0).get(4));
+                        if ((player.getHealthLevel() + healthDelta > 10)) {
+                            player.setHealthLevel(10);
+                        } else {
+                            player.setHealthLevel(player.getHealthLevel() + healthDelta);
+                        }
+                    }
+                    Console.pause(5000);
                 }
             }
 
@@ -135,8 +166,30 @@ class Engine {
                     player.removeItem(interactionItem);
                 }else{
                     System.out.println(interactionItem + " is not in your inventory. ");
+                    Console.pause(3000);
                 }
             }
+
+            //fight command.
+            if ("fight".equals(getVerbNoun().get(0))) {
+                String weapon = getVerbNoun().get(1);
+                if (player.getInventory().contains(weapon)) {
+                   if ("Woods".equals(player.getLocation())){
+                       if ("stone".equals(weapon)){
+                           finalBattle();
+                       }
+                       else{
+                           //NPC.demonDamage();
+                           System.out.println("This weapon isn’t doing anything");
+                           Console.pause(3000);
+                       }
+                   }
+                }else{
+                    System.out.println(weapon + " is not in your inventory. ");
+                    Console.pause(3000);
+                }
+            }
+
 
             //clears console before update
             Console.clear();
@@ -146,6 +199,30 @@ class Engine {
                 endGame = true;
             }
         }
+    }
+
+    private void finalBattle() {
+        System.out.println("You through the blue stone at the beast. \nIt locks into space in the flame and radiates in bright blue light! \n\n“No!!!”, he roars");
+        Console.pause(8000);
+        Console.clear();
+        System.out.println("The demon is destroyed in a burst of white light. \n\nYou can finally rest now that the curse has lifted.");
+        Console.pause(8000);
+        setEndGame(true);
+
+    }
+
+    private boolean amuletWellCondition(String item) {
+        boolean condition = false;
+        if("well".equals(item)){
+            if(player.getInventory().contains("amulet")){
+                if (wellActivation) {
+                    if (!player.getInventory().contains("stone")) {
+                        condition = true;
+                    }
+                }
+            }
+        }
+        return condition;
     }
 
 
@@ -188,7 +265,7 @@ class Engine {
         try {
             JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/location.json"));
             //Always-allowed actions are hard coded
-            ArrayList<String> actionsList = new ArrayList<>(List.of("help", "quit", "look", "restore", "save","drop"));
+            ArrayList<String> actionsList = new ArrayList<>(List.of("help", "quit", "look", "restore", "save","drop", "map"));
             for (JsonNode root : rootArray) {
                 // Get Name
                 JsonNode nameNode = root.path(location);
@@ -302,5 +379,17 @@ class Engine {
 
     public void setNpcResponse(String npcResponse) {
         this.npcResponse = npcResponse;
+    }
+
+    public boolean isWellActivation() {
+        return wellActivation;
+    }
+
+    public void setWellActivation(boolean wellActivation) {
+        this.wellActivation = wellActivation;
+    }
+
+    public void setEndGame(boolean endGame) {
+        this.endGame = endGame;
     }
 }
