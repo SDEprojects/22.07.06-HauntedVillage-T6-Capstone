@@ -47,25 +47,24 @@ class Item {
     }
 
     //returns stationary interactive items
-    public static String stationaryItems(String interactionItem) {
-        String result = "";
+    public static ArrayList stationaryItems(String interactionItem) {
         ObjectMapper mapper = new ObjectMapper();
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
+        ArrayList<String> stationaryItemElements = new ArrayList<>();
 
         try{
             JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/stationaryItems.json"));
-            ArrayList<String> useDescList = new ArrayList<>(0);
             for (JsonNode root : rootArray) {
                 // Get Name
                 JsonNode nameNode = root.path(interactionItem);
 
                 if (!nameNode.isMissingNode()) {  // if "name" node is not missing
                     for (JsonNode node : nameNode){
-                        // Get node names
-                        JsonNode useNode = nameNode.path("use_description");
-                        if(useNode.equals(node)){
-                            result = node.asText();
-                        }
+                        stationaryItemElements.add(node.asText());
                     }
+                    result.add(stationaryItemElements);
+                } else {
+                    System.out.println("You can not interact with this item.");
                 }
             }
 
