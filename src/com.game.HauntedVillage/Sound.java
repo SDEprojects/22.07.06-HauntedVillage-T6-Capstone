@@ -113,6 +113,7 @@ public class Sound {
     }
 
     public static void runMusic(){
+        Console.clear();
         File file = new File("22.07.06-HauntedVillage/resources/music.wav");
         try {
             Scanner scanner = new Scanner(System.in);
@@ -180,7 +181,7 @@ public class Sound {
                     default:
                         System.out.println("not a valid response");
                 }
-                Console.pause(1000);
+                Console.clear();
             }
         } catch (UnsupportedAudioFileException e) {
             System.out.println("runMusic() UnsupportedAudioFileException");
