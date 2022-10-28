@@ -1,0 +1,15 @@
+{
+    "run" :  "go",
+    "inspect" : "search",
+    "examine": "search",
+    "talk": "speak",
+    "get": "take",
+    "attack" : "fight",
+    "cross" : "crucifix",
+    "rifle" : "musket",
+    "food" : "feed",
+    "water": "well",
+    "child" : "children",
+    "villager" : "villagers",
+    "gem" : "stone"
+}
