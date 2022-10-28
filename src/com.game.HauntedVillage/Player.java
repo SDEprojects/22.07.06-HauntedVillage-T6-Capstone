@@ -158,6 +158,13 @@ public class Player implements Serializable {
 
     }
 
+    //remove an item from player's inventory
+    public void removeItem(String item){
+        ArrayList<String> itemToBeRemoved = getInventory();
+        itemToBeRemoved.remove(item);
+        setInventory(itemToBeRemoved);
+    }
+
     public int getHealthLevel() {
         return healthLevel;
     }

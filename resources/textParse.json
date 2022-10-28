@@ -18,7 +18,8 @@
     "fight",
     "attack",
     "map",
-    "feed"
+    "feed",
+    "drop"
   ],
   "noun": [
     "north",
@@ -52,6 +53,7 @@
     "pastor",
     "demon",
     "crucifix",
-    "well"
+    "well",
+    "feed"
   ]
 }
