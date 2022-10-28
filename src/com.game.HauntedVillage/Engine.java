@@ -115,6 +115,17 @@ class Engine {
                 }
             }
 
+            //use drop command, player can drop inventory.
+            if ("drop".equals(getVerbNoun().get(0))) {
+                String interactionItem = getVerbNoun().get(1);
+               // if (Item.checkStationaryItemLocation(player.getLocation(), interactionItem)) {
+                    if (player.getInventory().contains(interactionItem)) {
+                        player.removeItem(interactionItem);
+                    }else{
+                        System.out.println(interactionItem + " is not in your inventory. ");
+                    }
+            }
+
             //clears console before update
             Console.clear();
 
@@ -165,7 +176,7 @@ class Engine {
         try {
             JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/location.json"));
             //Always-allowed actions are hard coded
-            ArrayList<String> actionsList = new ArrayList<>(List.of("help", "quit", "look", "restore", "save"));
+            ArrayList<String> actionsList = new ArrayList<>(List.of("help", "quit", "look", "restore", "save","drop"));
             for (JsonNode root : rootArray) {
                 // Get Name
                 JsonNode nameNode = root.path(location);
