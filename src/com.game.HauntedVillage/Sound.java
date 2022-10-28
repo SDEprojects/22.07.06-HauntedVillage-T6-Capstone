@@ -120,6 +120,7 @@ public class Sound {
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
             clip.start();
+            clip.loop(10);
             FloatControl gainMusicControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
             gainMusicControl.setValue(20f * (float) Math.log10(getMusicLevel())); // set volume to 50% to start
 
