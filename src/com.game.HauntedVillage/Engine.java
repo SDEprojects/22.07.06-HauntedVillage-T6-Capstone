@@ -131,7 +131,6 @@ class Engine {
             //use drop command, player can drop inventory.
             if ("drop".equals(getVerbNoun().get(0))) {
                 String interactionItem = getVerbNoun().get(1);
-                // if (Item.checkStationaryItemLocation(player.getLocation(), interactionItem)) {
                 if (player.getInventory().contains(interactionItem)) {
                     player.removeItem(interactionItem);
                 }else{
