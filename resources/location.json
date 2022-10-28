@@ -30,7 +30,7 @@
     "Northern Square": {
       "name": "Northern Square",
       "description": "You are in the northern square. You see some children playing nearby. \nTo the North is the well and to the East is the Church. \n\nYou may search the area, speak to the child, or go North, East, or South.",
-      "actions": ["search", "leave", "speak"],
+      "actions": ["search", "leave", "speak", "go"],
       "items": [],
       "directions": {
         "north": "Well",
@@ -94,7 +94,7 @@
   {
     "Church": {
       "name": "Church",
-      "description": "You hear a cat >>meow<< in the background behind the stage, but don’t get startled. \nIt is a bit dark for an early afternoon visit, but you remember seeing clouds up above, possibly signaling some rain later that evening. \nHere you can speak with the pastor, mend your mind through prayer, or you can light some candles for good luck during the next full moon. \n\n Speak to pastor, say prayer, light candle, or go west to leave.",
+      "description": "You hear a cat >>MEOW<< from behind a pew, but don’t get startled. \nIt is a bit dark for an early afternoon visit, but you remember seeing clouds up above, possibly signaling some rain later that evening. \n\nHere you can speak to the pastor, say a prayer, light a candle, or go west to leave.",
       "actions": ["speak", "say", "light", "go"],
       "items": ["corn", "note"],
       "directions": {
@@ -119,11 +119,11 @@
   {
     "Woods": {
       "name": "Woods",
-      "description": "There is hardly any light in this place, only the pale-yellow glow of the moon. \nSnickers can be heard as the wind blows hard. You make out a familiar black cat in a clearing ahead...  \n\nAs you approach, black smoke consumes the cat, transforms, and rises into a large dark beast, eyes burning red. \nI have been watching you, but you can’t stop me now, he roars! \nThe beast raises his arms and a flaming vortex bursts from the ground as he murmurs an incantation. \n\nYou can fight the demon with something from your inventory or you can go back south to the well.",
+      "description": "There is hardly any light in this place, only the pale-yellow glow of the moon. \nSnickers can be heard as the wind blows hard. You make out a familiar black cat in a clearing ahead...  \n\nAs you approach, black smoke consumes the cat, transforms, and rises into a large dark beast, eyes burning red. \nI have been watching you, but you can’t stop me now, he roars! \nThe beast raises his arms and a flaming vortex bursts from the ground as he murmurs an incantation. \n\nYou can fight with something from your inventory or you can go back south to the well.",
       "actions": ["fight", "go"],
       "items": [],
       "directions": {
-        "west": "Well"
+        "south": "Well"
       }
     }
   }

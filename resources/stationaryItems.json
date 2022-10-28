@@ -1,0 +1,11 @@
+[
+  {
+    "well": {
+      "name": "well",
+      "location": "Well",
+      "use_description": "You take the bucket and rope and retrieve some water from the well. You drink some and feel great. (+3 health)",
+      "use_location": "well",
+      "health_reduction": "3"
+    }
+  }
+]
