@@ -1,7 +1,7 @@
 package com.game.HauntedVillage;
 
 public class MapImage {
-    public static void main(String[] args) {
+    public void display() {
         System.out.println("                   ==========================");
         System.out.println("       N           ==        Woods         ==");
         System.out.println("       |           ==========================");
@@ -17,6 +17,3 @@ public class MapImage {
         System.out.println("                   ==========================");
     }
 }
-
-
-
