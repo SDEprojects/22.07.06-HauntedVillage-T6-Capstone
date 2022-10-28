@@ -18,6 +18,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
+import static java.lang.Float.parseFloat;
+import static java.lang.Integer.parseInt;
+
 class Engine {
 
     // initialize scanner. takes system input
@@ -35,7 +38,7 @@ class Engine {
         playerInfoList = RestorePlayer.restorePlayer();
         String location = playerInfoList.get(0).get(0);
         ArrayList<String> inventory = playerInfoList.get(1);
-        int healthLevel = Integer.parseInt(playerInfoList.get(2).get(0));
+        int healthLevel = parseInt(playerInfoList.get(2).get(0));
         player.setLocation(location);
         player.setInventory(inventory);
         player.setHealthLevel(healthLevel);
@@ -109,8 +112,18 @@ class Engine {
             if ("use".equals(getVerbNoun().get(0))) {
                 String interactionItem = getVerbNoun().get(1);
                 if (Item.checkStationaryItemLocation(player.getLocation(), interactionItem)) {
-                    System.out.println(Item.stationaryItems(interactionItem));
-                    player.setHealthLevel(player.getHealthLevel() + 3);
+                    ArrayList<ArrayList<String>> result;
+                    result = Item.stationaryItems(interactionItem);
+                    String useDesc = result.get(0).get(2);
+                    System.out.println(useDesc);
+
+                    // if item heals
+                    int healthDelta = parseInt(result.get(0).get(4));
+                    if((player.getHealthLevel()+healthDelta > 10)){
+                        player.setHealthLevel(10);
+                    } else{
+                        player.setHealthLevel(player.getHealthLevel() + healthDelta);
+                    }
                     Console.pause(10000);
                 }
             }
@@ -118,12 +131,12 @@ class Engine {
             //use drop command, player can drop inventory.
             if ("drop".equals(getVerbNoun().get(0))) {
                 String interactionItem = getVerbNoun().get(1);
-               // if (Item.checkStationaryItemLocation(player.getLocation(), interactionItem)) {
-                    if (player.getInventory().contains(interactionItem)) {
-                        player.removeItem(interactionItem);
-                    }else{
-                        System.out.println(interactionItem + " is not in your inventory. ");
-                    }
+                // if (Item.checkStationaryItemLocation(player.getLocation(), interactionItem)) {
+                if (player.getInventory().contains(interactionItem)) {
+                    player.removeItem(interactionItem);
+                }else{
+                    System.out.println(interactionItem + " is not in your inventory. ");
+                }
             }
 
             //clears console before update
