@@ -16,7 +16,7 @@ class Item {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
-            JsonNode rootArray = objectMapper.readTree(new File("22.07.06-HauntedVillage/resources/items.json"));
+            JsonNode rootArray = objectMapper.readTree(new File("resources/items.json"));
 
             for (JsonNode root : rootArray) {
                 JsonNode nameNode = root.path(item);
@@ -53,7 +53,7 @@ class Item {
         ArrayList<String> stationaryItemElements = new ArrayList<>();
 
         try{
-            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/stationaryItems.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/stationaryItems.json"));
             for (JsonNode root : rootArray) {
                 // Get Name
                 JsonNode nameNode = root.path(interactionItem);
@@ -79,7 +79,7 @@ class Item {
         ObjectMapper mapper = new ObjectMapper();
 
         try{
-            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/stationaryItems.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/stationaryItems.json"));
 
             for (JsonNode root : rootArray) {
                 // Get Name

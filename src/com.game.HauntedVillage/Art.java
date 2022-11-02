@@ -15,7 +15,7 @@ class Art {
         ArrayList<String> art = new ArrayList<>();
 
         try{
-            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/art.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/art.json"));
             for (JsonNode root : rootArray) {
                 // Get Name
                 JsonNode nameNode = root.path(artItem);

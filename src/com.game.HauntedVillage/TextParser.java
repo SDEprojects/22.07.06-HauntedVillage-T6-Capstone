@@ -37,7 +37,7 @@ public class TextParser {
 
         //for (String word: words) {
             try (JsonParser jParser = new JsonFactory()
-                    .createParser(new File("22.07.06-HauntedVillage/resources/textParse.json"))) {
+                    .createParser(new File("resources/textParse.json"))) {
 
                 // loop until token equal to "}"
                 while (jParser.nextToken() != JsonToken.END_OBJECT) {
@@ -100,7 +100,7 @@ public class TextParser {
         ObjectMapper mapper = new ObjectMapper();
 
         try{
-            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/synonym.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/synonym.json"));
 
             for (JsonNode root : rootArray) {
                 JsonNode name = rootArray.path(word);
@@ -122,7 +122,7 @@ public class TextParser {
         ObjectMapper mapper = new ObjectMapper();
 
         try{
-            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/synonym.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/synonym.json"));
 
             Iterator<String> iterator = rootArray.fieldNames();
             iterator.forEachRemaining(synonyms::add);
