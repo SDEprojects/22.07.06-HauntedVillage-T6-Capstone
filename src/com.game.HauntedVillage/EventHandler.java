@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 class EventHandler {
 
-    public static void eventHandler(String input) {
+    public static void eventHandler(String input, String location) {
         TextParser parser= new TextParser();
         ArrayList<String> result =  parser.textParser(input);
 
@@ -34,7 +34,7 @@ class EventHandler {
 
         if ("map".equals(result.get(0))){
             Console.clear();
-            MapImage.map();
+            MapImage.map(location);
         }
     }
 }
