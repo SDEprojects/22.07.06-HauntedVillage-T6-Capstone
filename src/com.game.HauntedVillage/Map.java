@@ -18,7 +18,7 @@ public class Map {
 
             ObjectMapper mapper = new ObjectMapper();
 
-            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/location.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/location.json"));
 
             for (JsonNode root : rootArray) {
 

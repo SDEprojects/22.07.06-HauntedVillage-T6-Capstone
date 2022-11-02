@@ -28,7 +28,7 @@ public class Player implements Serializable {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
-            JsonNode rootArray = objectMapper.readTree(new File("22.07.06-HauntedVillage/resources/items.json"));
+            JsonNode rootArray = objectMapper.readTree(new File("resources/items.json"));
 
             for (JsonNode root : rootArray) {
                 JsonNode nameNode = root.path(item);
@@ -57,7 +57,7 @@ public class Player implements Serializable {
 
         try {
 
-            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/location.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/location.json"));
 
             for (JsonNode root : rootArray) {
 
@@ -93,7 +93,7 @@ public class Player implements Serializable {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/location.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/location.json"));
 
             for (JsonNode root : rootArray) {
 

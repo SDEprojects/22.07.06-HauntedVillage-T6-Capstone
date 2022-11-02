@@ -234,7 +234,7 @@ class Engine {
         ArrayList<String> itemsList = new ArrayList<>(0);
 
         try {
-            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/location.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/location.json"));
 
             for (JsonNode root : rootArray) {
                 // Get Name
@@ -265,7 +265,7 @@ class Engine {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/location.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/location.json"));
             //Always-allowed actions are hard coded
             ArrayList<String> actionsList = new ArrayList<>(List.of("help", "quit", "look", "restore", "save","drop", "map"));
             for (JsonNode root : rootArray) {
@@ -325,7 +325,7 @@ class Engine {
     private void presentInfo() {
         Art.showArt("house");
         try (JsonParser jParser = new JsonFactory()
-                .createParser(new File("22.07.06-HauntedVillage/resources/info.json"))) {
+                .createParser(new File("resources/info.json"))) {
 
             // loop until token equal to "}"
             while (jParser.nextToken() != JsonToken.END_OBJECT) {
@@ -355,7 +355,7 @@ class Engine {
             ObjectMapper mapper = new ObjectMapper();
 
             // convert array to list of items
-            List<Splash> splash = List.of(mapper.readValue(Paths.get("22.07.06-HauntedVillage/resources/splash.json").toFile(), Splash.class));
+            List<Splash> splash = List.of(mapper.readValue(Paths.get("resources/splash.json").toFile(), Splash.class));
 
             // print
             System.out.println(splash.get(0).getTitle());
