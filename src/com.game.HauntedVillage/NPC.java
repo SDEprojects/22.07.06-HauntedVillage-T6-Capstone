@@ -35,9 +35,10 @@ public class NPC {
                     }
                 }
             }
-            //Generate random int value from 0 to 2
+//            Generate random int value from 0 to 2
 //            int num = (int)(Math.random()*(3));
-            //random conversation
+
+//            random conversation
             result = convoList.get(0);
 
 
