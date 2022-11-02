@@ -16,7 +16,7 @@ class Item {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
-            JsonNode rootArray = objectMapper.readTree(new File("resources/items.json"));
+            JsonNode rootArray = objectMapper.readTree(new File("resources/items.txt"));
 
             for (JsonNode root : rootArray) {
                 JsonNode nameNode = root.path(item);

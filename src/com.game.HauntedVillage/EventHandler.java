@@ -25,11 +25,11 @@ class EventHandler {
         }
 
         if ("restore".equals(result.get(0))){
-            Engine.restoreGame();
+//            Engine.restoreGame();
         }
 
         if ("save".equals(result.get(0))){
-            Engine.saveGame();
+//            Engine.saveGame();
         }
 
         if ("map".equals(result.get(0))){
