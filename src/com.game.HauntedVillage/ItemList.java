@@ -86,6 +86,10 @@ class ItemList {
         return health_reduction;
     }
 
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public String getBoss_kill() {
         return boss_kill;
     }

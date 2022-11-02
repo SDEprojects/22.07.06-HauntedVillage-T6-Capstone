@@ -5,7 +5,7 @@
     "east": "Center Courtyard",
     "south": "no exit",
     "west": "no exit",
-    "description": "You are at home in your familiar log cabin. You look around and see some items that may be of use.
+    "description": "You are at home \"in your familiar log cabin. You look around and see some items that may be of use.
     You can search the house for some useful items, rest to heal, or go east outside.",
     "items": [
       "matches",

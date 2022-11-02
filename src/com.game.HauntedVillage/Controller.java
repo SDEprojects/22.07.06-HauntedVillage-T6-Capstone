@@ -20,7 +20,7 @@ public class Controller {
         splashScreen.splashScreen(); //not necessary to build classLoad for this
         menu.startNewGame();
         introStory.presentInfo();
-//        engine.gameLoop();
+        engine.gameLoop();
     }
 
     // BUSINESS METHODS
