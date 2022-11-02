@@ -15,7 +15,7 @@ public class NPC {
         ObjectMapper mapper = new ObjectMapper();
 
         try{
-            JsonNode rootArray = mapper.readTree(new File("resources/npc.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/npc.txt"));
             ArrayList<String> convoList = new ArrayList<>(0);
             for (JsonNode root : rootArray) {
                 // Get Name
@@ -53,7 +53,7 @@ public class NPC {
         ObjectMapper mapper = new ObjectMapper();
 
         try{
-            JsonNode rootArray = mapper.readTree(new File("resources/npc.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/npc.txt"));
 
             for (JsonNode root : rootArray) {
                 // Get Name

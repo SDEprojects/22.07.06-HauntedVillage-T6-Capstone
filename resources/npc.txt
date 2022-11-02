@@ -1,0 +1,58 @@
+
+[
+  {
+    "name": "children",
+    "location": "Northern Square",
+    "conversations": [
+      "You attempt to speak to the children, but they are too caught up in their game of tag. You hear one of the children teases,  'If you get caught you will go missing too!' ",
+      "I've never seen that cat before",
+      "My papa told me that the pastor won't come outside"
+    ]
+  },
+{
+      "name": "villagers",
+      "location": "Center Courtyard",
+      "conversations": [
+        "The villagers tell you that another child went missing last night and that sightings of monsters have been becoming more frequent over the last week near the woods.",
+        "I wouldn't go to the Farm, if I were you. There's been strange happenings at night.",
+        "No one can be trusted these days. I saw my servant whispering spells"
+      ]
+    },
+  {
+      "name": "werewolf",
+      "location": "Farm",
+      "conversations": []
+  },
+  {
+      "name": "farmer",
+      "location": "Farm",
+      "conversations": []
+  },
+  {
+      "name": "clerk",
+      "location": "Town hall",
+      "conversations": []
+  },
+  {
+      "name": "keep",
+      "location": "Tavern",
+      "conversations": []
+  },
+
+  {
+      "name": "pastor",
+      "location": "Church",
+      "conversations": ["The pastor turns to you but he’s not who he seems. He’s covered in blood with two fangs sneaking from his grin. 'I think you have too many sins,' he cries! as has lunges at you."],
+  },
+  {
+      "name": "cat",
+      "location": "",
+      "conversations": ["meow"]
+
+  },
+  {
+      "name": "demon",
+      "location": "",
+      "conversations": []
+  }
+]
