@@ -57,7 +57,7 @@ public class Player implements Serializable {
 
         try {
 
-            JsonNode rootArray = mapper.readTree(new File("resources/location.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/location.txt"));
 
             for (JsonNode root : rootArray) {
 
@@ -93,7 +93,7 @@ public class Player implements Serializable {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            JsonNode rootArray = mapper.readTree(new File("resources/location.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/location.txt"));
 
             for (JsonNode root : rootArray) {
 

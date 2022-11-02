@@ -26,41 +26,70 @@ class Engine {
     // initialize scanner. takes system input
     Scanner scanner = new Scanner(System.in);
     private String userInput;
-    private ArrayList<String> verbNoun = new ArrayList<>(List.of("verb", "noun"));
+    private String delimiter = "[ \t,.:;?!\"']+";
+    private ParseCommand commandPares = new ParseCommand();
+    private List<String> verbs = commandPares.command();
+    private List<String> verbForMoving = commandPares.movingCommand;
+    private List<String> direction = commandPares.direction;
+    private String objectName;
+    private Command InputCommand = new Command();
+
+
     private String npcResponse;
     static Player player = new Player();
     private boolean wellActivation = false;
     private boolean endGame = false;
 
-    public Engine() {
-    }
 
-    public static void restoreGame() {
-        ArrayList<ArrayList<String>> playerInfoList = new ArrayList<>();
-        playerInfoList = RestorePlayer.restorePlayer();
-        String location = playerInfoList.get(0).get(0);
-        ArrayList<String> inventory = playerInfoList.get(1);
-        int healthLevel = parseInt(playerInfoList.get(2).get(0));
-        player.setLocation(location);
-        player.setInventory(inventory);
-        player.setHealthLevel(healthLevel);
-    }
+//    static void restoreGame() {
+//        ArrayList<ArrayList<String>> playerInfoList = new ArrayList<>();
+//        playerInfoList = RestorePlayer.restorePlayer();
+//        String location = playerInfoList.get(0).get(0);
+//        ArrayList<String> inventory = playerInfoList.get(1);
+//        int healthLevel = parseInt(playerInfoList.get(2).get(0));
+//        player.setLocation(location);
+//        player.setInventory(inventory);
+//        player.setHealthLevel(healthLevel);
+//    }
 
-    public static void saveGame() {
-        SavePlayer.savePlayer(player.getLocation(), player.getInventory(), player.getHealthLevel());
-    }
+//    static void saveGame() {
+//        SavePlayer.savePlayer(player.getLocation(), player.getInventory(), player.getHealthLevel());
+//    }
 
     //game loop
-    public void gameLoop() {
+    void gameLoop() {
 
         //game continues if player is alive
-        while (endGame == false) {
+        while (!endGame) {
 
             //returns player information at top of screen
             player.playerCurrentInfo();
 
             //returns location description and player prompt
             player.prompt();
+
+            System.out.println("\nWhat is your next command:");
+            userInput = scanner.nextLine().trim().toLowerCase();
+            String[] commandInput = userInput.toLowerCase().split(delimiter);
+            objectName = InputCommand.commandFilter(commandInput);
+            boolean testCommand=commandInput.length > 1 && verbs.contains(commandInput[0]);
+            if (commandInput.length == 1 && commandInput[0].equals("quit")) {
+                endGame = true;
+            } else if (commandInput.length == 1) {
+                InputCommand.gameCommand(commandInput[0]);
+            }
+//            else if (testCommand && (gameItems.itemList().contains(objectName))) {
+//                InputCommand.executeCommand(commandInput[0], objectName, playerAbility, gameItems, rooms,player);
+//            }
+        else if (commandInput.length == 2 && verbForMoving.contains(commandInput[0]) && direction.contains((commandInput[1]))) {
+                Console.clear();
+//                movement.moving(commandInput[1], rooms);
+            } else {
+                System.out.println("Invalid input. Please enter the 'verb' + 'name'. Type help for checking the command" );
+            }
+
+
+
 
             //takes user input, specific to players location
             userPromptInput(player.getLocation());
@@ -223,7 +252,7 @@ class Engine {
         ArrayList<String> itemsList = new ArrayList<>(0);
 
         try {
-            JsonNode rootArray = mapper.readTree(new File("resources/location.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/location.txt"));
 
             for (JsonNode root : rootArray) {
                 // Get Name
@@ -254,7 +283,7 @@ class Engine {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            JsonNode rootArray = mapper.readTree(new File("resources/location.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/location.txt"));
             //Always-allowed actions are hard coded
             ArrayList<String> actionsList = new ArrayList<>(List.of("help", "quit", "look", "restore", "save","drop", "map"));
             for (JsonNode root : rootArray) {
@@ -309,7 +338,7 @@ class Engine {
             }
         }
     }
-
+    ArrayList<String> verbNoun=new ArrayList<>();
     public ArrayList<String> getVerbNoun() {
         return verbNoun;
     }
