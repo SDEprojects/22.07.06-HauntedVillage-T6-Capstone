@@ -168,6 +168,6 @@ class Location {
 
     public static void main(String[] args) {
         Location abc=new Location();
-        System.out.println(abc.dataReader());
+        System.out.println(abc.dataReader().get(0).getItems().get(0));
     }
 }

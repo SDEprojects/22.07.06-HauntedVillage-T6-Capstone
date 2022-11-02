@@ -21,22 +21,22 @@ class Command {
         }
     }
 
-//    void executeCommand(String verb, String noun, Character playerAbility, ItemMenu gameItems, List<Location> rooms, Character player) {
-//        verb = check.verifyAction(verb);
-//        if (verb.equals("look")) {
-//            System.out.println(gameItems.looking(noun, gameItems));
-//        } else if (verb.equals("get")) {
-//            playerAbility.addItem(Location.currentRoom, noun, gameItems, rooms);
-//        } else if (verb.equals("use") && playerAbility.getInventory().contains(noun)) {
-//            playerAbility.useHealingPotion(player);
-//        } else if (verb.equals("drop")) {
-//            playerAbility.dropItem(noun, playerAbility, gameItems, rooms);
-//        } else if (verb.equals("check") && noun.equals("bag")) {
-//            playerAbility.checkInventory();
-//        } else {
-//            System.out.println("There is no " + noun + " in this room");
-//        }
-//    }
+    void executeCommand(String verb, String noun, ItemList gameItems, List<Location> rooms,Character player) {
+        verb = check.verifyAction(verb);
+        if (verb.equals("look")) {
+            System.out.println(gameItems.looking(noun, gameItems));
+        }
+        else if (verb.equals("get")) {
+            player.addItem(Location.currentRoom, noun, gameItems, rooms);
+        } else if (verb.equals("drop")) {
+            player.dropItem(noun, player, gameItems, rooms);
+        } else if (verb.equals("check") && noun.equals("bag")) {
+            player.checkInventory();
+        }
+        else {
+            System.out.println("There is no " + noun + " in this room");
+        }
+    }
 
     void gameCommand(String command) {
         if (command.equals("help")) {
