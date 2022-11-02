@@ -3,18 +3,18 @@ package com.game.HauntedVillage;
 import java.util.Scanner;
 
 public class Menu {
+    private Scanner scanner = new Scanner(System.in);
 
-
-    public static void startNewGame() {
-        System.out.println("Would you like to start a new game, type start to start a new game. ");
-        boolean condition = false;
-        while (!condition) {
-            Scanner scanner = new Scanner(System.in);
-            String playerChoice = scanner.nextLine().trim().toLowerCase();
-            if (playerChoice.equals("start")) {
-                condition = true;
-                Sound.runMusic();
-            }
+    void startNewGame() {
+        System.out.print("\n Enter 'start' to start new game or 'quit game' to exit: \n");
+        String input = scanner.nextLine().trim();
+        if (input.equalsIgnoreCase("start")) {
+//            Sound.runMusic();  //build separate function file inmplement to GUI
+        } else if (input.equalsIgnoreCase("quit")) {
+//            quit();
+        } else {
+            System.out.println("Invalid input.");
+            startNewGame();
         }
     }
 

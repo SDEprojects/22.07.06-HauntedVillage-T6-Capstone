@@ -15,7 +15,7 @@ public class NPC {
         ObjectMapper mapper = new ObjectMapper();
 
         try{
-            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/npc.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/npc.json"));
             ArrayList<String> convoList = new ArrayList<>(0);
             for (JsonNode root : rootArray) {
                 // Get Name
@@ -36,9 +36,9 @@ public class NPC {
                 }
             }
             //Generate random int value from 0 to 2
-            int num = (int)(Math.random()*(3));
+//            int num = (int)(Math.random()*(3));
             //random conversation
-            result = convoList.get(num);
+            result = convoList.get(0);
 
 
         } catch (IOException e) {
@@ -52,7 +52,7 @@ public class NPC {
         ObjectMapper mapper = new ObjectMapper();
 
         try{
-            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/npc.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/npc.json"));
 
             for (JsonNode root : rootArray) {
                 // Get Name

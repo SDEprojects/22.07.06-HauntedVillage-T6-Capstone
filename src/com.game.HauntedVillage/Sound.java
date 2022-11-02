@@ -18,8 +18,8 @@ public class Sound {
     private static String musicOnOrOff;
     private static String sfxOnOrOff;
 
-    static File musicFile = new File("22.07.06-HauntedVillage/resources/music.wav");
-    static File soundFXFile = new File("22.07.06-HauntedVillage/resources/inventorySFX.wav");
+    static File musicFile = new File("resources/music.wav");
+    static File soundFXFile = new File("resources/inventorySFX.wav");
 
     public static void musicPlayer(File file) {
         if(getMusicOn()){
@@ -114,7 +114,7 @@ public class Sound {
 
     public static void runMusic(){
         Console.clear();
-        File file = new File("22.07.06-HauntedVillage/resources/music.wav");
+        File file = new File("resources/music.wav");
         try {
             Scanner scanner = new Scanner(System.in);
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
@@ -196,7 +196,7 @@ public class Sound {
     }
 
     public static void runFX(){
-        File file = new File("22.07.06-HauntedVillage/resources/inventorySFX.wav");
+        File file = new File("resources/inventorySFX.wav");
         if (getSFX_On()){
             try {
                 AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);

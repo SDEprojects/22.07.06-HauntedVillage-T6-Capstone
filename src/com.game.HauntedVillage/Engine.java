@@ -50,17 +50,6 @@ class Engine {
         SavePlayer.savePlayer(player.getLocation(), player.getInventory(), player.getHealthLevel());
     }
 
-    public void execute() {
-        Console.clear();
-        splashScreen();
-        Menu.startNewGame();
-        Console.clear();
-        presentInfo();
-        Console.clear();
-        gameLoop();
-    }
-
-
     //game loop
     public void gameLoop() {
 
@@ -87,7 +76,7 @@ class Engine {
             }
 
             //search command, player looks for items
-            if ("search".equals(getVerbNoun().get(0))) {
+            else if ("search".equals(getVerbNoun().get(0))) {
                 //found items retrieves locations item list
                 ArrayList<String> items = foundItems(player.getLocation(), player.getInventory());
                 if (items.size() > 0) {
@@ -102,7 +91,7 @@ class Engine {
                         }
                     }
                 }
-                if("Well".equals(player.getLocation())){
+                else if("Well".equals(player.getLocation())){
                     System.out.println("There is a triangular indentation in the stone.");
                     if(player.getInventory().contains("amulet")){
                         setWellActivation(true);
@@ -116,7 +105,7 @@ class Engine {
             }
 
             //speak command, player speaks to NPCs
-            if ("speak".equals(getVerbNoun().get(0))) {
+            else if ("speak".equals(getVerbNoun().get(0))) {
                 String character = getVerbNoun().get(1);
                 if (NPC.npcLocation(player.getLocation(), character)) {
                     System.out.println(NPC.npcConversation(character));
@@ -125,7 +114,7 @@ class Engine {
             }
 
             //light command, player lights candle for amulet
-            if ("light".equals(getVerbNoun().get(0))) {
+            else if ("light".equals(getVerbNoun().get(0))) {
                 Art.showArt("candle");
                 System.out.println("The illumination reveals a triangular amulet, this may come in handy.  (amulet added to inventory)");
                 player.addInventory("amulet");
@@ -134,7 +123,7 @@ class Engine {
 
 
             // use command, used to interact with static location items (ex. well)
-            if ("use".equals(getVerbNoun().get(0))) {
+            else if ("use".equals(getVerbNoun().get(0))) {
                 String interactionItem = getVerbNoun().get(1);
                 if (Item.checkStationaryItemLocation(player.getLocation(), interactionItem)) {
                     if(amuletWellCondition(interactionItem)){
@@ -161,7 +150,7 @@ class Engine {
             }
 
             //use drop command, player can drop inventory.
-            if ("drop".equals(getVerbNoun().get(0))) {
+            else if ("drop".equals(getVerbNoun().get(0))) {
                 String interactionItem = getVerbNoun().get(1);
                 if (player.getInventory().contains(interactionItem)) {
                     player.removeItem(interactionItem);
@@ -172,7 +161,7 @@ class Engine {
             }
 
             //fight command.
-            if ("fight".equals(getVerbNoun().get(0))) {
+            else if ("fight".equals(getVerbNoun().get(0))) {
                 String weapon = getVerbNoun().get(1);
                 if (player.getInventory().contains(weapon)) {
                    if ("Woods".equals(player.getLocation())){
@@ -234,7 +223,7 @@ class Engine {
         ArrayList<String> itemsList = new ArrayList<>(0);
 
         try {
-            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/location.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/location.json"));
 
             for (JsonNode root : rootArray) {
                 // Get Name
@@ -265,7 +254,7 @@ class Engine {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            JsonNode rootArray = mapper.readTree(new File("22.07.06-HauntedVillage/resources/location.json"));
+            JsonNode rootArray = mapper.readTree(new File("resources/location.json"));
             //Always-allowed actions are hard coded
             ArrayList<String> actionsList = new ArrayList<>(List.of("help", "quit", "look", "restore", "save","drop", "map"));
             for (JsonNode root : rootArray) {
@@ -320,52 +309,6 @@ class Engine {
             }
         }
     }
-
-    //prints game background information before game
-    private void presentInfo() {
-        Art.showArt("house");
-        try (JsonParser jParser = new JsonFactory()
-                .createParser(new File("22.07.06-HauntedVillage/resources/info.json"))) {
-
-            // loop until token equal to "}"
-            while (jParser.nextToken() != JsonToken.END_OBJECT) {
-
-                String fieldname = jParser.getCurrentName();
-
-                if ("story".equals(fieldname)) {
-                    jParser.nextToken();
-                    System.out.println(jParser.getText());
-                }
-            }
-
-            Console.pause(13000);
-
-        } catch (JsonGenerationException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void splashScreen() {
-        try {
-            // instantiate mapper obect
-            ObjectMapper mapper = new ObjectMapper();
-
-            // convert array to list of items
-            List<Splash> splash = List.of(mapper.readValue(Paths.get("22.07.06-HauntedVillage/resources/splash.json").toFile(), Splash.class));
-
-            // print
-            System.out.println(splash.get(0).getTitle());
-
-            Console.pause(3000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
 
     public ArrayList<String> getVerbNoun() {
         return verbNoun;
