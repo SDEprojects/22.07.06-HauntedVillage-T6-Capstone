@@ -17,7 +17,7 @@ public class Menu {
             startNewGame();
         }
     }
-
+    //useless help function, going to build the new help function
     public static void help(){
         System.out.println("----------------------- Help Menu -----------------------\n");
         System.out.println("                                     enter (back) to exit\n\n");
