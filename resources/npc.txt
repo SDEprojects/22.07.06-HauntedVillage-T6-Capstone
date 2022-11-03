@@ -21,28 +21,34 @@
   {
       "name": "werewolf",
       "location": "Farm",
-      "conversations": []
+      "conversations": [“ROOOAAAAARRRR!!!!!!” ]
   },
   {
       "name": "farmer",
       "location": "Farm",
-      "conversations": []
+      "conversations": ["Huh? what? Bloody Hell! I'm gettin my musket!",
+      "I need to check on my livestock. You're going to need this to kill that damn thing."]
   },
   {
       "name": "clerk",
       "location": "Town hall",
-      "conversations": []
+      "conversations": ["It looks like the townspeople aren't the only things avoiding the woods.
+      Something wicked has been happening at that Farm lately. Strange noises and a rotten smell is enough to keep anyone away.
+      I found this while cleaning the town hall earlier today.
+      It looks like a silver bullet. Maybe you can find a use for it"]
   },
   {
       "name": "keep",
       "location": "Tavern",
-      "conversations": []
+      "conversations": ["Sorry but we have no Ale or food. Nothing left here but some animal feed"]
   },
 
   {
       "name": "pastor",
       "location": "Church",
-      "conversations": ["The pastor turns to you but he’s not who he seems. He’s covered in blood with two fangs sneaking from his grin. 'I think you have too many sins,' he cries! as has lunges at you."],
+      "conversations": ["The pastor turns to you but he’s not who he seems.
+      He’s covered in blood with two fangs sneaking from his grin.
+      'I think you have too many sins,' he cries! as has lunges at you."],
   },
   {
       "name": "cat",
@@ -53,6 +59,6 @@
   {
       "name": "demon",
       "location": "",
-      "conversations": []
+      "conversations": ["Your life is mine!"]
   }
 ]
