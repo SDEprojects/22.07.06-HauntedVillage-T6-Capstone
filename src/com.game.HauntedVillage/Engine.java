@@ -1,25 +1,11 @@
 package com.game.HauntedVillage;
 
 import com.apps.util.Console;
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonToken;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Scanner;
 
-import static java.lang.Float.parseFloat;
-import static java.lang.Integer.parseInt;
 
 class Engine {
 
@@ -27,17 +13,19 @@ class Engine {
     Scanner scanner = new Scanner(System.in);
     private String userInput;
     private String delimiter = "[ \t,.:;?!\"']+";
-    private ParseCommand commandPares = new ParseCommand();
-    private List<String> verbs = commandPares.command();
-    private List<String> verbForMoving = commandPares.movingCommand;
-    private List<String> direction = commandPares.direction;
+    private final ParseCommand commandPares = new ParseCommand();
+    private final List<String> verbs = commandPares.command();
+    private final List<String> verbForMoving = commandPares.movingCommand;
+    private final List<String> direction = commandPares.direction;
     private String objectName;
-    private Command InputCommand = new Command();
-    private Location movement=new Location();
-    List<Location> rooms = movement.dataReader();
-    private ItemList gameItems=new ItemList();
-    private Character player=new Character();
+    private final Command InputCommand = new Command();
+    private final Location movement = new Location();
+    private final List<Location> rooms = movement.dataReader();
+    private final ItemList gameItems = new ItemList();
+    private final Character player = new Character();
     private boolean endGame = false;
+    static boolean displayItem = true;
+    private ArrayList<String> items = new ArrayList<>();
 
 
 //    private String npcResponse;
@@ -65,13 +53,8 @@ class Engine {
 
         //game continues if player is alive
         while (!endGame) {
-
-            //returns player information at top of screen
-//            player.playerCurrentInfo();
-
-            //returns location description and player prompt
-//            player.prompt();
-
+            //returns player information at top of screen and location description and player prompt
+            playerInforPrompt();
             System.out.println("\nWhat is your next command:");
             userInput = scanner.nextLine().trim().toLowerCase();
             String[] commandInput = userInput.toLowerCase().split(delimiter);
@@ -79,26 +62,42 @@ class Engine {
             boolean testCommand = commandInput.length > 1 && verbs.contains(commandInput[0]);
             if (commandInput.length == 1 && commandInput[0].equals("quit")) {
                 endGame = true;
+                Menu.quit();
             } else if (commandInput.length == 1) {
                 InputCommand.gameCommand(commandInput[0]);
-            }
-            else if (testCommand && (gameItems.itemNameList().contains(objectName))) {
-                InputCommand.executeCommand(commandInput[0], objectName, gameItems, rooms,player);
-            }
-            else if (commandInput.length == 2 && verbForMoving.contains(commandInput[0]) && direction.contains((commandInput[1]))) {
+            } else if (testCommand && (gameItems.itemNameList().contains(objectName))) {
+                InputCommand.executeCommand(commandInput[0], objectName, gameItems, rooms, player);
+            } else if (commandInput.length == 2 && verbForMoving.contains(commandInput[0]) && direction.contains((commandInput[1]))) {
                 Console.clear();
                 movement.moving(commandInput[1], rooms);
+                Engine.displayItem = true;
             } else {
                 System.out.println("Invalid input. Please enter the 'verb' + 'name'. Type help for checking the command");
             }
         }
+    }
 
+    void playerInforPrompt() {
+        System.out.println(movement.getLocationByName(Location.currentRoom).getDescription());
+        for (int i = 0; i < rooms.size(); i++) {
+            if (rooms.get(i).getCurrent().equals(Location.getCurrentRoom())) {
+                items = rooms.get(i).getItems();
+            }
+        }
+        if (!displayItem) {
+            if (items.size() > 0) {
+                System.out.println("\n\nAfter the search, there are some items you may take with you :" + items);
+            } else {
+                System.out.println("\n\nThere is nothing at this room.");
+            }
+        }
+    }
+}
 
-
-            //takes user input, specific to players location
+//takes user input, specific to players location
 //            userPromptInput(player.getLocation());
 
-            //go command, player moves to given direction
+//go command, player moves to given direction
 //            if ("go".equals(getVerbNoun().get(0))) {
 //                //finds new location given cardinal direction
 //                String newLocation = Map.moveFinder(player.getLocation(), getVerbNoun().get(1));
@@ -370,4 +369,3 @@ class Engine {
 //    public void setEndGame(boolean endGame) {
 //        this.endGame = endGame;
 //    }
-}}

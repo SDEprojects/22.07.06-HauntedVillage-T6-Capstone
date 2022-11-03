@@ -10,22 +10,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Controller {
     private final static Controller playGame = new Controller();
-    private Engine engine = new Engine();
-    private Splash splashScreen = new Splash();
+    private final Engine engine = new Engine();
+    private final Splash splashScreen = new Splash();
     private Menu menu = new Menu();
-    private IntroStroy introStory = new IntroStroy();
+    private final IntroStroy introStory = new IntroStroy();
 
     // CONSTRUCTOR
     private Controller() {
         splashScreen.splashScreen(); //not necessary to build classLoad for this
         menu.startNewGame();
         introStory.presentInfo();
+//        Console.pause(10000);
+        Console.clear();
         engine.gameLoop();
     }
-
     // BUSINESS METHODS
-
-
     public static Controller getPlayGame() {
         return playGame;
     }

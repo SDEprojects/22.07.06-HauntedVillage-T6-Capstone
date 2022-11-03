@@ -53,6 +53,24 @@ class NpcDialogue {
         return npcNameList;
     }
 
+    // This function implements the speak feature
+     public String speak(String name){
+         String dialogue;
+
+        // getting the npc by name
+        NpcDialogue npc = getNpcByName(name);
+
+        // getting all the conversations for that npc
+         ArrayList<String> npcConversations = npc.getConversations();
+
+         //generating a random number based on the size of the array of dialogues
+         int randIndex = (int)(Math.random() * npcConversations.size());
+
+         dialogue = npcConversations.get(randIndex) ;
+
+         return dialogue;
+     }
+
 
     //getters
     public String getName() {
@@ -82,5 +100,9 @@ class NpcDialogue {
         System.out.println(npcs.getNpcByName("children"));
         System.out.println("Testing NpcNameList() function");
         System.out.println(npcs.npcNameList());
+        System.out.println("Testing dialogue() function");
+        System.out.println(npcs.speak("children"));
     }
+
+
 }
