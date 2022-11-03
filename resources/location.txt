@@ -96,7 +96,7 @@
     "east": "no exit",
     "south": "no exit",
     "west": "center courtyard",
-    "description": "
+    "description": 
     "There are broken chairs on the floor and the tavern is empty except for the bar keep.",
     "items": [
       "feed"
