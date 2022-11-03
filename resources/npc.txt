@@ -21,7 +21,7 @@
   {
       "name": "werewolf",
       "location": "Farm",
-      "conversations": [“ROOOAAAAARRRR!!!!!” ]
+      "conversations": [“ROOOAAAAARRRR!!!!!!” ]
   },
   {
       "name": "farmer",
