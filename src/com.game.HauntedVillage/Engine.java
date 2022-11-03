@@ -26,6 +26,7 @@ class Engine {
     private boolean endGame = false;
     static boolean displayItem = true;
     private ArrayList<String> items = new ArrayList<>();
+    private NpcDialogue npc = new NpcDialogue();
 
 
 //    private String npcResponse;
@@ -67,6 +68,9 @@ class Engine {
                 InputCommand.gameCommand(commandInput[0]);
             } else if (testCommand && (gameItems.itemNameList().contains(objectName))) {
                 InputCommand.executeCommand(commandInput[0], objectName, gameItems, rooms, player);
+            }else if(testCommand && (npc.npcNameList().contains(objectName))){
+                System.out.println(npc.speak(objectName));
+                Console.pause(5000);
             } else if (commandInput.length == 2 && verbForMoving.contains(commandInput[0]) && direction.contains((commandInput[1]))) {
                 Console.clear();
                 movement.moving(commandInput[1], rooms);
