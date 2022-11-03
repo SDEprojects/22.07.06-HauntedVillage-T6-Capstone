@@ -2,6 +2,7 @@ package com.game.HauntedVillage;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,110 +65,75 @@ class Location {
                         currentRoom = rooms.get(i).getNorth();
                         break;
                     } else {
-                        System.out.println( "Wrong way!" );
+                        System.out.println("Wrong way!");
                     }
                 } else if (direction.equals("south")) {
                     if (!rooms.get(i).getSouth().equals("no exit")) {
                         currentRoom = rooms.get(i).getSouth();
                         break;
                     } else {
-                        System.out.println("Wrong way!" );
+                        System.out.println("Wrong way!");
                     }
                 } else if (direction.equals("east")) {
                     if (!rooms.get(i).getEast().equals("no exit")) {
                         currentRoom = rooms.get(i).getEast();
                         break;
                     } else {
-                        System.out.println("Wrong way!" );
+                        System.out.println("Wrong way!");
                     }
                 } else if (direction.equals("west")) {
                     if (!rooms.get(i).getWest().equals("no exit")) {
                         currentRoom = rooms.get(i).getWest();
                         break;
                     } else {
-                        System.out.println("Wrong way!" );
+                        System.out.println("Wrong way!");
                     }
                 } else {
-                    System.out.println("Please enter a valid entry" );
+                    System.out.println("Please enter a valid entry");
                     currentRoom = currentRoom;
                 }
             }
         }
-        System.out.println(getLocationByName(Location.currentRoom).getDescription());
     }
 
-    public static String getCurrentRoom() {
+    static String getCurrentRoom() {
         return currentRoom;
-    }
-
-    public static void setCurrentRoom(String currentRoom) {
-        Location.currentRoom = currentRoom;
     }
 
     public String getCurrent() {
         return current;
     }
 
-    public void setCurrent(String current) {
-        this.current = current;
-    }
-
     public String getNorth() {
         return north;
-    }
-
-    public void setNorth(String north) {
-        this.north = north;
     }
 
     public String getSouth() {
         return south;
     }
 
-    public void setSouth(String south) {
-        this.south = south;
-    }
-
     public String getWest() {
         return west;
     }
 
-    public void setWest(String west) {
-        this.west = west;
-    }
 
     public String getEast() {
         return east;
     }
 
-    public void setEast(String east) {
-        this.east = east;
-    }
 
     public ArrayList<String> getItems() {
         return items;
-    }
-
-    public void setItems(ArrayList<String> items) {
-        this.items = items;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     @Override
     public String toString() {
         return "Room: current Room=" + getCurrent() + ", north=" + getNorth() + ", south=" + getSouth() + ", west=" + getWest()
                 + ", east=" + getEast() + ", items=" + getItems() + ", description=" + getDescription();
-    }
-
-    public static void main(String[] args) {
-        Location abc=new Location();
-        System.out.println(abc.dataReader().get(0).getItems().get(0));
     }
 }
