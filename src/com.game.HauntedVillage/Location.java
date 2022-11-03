@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Location {
-    static String currentRoom = "Home";
+    static String currentRoom = "home";
     private String current;
     private String north;
     private String south;

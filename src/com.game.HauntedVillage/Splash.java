@@ -2,6 +2,7 @@ package com.game.HauntedVillage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -17,18 +18,8 @@ class Splash {
 
     // BUSSINESS METHODS
     void splashScreen() {
-        try {
-            // instantiate mapper obect
-            ObjectMapper mapper = new ObjectMapper();
-
-            // convert array to list of items
-            List<Splash> splash = List.of(mapper.readValue(Paths.get("resources/splash.json").toFile(), Splash.class));
-
-            // print
-            System.out.println(splash.get(0).getTitle());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        InputStream logo = FileReading.getFileFromResourceAsStreamFortxt("splash.txt");
+        FileReading.printInputStream(logo);
     }
 
     // ACCESSOR METHODS
