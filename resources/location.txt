@@ -1,0 +1,148 @@
+[
+  {
+    "current": "home",
+    "north": "no exit",
+    "east": "center courtyard",
+    "south": "no exit",
+    "west": "no exit",
+    "description":"
+    You are at home in your familiar log cabin.
+    You look around and see some items that may be of use.
+    You can search the house for some useful items, rest to heal, or go east outside.",
+    "items": [
+      "matches",
+      "crucifix",
+      "knife"
+    ]
+  },
+  {
+    "current": "center courtyard",
+    "north": "northern square",
+    "east": "tavern",
+    "south": "southern square",
+    "west": "home",
+    "description": "
+    You are in the center courtyard. You see some of the villagers gathering there. They all look very concerned.
+    To the West is your house. To the north is the Northern Square. To the South is further outside. To the East is the tavern.
+    You may speak to the villagers or go in a direction.
+    East to Tarvern, North to Northern Square, South to Southern Square.",
+    "items": []
+  },
+  {
+    "current": "northern square",
+     "north": "well",
+     "east": "church",
+     "south": "center courtyard",
+     "west": "no exit"
+    "description": "
+    You are in the northern square. You see some children playing nearby.
+    To the North is the well and to the East is the Church.
+    You may search the area, speak to the child,
+    or go North to Well, East to Church, or South to Center Courtyard.",
+    "items": []
+  },
+  {
+    "current": "southern square",
+    "north": "center courtyard",
+    "east": "town hall",
+    "south": "farm",
+    "west": "no exit"
+    "description": "
+    You are in the south square.
+    To the East is the town hall. To the north is the center courtyard.
+    To the South is your neighbor's farm.
+    Go on to the direction you'd like.
+    North to Center Courtyard, East to Town hall, South to Farm",
+    "items": []
+  },
+  {
+    "current": "farm",
+     "north": "southern square",
+     "east": "no exit",
+     "south": "no exit",
+     "west": "no exit"
+    "description": "
+    You find yourself in the farm. You see cows are lying on the floor, bleeding.
+    A werewolf is tearing a cow apart, drinking its blood, eating its flesh.
+    A scarecrow’s head is twisted and hand points to the north.
+    Fight the werewolf, wake farmer, or go back north to Southern Square.",
+    "items": [
+      "shovel",
+      "musket"
+    ]
+  },
+  {
+    "current": "town hall",
+     "north": "tavern",
+     "east": "no exit",
+     "south": "no exit",
+     "west": "southern square",
+    "description": "
+    You find yourself in the town hall, cool wind in the hair. It is quiet and dark.
+    Wind blows through broken windows and makes squeaky noises.
+    An old clerk holding a candle in the hand walks slowly out of the shadow.
+    You come forward and talk with the clerk. The clerk tells you the recent abnormality.
+    Crows from the woods hide in the town hall day and night, staying away from their home,
+    the woods in the north. Obviously, there is something unspeakable in the woods.
+    The old clerk offers you a gift.
+    Take the gift or go west to Southern Square.",
+    "items": [
+      "gift"
+    ]
+  },
+  {
+    "current": "tavern",
+    "north": "no exit",
+    "east": "no exit",
+    "south": "no exit",
+    "west": "center courtyard",
+    "description": 
+    "There are broken chairs on the floor and the tavern is empty except for the bar keep.",
+    "items": [
+      "feed"
+    ]
+  },
+  {
+    "current": "church",
+    "north": "no exit",
+    "east": "no exit",
+    "south": "no exit",
+    "west": "northern square"
+    "description": "
+    You hear a cat >>MEOW<< from behind a pew, but don’t get startled.
+    It is a bit dark for an early afternoon visit, but you remember seeing clouds up above, possibly signaling some rain later that evening.
+    Here you can speak to the pastor, say a prayer, light a candle, or go west to back Northern Square.",
+    "items": [
+      "corn",
+      "note"
+    ]
+  },
+  {
+    "current": "well",
+    "north": "woods",
+    "east": "no exit",
+    "south": "northern square",
+    "west": "northern square",
+    "description": "
+    The air is remarkably colder here. You’ve been avoiding this area due to the shrieks at night.
+    It is a rough stone circle with a seemingly bottomless pit in the center. The sky seems to have become dim.
+    To the North the tall trees block out the light and there is only the sound of creaking wood and the rustle of leaves. \nA discarded bucket and rope lay in the yellow grass.
+    Search the area, use the well, or go back south to Northern Square.",
+    "items": []
+  },
+  {
+    "current": "woods",
+     "north": "no exit",
+     "east": "no exit",
+     "south": "well",
+     "west": "no exit",
+    "description": "
+    There is hardly any light in this place, only the pale-yellow glow of the moon.
+    Snickers can be heard as the wind blows hard. You make out a familiar black cat in a clearing ahead...
+    As you approach, black smoke consumes the cat, transforms, and rises into a large dark beast, eyes burning red.
+    I have been watching you, but you can’t stop me now, he roars!
+    The beast raises his arms and a flaming vortex bursts from the ground as he murmurs an incantation.
+    You can use something from your inventory to against, or you can go back south to the well.",
+    "items": []
+  }
+]

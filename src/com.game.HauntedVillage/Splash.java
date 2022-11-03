@@ -1,5 +1,11 @@
 package com.game.HauntedVillage;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.InputStream;
+import java.nio.file.Paths;
+import java.util.List;
+
 class Splash {
 
     // ATTRIBUTES
@@ -10,16 +16,14 @@ class Splash {
 
     }
 
-    public Splash(String title) {
-
+    // BUSSINESS METHODS
+    void splashScreen() {
+        InputStream logo = FileReading.getFileFromResourceAsStreamFortxt("splash.txt");
+        FileReading.printInputStream(logo);
     }
 
     // ACCESSOR METHODS
-    public String getTitle(){
+    public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 }

@@ -9,21 +9,24 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Controller {
-    // FIELDS
-    //private final Scanner scanner = new Scanner(System.in);
+    private final static Controller playGame = new Controller();
+    private final Engine engine = new Engine();
+    private final Splash splashScreen = new Splash();
+    private Menu menu = new Menu();
+    private final IntroStroy introStory = new IntroStroy();
 
     // CONSTRUCTOR
-    public Controller() {
+    private Controller() {
+        splashScreen.splashScreen(); //not necessary to build classLoad for this
+        menu.startNewGame();
+        introStory.presentInfo();
+//        Console.pause(10000);
+        Console.clear();
+        engine.gameLoop();
     }
-
     // BUSINESS METHODS
-    public void playGame() {
-        Engine engine = new Engine();
-
-        engine.execute();
-
+    public static Controller getPlayGame() {
+        return playGame;
     }
-
-
 
 }
