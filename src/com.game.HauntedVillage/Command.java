@@ -3,13 +3,11 @@ package com.game.HauntedVillage;
 import com.apps.util.Console;
 
 import java.io.InputStream;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 class Command {
     ParseCommand check = new ParseCommand();
-//    MusicPlayer music = new MusicPlayer();
-//    ParseCommand musicCheck=new ParseCommand();
 
     String commandFilter(String[] command) {
         if (command.length == 3) {
@@ -21,19 +19,17 @@ class Command {
         }
     }
 
-    void executeCommand(String verb, String noun, ItemList gameItems, List<Location> rooms,Character player) {
+    void executeCommand(String verb, String noun, ItemList gameItems, List<Location> rooms, Character player) {
         verb = check.verifyAction(verb);
         if (verb.equals("look")) {
             System.out.println(gameItems.looking(noun, gameItems));
-        }
-        else if (verb.equals("get")) {
+        } else if (verb.equals("get")) {
             player.addItem(Location.currentRoom, noun, gameItems, rooms);
         } else if (verb.equals("drop")) {
             player.dropItem(noun, player, gameItems, rooms);
         } else if (verb.equals("check") && noun.equals("bag")) {
             player.checkInventory();
-        }
-        else {
+        } else {
             System.out.println("There is no " + noun + " in this room");
         }
     }
@@ -42,36 +38,32 @@ class Command {
         if (command.equals("help")) {
             help();
         } else if (command.equals("map")) {
-            map();
-        }
-//        else if(musicCheck.musicControl.contains(command)){
-//            music.runMusic(command);
-//        }
-        else {
+            MapImage.display(Location.getCurrentRoom());
+            backFunction();
+        } else if (command.equals("search")) {
+            Engine.displayItem = false;
+        } else {
             System.out.println("invalid input");
         }
     }
 
-//    void fightCommand(String verb, String noun, Character playerAbility, Character player,
-//                      Character monster, Character ghoul, Character king, List<Location> rooms, LinkedList<String> monsterList) {
-//        if (noun.equals("monster") && Location.currentRoom.equals(monster.getLocation())) {
-//            playerAbility.attack(player, monster, monsterList,playerAbility);
-//        } else if (noun.equals("ghoul") && Location.currentRoom.equals(ghoul.getLocation())) {
-//            playerAbility.attack(player, ghoul, monsterList,playerAbility);
-//        } else if (noun.equals("king") && Location.currentRoom.equals(king.getLocation())) {
-//            playerAbility.attack(player, king, monsterList,playerAbility);
-//        } else {
-//            System.out.println("Invalid input");
-//        }
-//    }
-
     void help() {
         Console.clear();
-//        InputStream is = FileReading.getFileFromResourceAsStreamFortxt("help.txt");
+        InputStream is = FileReading.getFileFromResourceAsStreamFortxt("help.txt");
+        FileReading.printInputStream(is);
+        backFunction();
     }
 
-    void map() {
-        Console.clear();
-//        InputStream is = FileReading.getFileFromResourceAsStreamFortxt("map.txt");
+    void backFunction(){
+        System.out.println("Type \"back\" to exit the menu");
+        boolean condition = false;
+        while (!condition) {
+            Scanner scanner = new Scanner(System.in);
+            String playerChoice = scanner.nextLine().trim().toLowerCase();
+            if (playerChoice.equals("back")) {
+                condition = true;
+            }
+        }
     }
+
 }
