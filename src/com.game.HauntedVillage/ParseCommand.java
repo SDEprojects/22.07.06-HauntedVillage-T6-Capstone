@@ -18,7 +18,7 @@ class ParseCommand {
     final List<String> musicControl=new ArrayList<>(Arrays.asList("play","stop","reset","lower","raise"));
 
     private final List<List> listCommand = new ArrayList<>(Arrays.asList(getCommand, checkCommand,
-            lookCommand, useCommand, dropCommand, attackCommand,searchCommand));
+            lookCommand, useCommand, dropCommand, attackCommand,searchCommand, speakCommand));
 
     List command() {
         List<String> allCommand = new ArrayList<>();
@@ -43,6 +43,8 @@ class ParseCommand {
             return "attack";
         } else if (searchCommand.contains(commandParse)){
             return "search";
+        }else if (speakCommand.contains(commandParse)) {
+            return "speak";
         }
         return null;
     }
