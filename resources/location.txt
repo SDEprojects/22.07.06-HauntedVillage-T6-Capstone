@@ -86,8 +86,7 @@
     "east": "no exit",
     "south": "no exit",
     "west": "Center Courtyard",
-    "description": "There are broken chairs on the floor and the tavern is empty except for the bar keep.
-    Sorry but we have no Ale or food. Nothing left here but some animal feed.",
+    "description": "There are broken chairs on the floor and the tavern is empty except for the bar keep.",
     "items": [
       "feed"
     ]
