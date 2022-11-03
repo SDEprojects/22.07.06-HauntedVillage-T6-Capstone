@@ -86,5 +86,13 @@
       "use_location": "player",
       "health_reduction": "0",
       "boss_kill": "False"
-    }
+    },
+    {
+        "name": "gift",
+        "location": "town hall",
+        "description": "something inside",
+        "use_location": "town hall",
+        "health_reduction": "0",
+        "boss_kill": "False"
+      }
 ]

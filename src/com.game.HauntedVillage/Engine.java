@@ -53,25 +53,8 @@ class Engine {
 
         //game continues if player is alive
         while (!endGame) {
-
-            //returns player information at top of screen
-//            player.playerCurrentInfo();
-
-            //returns location description and player prompt
-//            player.prompt();
-            System.out.println(movement.getLocationByName(Location.currentRoom).getDescription());
-            for (int i = 0; i < rooms.size(); i++) {
-                if (rooms.get(i).getCurrent().equals(Location.getCurrentRoom())) {
-                    items = rooms.get(i).getItems();
-                }
-            }
-            if (!displayItem) {
-                if (items.size() > 0) {
-                    System.out.println("\n\nAfter the search, there are some items you may take with you :" + items);
-                } else {
-                    System.out.println("\n\nThere is nothing at this room.");
-                }
-            }
+            //returns player information at top of screen and location description and player prompt
+            playerInforPrompt();
             System.out.println("\nWhat is your next command:");
             userInput = scanner.nextLine().trim().toLowerCase();
             String[] commandInput = userInput.toLowerCase().split(delimiter);
@@ -92,12 +75,29 @@ class Engine {
                 System.out.println("Invalid input. Please enter the 'verb' + 'name'. Type help for checking the command");
             }
         }
+    }
 
+    void playerInforPrompt() {
+        System.out.println(movement.getLocationByName(Location.currentRoom).getDescription());
+        for (int i = 0; i < rooms.size(); i++) {
+            if (rooms.get(i).getCurrent().equals(Location.getCurrentRoom())) {
+                items = rooms.get(i).getItems();
+            }
+        }
+        if (!displayItem) {
+            if (items.size() > 0) {
+                System.out.println("\n\nAfter the search, there are some items you may take with you :" + items);
+            } else {
+                System.out.println("\n\nThere is nothing at this room.");
+            }
+        }
+    }
+}
 
-        //takes user input, specific to players location
+//takes user input, specific to players location
 //            userPromptInput(player.getLocation());
 
-        //go command, player moves to given direction
+//go command, player moves to given direction
 //            if ("go".equals(getVerbNoun().get(0))) {
 //                //finds new location given cardinal direction
 //                String newLocation = Map.moveFinder(player.getLocation(), getVerbNoun().get(1));
@@ -369,5 +369,3 @@ class Engine {
 //    public void setEndGame(boolean endGame) {
 //        this.endGame = endGame;
 //    }
-    }
-}

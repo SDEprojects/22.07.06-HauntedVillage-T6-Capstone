@@ -1,8 +1,8 @@
 [
   {
-    "current": "Home",
+    "current": "home",
     "north": "no exit",
-    "east": "Center Courtyard",
+    "east": "center courtyard",
     "south": "no exit",
     "west": "no exit",
     "description":"
@@ -16,11 +16,11 @@
     ]
   },
   {
-    "current": "Center Courtyard",
-    "north": "Northern Square",
-    "east": "Tavern",
-    "south": "Southern Square",
-    "west": "Home",
+    "current": "center courtyard",
+    "north": "northern square",
+    "east": "tavern",
+    "south": "southern square",
+    "west": "home",
     "description": "
     You are in the center courtyard. You see some of the villagers gathering there. They all look very concerned.
     To the West is your house. To the north is the Northern Square. To the South is further outside. To the East is the tavern.
@@ -29,10 +29,10 @@
     "items": []
   },
   {
-    "current": "Northern Square",
-     "north": "Well",
-     "east": "Church",
-     "south": "Center Courtyard",
+    "current": "northern square",
+     "north": "well",
+     "east": "church",
+     "south": "center courtyard",
      "west": "no exit"
     "description": "
     You are in the northern square. You see some children playing nearby.
@@ -42,10 +42,10 @@
     "items": []
   },
   {
-    "current": "Southern Square",
-    "north": "Center Courtyard",
-    "east": "Town hall",
-    "south": "Farm",
+    "current": "southern square",
+    "north": "center courtyard",
+    "east": "town hall",
+    "south": "farm",
     "west": "no exit"
     "description": "
     You are in the south square.
@@ -56,8 +56,8 @@
     "items": []
   },
   {
-    "current": "Farm",
-     "north": "Southern Square",
+    "current": "farm",
+     "north": "southern square",
      "east": "no exit",
      "south": "no exit",
      "west": "no exit"
@@ -72,11 +72,11 @@
     ]
   },
   {
-    "current": "Town hall",
-     "north": "Tavern",
+    "current": "town hall",
+     "north": "tavern",
      "east": "no exit",
      "south": "no exit",
-     "west": "Southern Square",
+     "west": "southern square",
     "description": "
     You find yourself in the town hall, cool wind in the hair. It is quiet and dark.
     Wind blows through broken windows and makes squeaky noises.
@@ -91,11 +91,11 @@
     ]
   },
   {
-    "current": "Tavern",
+    "current": "tavern",
     "north": "no exit",
     "east": "no exit",
     "south": "no exit",
-    "west": "Center Courtyard",
+    "west": "center courtyard",
     "description": "
     There are broken chairs on the floor and the tavern is empty except for the bar keep.
     Sorry but we have no Ale or food. Nothing left here but some animal feed.
@@ -105,11 +105,11 @@
     ]
   },
   {
-    "current": "Church",
+    "current": "church",
     "north": "no exit",
     "east": "no exit",
     "south": "no exit",
-    "west": "Northern Square"
+    "west": "northern square"
     "description": "
     You hear a cat >>MEOW<< from behind a pew, but don’t get startled.
     It is a bit dark for an early afternoon visit, but you remember seeing clouds up above, possibly signaling some rain later that evening.
@@ -120,11 +120,11 @@
     ]
   },
   {
-    "current": "Well",
-    "north": "Woods",
+    "current": "well",
+    "north": "woods",
     "east": "no exit",
-    "south": "Northern Square",
-    "west": "Northern Square",
+    "south": "northern square",
+    "west": "northern square",
     "description": "
     The air is remarkably colder here. You’ve been avoiding this area due to the shrieks at night.
     It is a rough stone circle with a seemingly bottomless pit in the center. The sky seems to have become dim.
@@ -133,10 +133,10 @@
     "items": []
   },
   {
-    "current": "Woods",
+    "current": "woods",
      "north": "no exit",
      "east": "no exit",
-     "south": "Well",
+     "south": "well",
      "west": "no exit",
     "description": "
     There is hardly any light in this place, only the pale-yellow glow of the moon.
