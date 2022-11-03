@@ -2,7 +2,7 @@
 [
   {
     "name": "children",
-    "location": "Northern Square",
+    "location": "northern square",
     "conversations": [
       "You attempt to speak to the children, but they are too caught up in their game of tag. You hear one of the children teases,  'If you get caught you will go missing too!' ",
       "I've never seen that cat before",
@@ -11,7 +11,7 @@
   },
 {
       "name": "villagers",
-      "location": "Center Courtyard",
+      "location": "center courtyard",
       "conversations": [
         "The villagers tell you that another child went missing last night and that sightings of monsters have been becoming more frequent over the last week near the woods.",
         "I wouldn't go to the Farm, if I were you. There's been strange happenings at night.",
@@ -20,18 +20,18 @@
     },
   {
       "name": "werewolf",
-      "location": "Farm",
-      "conversations": [“ROOOAAAAARRRR!!!!!!” ]
+      "location": "farm",
+      "conversations": ["ROOOAAAAARRRR!!!!!!" ]
   },
   {
       "name": "farmer",
-      "location": "Farm",
-      "conversations": ["Huh? what? Bloody Hell! I'm gettin my musket!",
-      "I need to check on my livestock. You're going to need this to kill that damn thing."]
+      "location": "farm",
+      "conversations": ["Huh? what? Bloody Hell! I'm gettin my musket!,
+      I need to check on my livestock. You're going to need this to kill that damn thing."]
   },
   {
       "name": "clerk",
-      "location": "Town hall",
+      "location": "town hall",
       "conversations": ["It looks like the townspeople aren't the only things avoiding the woods.
       Something wicked has been happening at that Farm lately. Strange noises and a rotten smell is enough to keep anyone away.
       I found this while cleaning the town hall earlier today.
@@ -39,13 +39,13 @@
   },
   {
       "name": "keep",
-      "location": "Tavern",
+      "location": "tavern",
       "conversations": ["Sorry but we have no Ale or food. Nothing left here but some animal feed"]
   },
 
   {
       "name": "pastor",
-      "location": "Church",
+      "location": "church",
       "conversations": ["The pastor turns to you but he’s not who he seems.
       He’s covered in blood with two fangs sneaking from his grin.
       'I think you have too many sins,' he cries! as has lunges at you."],
