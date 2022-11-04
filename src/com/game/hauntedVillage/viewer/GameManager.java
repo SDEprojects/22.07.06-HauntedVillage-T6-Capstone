@@ -5,11 +5,11 @@ import com.game.hauntedVillage.viewer.GUI;
 
 public class GameManager {
 
-    private Engine engine = new Engine();
-    private GUI gui = new GUI(this, engine);
+
+    private GUI gui = new GUI(this);
 
     public GameManager(){
-        gui.setMovementCallback(this::move);
+
 
     }
 
