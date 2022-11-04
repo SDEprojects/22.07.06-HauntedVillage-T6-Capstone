@@ -19,8 +19,9 @@ public class Controller {
     private Controller() {
         splashScreen.splashScreen(); //not necessary to build classLoad for this
         menu.startNewGame();
+        Console.clear();
         introStory.presentInfo();
-//        Console.pause(10000);
+        Console.pause(10000);
         Console.clear();
         engine.gameLoop();
     }
