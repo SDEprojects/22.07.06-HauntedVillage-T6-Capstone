@@ -107,7 +107,9 @@ class ItemList {
     }
 
     public static void main(String[] args) {
+
         ItemList items = new ItemList();
+        System.out.println(items.getName());
         System.out.println("Testing dataReader() function");
         System.out.println(items.dataReader());
         System.out.println("Testing getItemByName() function");
