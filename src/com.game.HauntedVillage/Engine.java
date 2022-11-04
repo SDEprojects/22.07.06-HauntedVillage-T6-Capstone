@@ -55,6 +55,7 @@ class Engine {
         //game continues if player is alive
         while (!endGame) {
             //returns player information at top of screen and location description and player prompt
+            Console.clear();
             playerInforPrompt();
             System.out.println("\nWhat is your next command:");
             userInput = scanner.nextLine().trim().toLowerCase();
@@ -68,9 +69,10 @@ class Engine {
                 InputCommand.gameCommand(commandInput[0]);
             } else if (testCommand && (gameItems.itemNameList().contains(objectName))) {
                 InputCommand.executeCommand(commandInput[0], objectName, gameItems, rooms, player);
+                Console.pause(2000);
             }else if(testCommand && (npc.npcNameList().contains(objectName))){
                 System.out.println(npc.speak(objectName));
-                Console.pause(5000);
+                Console.pause(7000);
             } else if (commandInput.length == 2 && verbForMoving.contains(commandInput[0]) && direction.contains((commandInput[1]))) {
                 Console.clear();
                 movement.moving(commandInput[1], rooms);
