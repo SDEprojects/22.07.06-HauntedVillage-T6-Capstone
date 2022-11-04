@@ -4,9 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.function.Consumer;
 
 public class GUI {
     GameManager game;
+    Engine engine;
+    private Consumer<String> movementCallback;//Whenever the user clicks a button to move, gui code could invoke movementCallback.accept(direction)
     JFrame window;
     JTextArea messageArea;
     JPanel [] bgPanel = new JPanel[12];
@@ -14,8 +17,9 @@ public class GUI {
     IntroStroy intro = new IntroStroy();
     NpcDialogue npc = new NpcDialogue();
 
-    public GUI( GameManager game){
+    public GUI( GameManager game, Engine engine){
         this.game = game;
+        this.engine = engine;
 
       createGameWindow();
       createBackground();
@@ -35,8 +39,9 @@ public class GUI {
         // initialize message area
         messageArea = new JTextArea();
         messageArea.setBounds(50,600, 900,150);
+        messageArea.setMargin(new Insets(20,15,10,15));
         messageArea.setBackground(Color.WHITE);
-        messageArea.setFont(new Font("Comic sans", Font.PLAIN, 25));
+        messageArea.setFont(new Font("Comic sans", Font.PLAIN, 20));
         messageArea.setLineWrap(true);
         messageArea.setEditable(false);
         messageArea.setWrapStyleWord(true);
@@ -55,7 +60,7 @@ public class GUI {
         bgLabel[1].setBounds(0,0, 900, 500);
         bgLabel[1].setLayout(null);
 
-        ImageIcon bgImage = new ImageIcon(getClass().getClassLoader().getResource("evergreen.png"));
+        ImageIcon bgImage = new ImageIcon(getClass().getClassLoader().getResource("Images/home_bg.jpg"));
         bgLabel[1].setIcon(bgImage);
 
 
@@ -74,7 +79,7 @@ public class GUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 //super.mouseClicked(e);
-
+                engine.
                 messageArea.setText(intro.getIntro());
 
 
@@ -82,5 +87,11 @@ public class GUI {
         });
     }
 
+    public void update(){
+        // use the reference to engine to display the updated state
+    }
 
+    public void setMovementCallback(Consumer<String> movementCallback) {
+        this.movementCallback = movementCallback;
+    }
 }
