@@ -1,4 +1,4 @@
-package com.game.HauntedVillage;
+package com.game.hauntedVillage.model;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class Player implements Serializable {

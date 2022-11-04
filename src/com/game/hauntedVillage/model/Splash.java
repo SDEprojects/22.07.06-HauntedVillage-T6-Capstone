@@ -1,12 +1,8 @@
-package com.game.HauntedVillage;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+package com.game.hauntedVillage.model;
 
 import java.io.InputStream;
-import java.nio.file.Paths;
-import java.util.List;
 
-class Splash {
+public class Splash {
 
     // ATTRIBUTES
     private String title;
@@ -17,7 +13,7 @@ class Splash {
     }
 
     // BUSSINESS METHODS
-    void splashScreen() {
+    public void splashScreen() {
         InputStream logo = FileReading.getFileFromResourceAsStreamFortxt("splash.txt");
         FileReading.printInputStream(logo);
     }

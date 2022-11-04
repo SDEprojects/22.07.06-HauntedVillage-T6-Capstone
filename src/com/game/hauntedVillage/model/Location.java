@@ -1,4 +1,4 @@
-package com.game.HauntedVillage;
+package com.game.hauntedVillage.model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,8 +7,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class Location {
-    static String currentRoom = "home";
+public class Location {
+    public static String currentRoom = "home";
     private String current;
     private String north;
     private String south;
@@ -21,7 +21,7 @@ class Location {
     private List<String> locationNameList = new ArrayList<>();
     private FileReading file = new FileReading();
 
-    Location() {
+    public Location() {
         super();
     }
 
@@ -35,7 +35,7 @@ class Location {
         this.description = description;
     }
 
-    List<Location> dataReader() {
+    public List<Location> dataReader() {
         try {
             String locationData = file.dataReader("location.txt");
             locations = objectMapper.readValue(locationData, new TypeReference<>() {
@@ -46,7 +46,7 @@ class Location {
         return locations;
     }
 
-    Location getLocationByName(String name) {
+    public Location getLocationByName(String name) {
         Location room = null;
         List<Location> Locations = dataReader();
         for (Location location : Locations) {
@@ -57,7 +57,7 @@ class Location {
         return room;
     }
 
-    void moving(String direction, List<Location> rooms) {
+    public void moving(String direction, List<Location> rooms) {
         for (int i = 0; i < rooms.size(); i++) {
             if (currentRoom.equals(rooms.get(i).getCurrent())) {
                 if (direction.equals("north")) {
@@ -96,7 +96,7 @@ class Location {
         }
     }
 
-    static String getCurrentRoom() {
+    public static String getCurrentRoom() {
         return currentRoom;
     }
 

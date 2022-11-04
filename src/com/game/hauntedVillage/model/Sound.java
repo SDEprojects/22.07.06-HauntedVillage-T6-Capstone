@@ -1,12 +1,5 @@
-package com.game.HauntedVillage;
+package com.game.hauntedVillage.model;
 
-
-import com.apps.util.Console;
-
-import javax.sound.sampled.*;
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
 
 public class Sound {
 //

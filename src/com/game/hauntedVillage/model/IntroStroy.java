@@ -1,28 +1,27 @@
-package com.game.HauntedVillage;
+package com.game.hauntedVillage.model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-class IntroStroy {
+public class IntroStroy {
     //prints game background information before game
     FileReading file = new FileReading();
     private String introduction;
     private ObjectMapper objectMapper = new ObjectMapper();
     private List<IntroStroy> intro = new ArrayList<>();
 
-    void presentInfo() {
+    public void presentInfo() {
 //        Art.showArt("house"); //don't need it for GUI
         InputStream logo = FileReading.getFileFromResourceAsStreamFortxt("info.txt");
         FileReading.printInputStream(logo);
     }
 
-    public IntroStroy dataReader(){
+    IntroStroy dataReader(){
         try {
             String introData = file.dataReader("info.txt");
             intro = objectMapper.readValue(introData, new TypeReference<>() {

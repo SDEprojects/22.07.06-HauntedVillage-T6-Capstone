@@ -1,4 +1,4 @@
-package com.game.HauntedVillage;
+package com.game.hauntedVillage.model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,8 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-class ItemList {
-
+public class ItemList {
     private String name;
     private String description;
     private String location;
@@ -28,7 +27,7 @@ class ItemList {
 // business methods
 
     // This function loads all the items into a list
-    public List<ItemList> dataReader(){
+    List<ItemList> dataReader(){
         try {
             String itemData = file.dataReader("items.txt");
             listItem = objectMapper.readValue(itemData, new TypeReference<>() {
@@ -41,7 +40,7 @@ class ItemList {
 
  //This function retrieves an item by name
 
-    public ItemList getItemByName(String name){
+    ItemList getItemByName(String name){
         List<ItemList> listOfItems = dataReader();
         ItemList item = null;
         for(int i = 0; i< listOfItems.size(); i++){
@@ -53,7 +52,7 @@ class ItemList {
     }
 
     // This function return just the names of all the items
-    List<String> itemNameList() {
+    public List<String> itemNameList() {
         List<ItemList> listItem = dataReader();
         for (int i = 0; i < listItem.size(); i++) {
             itemNameList.add(listItem.get(i).getName());

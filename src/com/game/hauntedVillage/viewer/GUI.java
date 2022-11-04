@@ -1,4 +1,8 @@
-package com.game.HauntedVillage;
+package com.game.hauntedVillage.viewer;
+
+import com.game.hauntedVillage.model.IntroStroy;
+import com.game.hauntedVillage.model.NpcDialogue;
+import com.game.hauntedVillage.controller.Engine;
 
 import javax.swing.*;
 import java.awt.*;
@@ -79,7 +83,6 @@ public class GUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 //super.mouseClicked(e);
-                engine.
                 messageArea.setText(intro.getIntro());
 
 

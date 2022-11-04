@@ -1,11 +1,11 @@
-package com.game.HauntedVillage;
+package com.game.hauntedVillage.model;
 
 import java.util.Scanner;
 
 public class Menu {
     private Scanner scanner = new Scanner(System.in);
 
-    void startNewGame() {
+    public void startNewGame() {
         System.out.print("\n Enter 'start' to start new game or 'quit game' to exit: \n");
         String input = scanner.nextLine().trim();
         if (input.equalsIgnoreCase("start")) {
