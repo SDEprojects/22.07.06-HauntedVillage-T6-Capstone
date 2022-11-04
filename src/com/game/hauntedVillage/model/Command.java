@@ -1,15 +1,16 @@
-package com.game.HauntedVillage;
+package com.game.hauntedVillage.model;
 
 import com.apps.util.Console;
+import com.game.hauntedVillage.controller.Engine;
 
 import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
 
-class Command {
+public class Command {
     ParseCommand check = new ParseCommand();
 
-    String commandFilter(String[] command) {
+    public String commandFilter(String[] command) {
         if (command.length == 3) {
             return command[1] + " " + command[2];
         } else if (command.length == 2) {
@@ -19,7 +20,7 @@ class Command {
         }
     }
 
-    void executeCommand(String verb, String noun, ItemList gameItems, List<Location> rooms, Character player) {
+    public void executeCommand(String verb, String noun, ItemList gameItems, List<Location> rooms, Character player) {
         verb = check.verifyAction(verb);
         if (verb.equals("look")) {
             System.out.println(gameItems.looking(noun, gameItems));
@@ -34,7 +35,7 @@ class Command {
         }
     }
 
-    void gameCommand(String command) {
+    public void gameCommand(String command) {
         if (command.equals("help")) {
             help();
         } else if (command.equals("map")) {

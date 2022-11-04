@@ -1,4 +1,4 @@
-package com.game.HauntedVillage;
+package com.game.hauntedVillage.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,43 +29,43 @@ public class MapImage {
 
         List<List<String>> localMap = getMap();
 
-        if (location.equals("Home")){
+        if (location.equals("home")){
             String spot = "==  *  Home        ";
             localMap.get(7).set(0, spot);
         }
-        if (location.equals("Woods")){
+        if (location.equals("woods")){
             String spot = "==  *     Woods         ==";
             localMap.get(1).set(1, spot);
         }
-        if (location.equals("Well")){
+        if (location.equals("well")){
             String spot = "==  *     Well          ==";
             localMap.get(3).set(1, spot);
         }
-        if (location.equals("Northern Square")){
+        if (location.equals("northern square")){
             String spot = "==  * Northern Square   ==";
             localMap.get(5).set(1, spot);
         }
-        if (location.equals("Center Courtyard")){
+        if (location.equals("center courtyard")){
             String spot = "==  * Center Courtyard  ==";
             localMap.get(7).set(1, spot);
         }
-        if (location.equals("Southern Square")){
+        if (location.equals("southern square")){
             String spot = "==  * Southern Square   ==";
             localMap.get(9).set(1, spot);
         }
-        if (location.equals("Farm")){
+        if (location.equals("farm")){
             String spot = "==  *     Farm          ==";
             localMap.get(11).set(1, spot);
         }
-        if (location.equals("Church")){
+        if (location.equals("church")){
             String spot = "  * Church    ==";
             localMap.get(5).set(2, spot);
         }
-        if (location.equals("Tavern")){
+        if (location.equals("tavern")){
             String spot = "  * Tavern    ==";
             localMap.get(7).set(2, spot);
         }
-        if (location.equals("Town hall")){
+        if (location.equals("town hall")){
             String spot = "  * Town hall ==";
             localMap.get(9).set(2, spot);
         }

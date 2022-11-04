@@ -1,4 +1,4 @@
-package com.game.HauntedVillage;
+package com.game.hauntedVillage.model;
 
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;

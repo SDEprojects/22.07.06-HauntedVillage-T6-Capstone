@@ -1,4 +1,4 @@
-package com.game.HauntedVillage;
+package com.game.hauntedVillage.model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-class NpcDialogue {
+public class NpcDialogue {
 
     private String name;
     private String location;
@@ -22,7 +22,7 @@ class NpcDialogue {
     }
 
     //Business Class data reader
-    public List<NpcDialogue> dataReader(){
+    List<NpcDialogue> dataReader(){
         try {
             String npcData = file.dataReader("npc.txt");
             listNpc = objectMapper.readValue(npcData, new TypeReference<>() {
@@ -34,7 +34,7 @@ class NpcDialogue {
     }
 
     //This function returns a npc using the name
-    public NpcDialogue getNpcByName(String name){
+    NpcDialogue getNpcByName(String name){
         List<NpcDialogue> listOfNpcs = dataReader();
         NpcDialogue npc = null;
         for(int i = 0; i< listOfNpcs.size(); i++){
@@ -45,7 +45,7 @@ class NpcDialogue {
         return npc;
     }
     // This function returns the name of all the npcs
-    List<String> npcNameList() {
+    public List<String> npcNameList() {
         List<NpcDialogue> listNpc = dataReader();
         for (int i = 0; i < listNpc.size(); i++) {
             npcNameList.add(listNpc.get(i).getName());

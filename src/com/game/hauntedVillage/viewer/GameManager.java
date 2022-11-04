@@ -1,4 +1,7 @@
-package com.game.HauntedVillage;
+package com.game.hauntedVillage.viewer;
+
+import com.game.hauntedVillage.controller.Engine;
+import com.game.hauntedVillage.viewer.GUI;
 
 public class GameManager {
 

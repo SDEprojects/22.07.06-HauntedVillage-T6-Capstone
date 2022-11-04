@@ -1,13 +1,13 @@
-package com.game.HauntedVillage;
+package com.game.hauntedVillage.model;
 
 import java.util.*;
 
-class Character {
+public class Character {
     private String description;
     private final List<String> inventory = new ArrayList<>();
     private String location;
 
-    Character() {
+    public Character() {
         super();
     }
 
