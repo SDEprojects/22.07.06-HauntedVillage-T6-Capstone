@@ -70,6 +70,20 @@ public class GUI {
         JLabel objectLabel = new JLabel();
         objectLabel.setBounds(400, 280, 200, 200);
 
+        JPopupMenu popupMenu = new JPopupMenu();
+        JMenuItem[] menuItems = new JMenuItem[3];
+        menuItems[0] = new JMenuItem("look");
+        popupMenu.add(menuItems[0]);
+
+        menuItems[1] = new JMenuItem("search");
+        popupMenu.add(menuItems[1]);
+
+        menuItems[2] = new JMenuItem("rest");
+        popupMenu.add(menuItems[2]);
+
+
+
+
         ImageIcon cottage = new ImageIcon(getClass().getClassLoader().getResource("cottage.png"));
         objectLabel.setIcon(cottage);
         bgPanel[1].add(objectLabel);
@@ -79,11 +93,12 @@ public class GUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 //super.mouseClicked(e);
-                engine.
-                messageArea.setText(intro.getIntro());
 
+                messageArea.setText(intro.getIntro());
+                popupMenu.show(objectLabel, 0, 0);
 
             }
+
         });
     }
 
