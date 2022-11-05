@@ -2,12 +2,21 @@ package com.game.hauntedVillage.model;
 
 import com.apps.util.Console;
 import com.game.hauntedVillage.controller.Engine;
+import com.game.hauntedVillage.viewer.GameManager;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Scanner;
 
-public class Command {
+public class Command  implements ActionListener {
+    private GameManager game;
+    public Command(GameManager game){
+        this.game = game;
+
+    }
     ParseCommand check = new ParseCommand();
 
     public String commandFilter(String[] command) {
@@ -67,4 +76,23 @@ public class Command {
         }
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String command = e.getActionCommand();
+        System.out.println(command);
+
+
+        if(command.equals("look")){
+            game.getGui().getMessageArea().setText("hello");
+        }else if(command.equals("church")){
+            game.getScreenChanger().showScreen2();
+        }else if(command.equals("northern_square")){
+            game.getScreenChanger().showScreen3();
+        }else if(command.equals("home")){
+            game.getScreenChanger().showScreen1();
+        }else{
+            System.out.println("you need more arrows");
+        }
+
+    }
 }

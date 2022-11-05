@@ -26,8 +26,10 @@ public class GUI {
 
 
       createGameWindow();
-      createBackground();
-      createObject();
+
+      generateScene();
+
+
 
       window.setVisible(true);
     }
@@ -53,19 +55,32 @@ public class GUI {
         window.add(messageArea);
     }
 
-    public void createBackground(){
-        bgPanel[1] = new JPanel();
-        bgPanel[1].setBounds(50,50, 900, 500);
-        bgPanel[1].setLayout(null);
-        bgPanel[1].setBackground(null);
-        window.add(bgPanel[1]);
+    public void createBackground(int bgNum, String picName){
+        bgPanel[bgNum] = new JPanel();
+        bgPanel[bgNum].setBounds(50,50, 900, 500);
+        bgPanel[bgNum].setLayout(null);
+        bgPanel[bgNum].setBackground(null);
+        window.add(bgPanel[bgNum]);
 
-        bgLabel[1] = new JLabel();
-        bgLabel[1].setBounds(0,0, 900, 500);
-        bgLabel[1].setLayout(null);
+        bgLabel[bgNum] = new JLabel();
+        bgLabel[bgNum].setBounds(0,0, 900, 500);
+        bgLabel[bgNum].setLayout(null);
 
-        ImageIcon bgImage = new ImageIcon(getClass().getClassLoader().getResource("Background_images/home.jpg"));
-        bgLabel[1].setIcon(bgImage);
+        ImageIcon bgImage = new ImageIcon(getClass().getClassLoader().getResource(picName));
+        bgLabel[bgNum].setIcon(bgImage);
+
+
+    }
+    public void createArrow(int bgNum, String direction, int arrowNum, int posX, int posY){
+     ImageIcon arrow1 = new ImageIcon(getClass().getClassLoader().getResource("cottage.png"));
+     JButton[] arrow = new JButton[4];
+     arrow[arrowNum] = new JButton();
+     arrow[arrowNum].setBounds(posX, posY, 200,200 );
+     arrow[arrowNum].setBackground(null);
+     arrow[arrowNum].setIcon(arrow1);
+     arrow[arrowNum].addActionListener(game.getCommand());
+     arrow[arrowNum].setActionCommand(direction);
+     bgPanel[bgNum].add(arrow[arrowNum]);
 
 
     }
@@ -77,6 +92,8 @@ public class GUI {
         JPopupMenu popupMenu = new JPopupMenu();
         JMenuItem[] menuItems = new JMenuItem[3];
         menuItems[0] = new JMenuItem("look");
+        menuItems[0].addActionListener(game.getCommand());
+        menuItems[0].setActionCommand("look");
         popupMenu.add(menuItems[0]);
 
         menuItems[1] = new JMenuItem("search");
@@ -85,21 +102,38 @@ public class GUI {
         menuItems[2] = new JMenuItem("rest");
         popupMenu.add(menuItems[2]);
 
-        ImageIcon cottage = new ImageIcon(getClass().getClassLoader().getResource("cottage.png"));
+        ImageIcon cottage = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/home_clickEvent.png"));
         objectLabel.setIcon(cottage);
         bgPanel[1].add(objectLabel);
-        bgPanel[1].add(bgLabel[1]);
+        //bgPanel[1].add(bgLabel[1]);
 
         objectLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 //super.mouseClicked(e);
                 messageArea.setText(intro.getIntro());
-                popupMenu.show(objectLabel, 0, 0);
+                popupMenu.show(objectLabel, e.getX(), e.getY());
 
 
             }
         });
+    }
+
+    public void generateScene(){
+        createBackground(1, "Background_images/home.jpg");
+        createArrow(1, "church", 1, 50, 50);
+        createArrow(1, "northern_square", 2, 450, 50 );
+        createObject();
+        bgPanel[1].add(bgLabel[1]);
+
+        createBackground(2, "Background_images/church2.jpg");
+        createArrow(2, "northern_square", 1, 50, 50);
+        createArrow(2, "home", 2, 450, 50 );
+        bgPanel[2].add(bgLabel[2]);
+
+        createBackground(3, "Background_images/northern_square.jpg");
+        createArrow(3, "church", 1, 50, 50);
+        bgPanel[3].add(bgLabel[3]);
     }
 
     public void update(){
@@ -108,5 +142,18 @@ public class GUI {
 
     public void setMovementCallback(Consumer<String> movementCallback) {
         this.movementCallback = movementCallback;
+    }
+
+
+    public JTextArea getMessageArea() {
+        return messageArea;
+    }
+
+    public void setMessageArea(JTextArea messageArea) {
+        this.messageArea = messageArea;
+    }
+
+    public JPanel[] getBgPanel() {
+        return bgPanel;
     }
 }
