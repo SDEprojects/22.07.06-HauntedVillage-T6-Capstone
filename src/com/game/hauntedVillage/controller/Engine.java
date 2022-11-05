@@ -3,6 +3,7 @@ package com.game.hauntedVillage.controller;
 import com.apps.util.Console;
 import com.game.hauntedVillage.model.*;
 import com.game.hauntedVillage.model.Character;
+import com.game.hauntedVillage.viewer.GameManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,8 @@ public class Engine {
     private final List<String> verbs = commandPares.command();
     private final List<String> verbForMoving = commandPares.movingCommand;
     private final List<String> direction = commandPares.direction;
-    private final Command InputCommand = new Command();
+    GameManager game = new GameManager();
+    private final Command InputCommand = new Command(game);
     private final Location movement = new Location();
     private final List<Location> rooms = movement.dataReader();
     private final ItemList gameItems = new ItemList();
