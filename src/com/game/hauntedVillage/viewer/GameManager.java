@@ -10,7 +10,7 @@ public class GameManager {
     private Command command = new Command(this);
     private ScreenChanger screenChanger = new ScreenChanger(this);
     private GUI gui = new GUI(this);
-    private Engine engine = new Engine();
+    //private Engine engine = new Engine();
 
     public GameManager(){
 

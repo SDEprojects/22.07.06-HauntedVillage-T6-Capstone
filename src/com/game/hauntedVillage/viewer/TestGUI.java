@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
-public class TestGUI extends JFrame{
+//public class TestGUI extends JFrame{
 //    private GameManager game;
 //    private Engine engine;
 //    private Consumer<String> movementCallback;//Whenever the user clicks a button to move, gui code could invoke movementCallback.accept(direction)
@@ -137,4 +137,4 @@ public class TestGUI extends JFrame{
 //        return bgPanel1;
 //    }
 
-}
+//}

@@ -3,7 +3,7 @@ package com.game.hauntedVillage.viewer;
 import com.game.hauntedVillage.model.Command;
 import com.game.hauntedVillage.model.ScreenChanger;
 
-public class TestGameManager {
+//public class TestGameManager {
 //    private TestGUI gui=new TestGUI(this);
 //    private Command command = new Command(this);
 //    private ScreenChanger screenChanger = new ScreenChanger(this);
@@ -30,4 +30,4 @@ public class TestGameManager {
 //    public ScreenChanger getScreenChanger() {
 //        return screenChanger;
 //    }
-}
+//}

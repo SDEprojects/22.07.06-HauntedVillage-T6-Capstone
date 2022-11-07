@@ -6,12 +6,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-class BackGround extends JPanel {
+//class BackGround extends JPanel {
 //    private final ArrayList<JPanel> bgPanel=new ArrayList<>();
 //    private final ArrayList<JLabel> bgLabel=new ArrayList<>();
-    JPanel [] bgPanel = new JPanel[12];
-    JLabel [] bgLabel = new JLabel[12];
-    GameManager game;
+//    JPanel [] bgPanel = new JPanel[12];
+//    JLabel [] bgLabel = new JLabel[12];
+//    GameManager game;
 
 //    BackGround(GameManager game){
 //        this.game=game;
@@ -143,4 +143,4 @@ class BackGround extends JPanel {
 //public JPanel[] getBgPanel() {
 //    return bgPanel;
 //}
-}
+//}
