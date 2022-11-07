@@ -24,7 +24,7 @@ public class Engine {
     private final List<String> verbs = commandPares.command();
     private final List<String> verbForMoving = commandPares.movingCommand;
     private final List<String> direction = commandPares.direction;
-    GameManager game = new GameManager();
+    private GameManager game = new GameManager();
     private final Command InputCommand = new Command(game);
     private final Location movement = new Location();
     private final List<Location> rooms = movement.dataReader();

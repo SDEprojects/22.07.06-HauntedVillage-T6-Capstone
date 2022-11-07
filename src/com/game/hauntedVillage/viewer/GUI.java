@@ -26,7 +26,6 @@ public class GUI {
 
 
       createGameWindow();
-
       generateScene();
 
 

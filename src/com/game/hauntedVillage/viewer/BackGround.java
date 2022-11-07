@@ -6,57 +6,57 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-class BackGround extends JPanel {
+//class BackGround extends JPanel {
 //    private final ArrayList<JPanel> bgPanel=new ArrayList<>();
 //    private final ArrayList<JLabel> bgLabel=new ArrayList<>();
-    JPanel [] bgPanel = new JPanel[12];
-    JLabel [] bgLabel = new JLabel[12];
-    TestGameManager game;
+//    JPanel [] bgPanel = new JPanel[12];
+//    JLabel [] bgLabel = new JLabel[12];
+//    GameManager game;
 
-    BackGround(TestGameManager game){
-        this.game=game;
-    }
-
-    public void createBackground(int bgNum, String picName){
-        bgPanel[bgNum] = new JPanel();
-        bgPanel[bgNum].setBounds(50,50, 900, 500);
-        bgPanel[bgNum].setLayout(null);
-        bgPanel[bgNum].setBackground(null);
-
-        bgLabel[bgNum] = new JLabel();
-        bgLabel[bgNum].setBounds(0,0, 900, 500);
-        bgLabel[bgNum].setLayout(null);
-
-        ImageIcon bgImage = new ImageIcon(getClass().getClassLoader().getResource(picName));
-        bgLabel[bgNum].setIcon(bgImage);
-    }
-
-    public void createArrow(int bgNum, String direction, int arrowNum, int posX, int posY){
-        ImageIcon arrow1 = new ImageIcon(getClass().getClassLoader().getResource("cottage.png"));
-        JButton[] arrow = new JButton[4];
-        arrow[arrowNum] = new JButton();
-        arrow[arrowNum].setBounds(posX, posY, 200,200 );
-        arrow[arrowNum].setBackground(null);
-        arrow[arrowNum].setIcon(arrow1);
-        arrow[arrowNum].addActionListener(game.getCommand());
-        arrow[arrowNum].setActionCommand(direction);
-        bgPanel[bgNum].add(arrow[arrowNum]);
-    }
-    public void generateScene(){
-        createBackground(1, "Background_images/home.jpg");
-        createArrow(1, "church", 1, 50, 50);
-        createArrow(1, "northern_square", 2, 450, 50 );
-        bgPanel[1].add(bgLabel[1]);
-
-        createBackground(2, "Background_images/church2.jpg");
-        createArrow(2, "northern_square", 1, 50, 50);
-        createArrow(2, "home", 2, 450, 50 );
-        bgPanel[2].add(bgLabel[2]);
-
-        createBackground(3, "Background_images/northern_square.jpg");
-        createArrow(3, "church", 1, 50, 50);
-        bgPanel[3].add(bgLabel[3]);
-    }
+//    BackGround(GameManager game){
+//        this.game=game;
+//    }
+//
+//    public void createBackground(int bgNum, String picName){
+//        bgPanel[bgNum] = new JPanel();
+//        bgPanel[bgNum].setBounds(50,50, 900, 500);
+//        bgPanel[bgNum].setLayout(null);
+//        bgPanel[bgNum].setBackground(null);
+//
+//        bgLabel[bgNum] = new JLabel();
+//        bgLabel[bgNum].setBounds(0,0, 900, 500);
+//        bgLabel[bgNum].setLayout(null);
+//
+//        ImageIcon bgImage = new ImageIcon(getClass().getClassLoader().getResource(picName));
+//        bgLabel[bgNum].setIcon(bgImage);
+//    }
+//
+//    public void createArrow(int bgNum, String direction, int arrowNum, int posX, int posY){
+//        ImageIcon arrow1 = new ImageIcon(getClass().getClassLoader().getResource("cottage.png"));
+//        JButton[] arrow = new JButton[4];
+//        arrow[arrowNum] = new JButton();
+//        arrow[arrowNum].setBounds(posX, posY, 200,200 );
+//        arrow[arrowNum].setBackground(null);
+//        arrow[arrowNum].setIcon(arrow1);
+//        arrow[arrowNum].addActionListener(game.getCommand());
+//        arrow[arrowNum].setActionCommand(direction);
+//        bgPanel[bgNum].add(arrow[arrowNum]);
+//    }
+//    public void generateScene(){
+//        createBackground(1, "Background_images/home.jpg");
+//        createArrow(1, "church", 1, 50, 50);
+//        createArrow(1, "northern_square", 2, 450, 50 );
+//        bgPanel[1].add(bgLabel[1]);
+//
+//        createBackground(2, "Background_images/church2.jpg");
+//        createArrow(2, "northern_square", 1, 50, 50);
+//        createArrow(2, "home", 2, 450, 50 );
+//        bgPanel[2].add(bgLabel[2]);
+//
+//        createBackground(3, "Background_images/northern_square.jpg");
+//        createArrow(3, "church", 1, 50, 50);
+//        bgPanel[3].add(bgLabel[3]);
+//    }
 
 //    void createBackGroundArray(String backGroundImage){
 //        JPanel backGround=new JPanel();
@@ -140,7 +140,7 @@ class BackGround extends JPanel {
 //            }
 //        });
 //    }
-public JPanel[] getBgPanel() {
-    return bgPanel;
-}
-}
+//public JPanel[] getBgPanel() {
+//    return bgPanel;
+//}
+//}
