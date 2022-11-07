@@ -12,37 +12,37 @@ import java.util.ArrayList;
 import java.util.function.Consumer;
 
 public class TestGUI extends JFrame{
-    private TestGameManager game;
-    private Engine engine;
-    private Consumer<String> movementCallback;//Whenever the user clicks a button to move, gui code could invoke movementCallback.accept(direction)
-    private TextPanel messageArea;
-    private BackGround bgPanel;
-//    private ArrayList<JPanel> bgPanel1=new ArrayList<>();
-    private IntroStroy intro = new IntroStroy();
-    private NpcDialogue npc = new NpcDialogue();
-
-    public TestGUI( TestGameManager game){
-        this.game = game;
-        createGameWindow();
-//        generateScene();
-        setVisible(true);
-    }
-
-    public void createGameWindow(){
-        // initialize window
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
-        setSize(1000, 800);
-        getContentPane().setBackground(Color.black);
-        //TextArea
-        messageArea=new TextPanel();
-        add(messageArea);
-        //Background panel
-        bgPanel=new BackGround(game);
-        for(JPanel backGround:bgPanel.getBgPanel()){
-            add(backGround);
-        }
-    }
+//    private GameManager game;
+//    private Engine engine;
+//    private Consumer<String> movementCallback;//Whenever the user clicks a button to move, gui code could invoke movementCallback.accept(direction)
+//    private TextPanel messageArea;
+//    private BackGround bgPanel;
+////    private ArrayList<JPanel> bgPanel1=new ArrayList<>();
+//    private IntroStroy intro = new IntroStroy();
+//    private NpcDialogue npc = new NpcDialogue();
+//
+//    public TestGUI( GameManager game){
+//        this.game = game;
+//        createGameWindow();
+////        generateScene();
+//        setVisible(true);
+//    }
+//
+//    public void createGameWindow(){
+//        // initialize window
+//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        setLayout(null);
+//        setSize(1000, 800);
+//        getContentPane().setBackground(Color.black);
+//        //TextArea
+//        messageArea=new TextPanel();
+//        add(messageArea);
+//        //Background panel
+//        bgPanel=new BackGround(game);
+//        for(JPanel backGround:bgPanel.getBgPanel()){
+//            add(backGround);
+//        }
+//    }
 
 //    public void createBackground(int bgNum, String picName){
 //        bgPanel[bgNum] = new JPanel();
@@ -129,9 +129,9 @@ public class TestGUI extends JFrame{
 //        // use the reference to engine to display the updated state
 //    }
 //
-    public void setMovementCallback(Consumer<String> movementCallback) {
-        this.movementCallback = movementCallback;
-    }
+//    public void setMovementCallback(Consumer<String> movementCallback) {
+//        this.movementCallback = movementCallback;
+//    }
 //
 //    public ArrayList<JPanel> getBgPanel() {
 //        return bgPanel1;

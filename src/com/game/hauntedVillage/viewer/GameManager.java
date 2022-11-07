@@ -10,12 +10,12 @@ public class GameManager {
     private Command command = new Command(this);
     private ScreenChanger screenChanger = new ScreenChanger(this);
     private GUI gui = new GUI(this);
-
+    private Engine engine = new Engine();
 
     public GameManager(){
 
-
     }
+
 
     public void move(String direction){
         //invoke the necessary methods in the model to update the location
