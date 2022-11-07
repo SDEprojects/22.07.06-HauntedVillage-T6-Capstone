@@ -71,15 +71,33 @@ public class GUI {
 
 
     }
-    public void createArrow(int bgNum, String direction, int arrowNum, int posX, int posY){
-     ImageIcon arrow1 = new ImageIcon(getClass().getClassLoader().getResource("cottage.png"));
+    public void createArrow(int bgNum, String location, int arrowNum, int posX, int posY, String direction ){
+     ImageIcon arrow1 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/arrowClick_50_east.png"));
+        ImageIcon arrow2 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/arrowClick_50_north.png"));
+        ImageIcon arrow3 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/arrowClick_50_south.png"));
+        ImageIcon arrow4 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/arrowClick_50_west.png"));
      JButton[] arrow = new JButton[4];
      arrow[arrowNum] = new JButton();
-     arrow[arrowNum].setBounds(posX, posY, 200,200 );
      arrow[arrowNum].setBackground(null);
-     arrow[arrowNum].setIcon(arrow1);
+     if(direction.equals("east")){
+         arrow[arrowNum].setIcon(arrow1);
+         arrow[arrowNum].setBounds(posX, posY, 200,200 );
+     } else if(direction.equals("north")){
+         arrow[arrowNum].setIcon(arrow2);
+         arrow[arrowNum].setBounds(posX, posY, 200,200 );
+     }else if(direction.equals("south")) {
+         arrow[arrowNum].setIcon(arrow3);
+         arrow[arrowNum].setBounds(posX, posY, 200,200 );
+     }else{
+         arrow[arrowNum].setIcon(arrow4);
+         arrow[arrowNum].setBounds(posX, posY, 200,200 );
+     }
+
      arrow[arrowNum].addActionListener(game.getCommand());
-     arrow[arrowNum].setActionCommand(direction);
+     arrow[arrowNum].setContentAreaFilled(false);
+     arrow[arrowNum].setFocusPainted(false);
+     arrow[arrowNum].setBorderPainted(false);
+     arrow[arrowNum].setActionCommand(location);
      bgPanel[bgNum].add(arrow[arrowNum]);
 
 
@@ -87,7 +105,7 @@ public class GUI {
 
     public void createObject(){
         JLabel objectLabel = new JLabel();
-        objectLabel.setBounds(400, 280, 200, 200);
+        objectLabel.setBounds(230, 100, 500, 300);
 
         JPopupMenu popupMenu = new JPopupMenu();
         JMenuItem[] menuItems = new JMenuItem[3];
@@ -102,7 +120,7 @@ public class GUI {
         menuItems[2] = new JMenuItem("rest");
         popupMenu.add(menuItems[2]);
 
-        ImageIcon cottage = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/home_clickEvent.png"));
+        ImageIcon cottage = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/home_clickTest.png"));
         objectLabel.setIcon(cottage);
         bgPanel[1].add(objectLabel);
         //bgPanel[1].add(bgLabel[1]);
@@ -121,18 +139,19 @@ public class GUI {
 
     public void generateScene(){
         createBackground(1, "Background_images/home.jpg");
-        createArrow(1, "church", 1, 50, 50);
-        createArrow(1, "northern_square", 2, 450, 50 );
+        createArrow(1, "church", 1, 750, 150, "east");
         createObject();
         bgPanel[1].add(bgLabel[1]);
 
-        createBackground(2, "Background_images/church2.jpg");
-        createArrow(2, "northern_square", 1, 50, 50);
-        createArrow(2, "home", 2, 450, 50 );
+        createBackground(2, "Background_images/center_courtyard.jpg");
+        createArrow(2, "northern_square", 1, 350, -40, "north");
+        createArrow(2, "home", 2, -40, 150, "west" );
+        createArrow(2, "tavern", 1, 750, 150, "east");
+        createArrow(2, "southern_square", 1, 350, 350, "south");
         bgPanel[2].add(bgLabel[2]);
 
         createBackground(3, "Background_images/northern_square.jpg");
-        createArrow(3, "church", 1, 50, 50);
+        createArrow(3, "church", 1, 50, 50, "north");
         bgPanel[3].add(bgLabel[3]);
     }
 
