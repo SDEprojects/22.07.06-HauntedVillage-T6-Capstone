@@ -10,10 +10,6 @@ public class MainFrame extends JFrame {
     private TextPanel textPanel;
     private TopPanel topPanel;
 
-    public static void main(String[] args) {
-
-    }
-
     public MainFrame(GameManager baseController) {
         backgroundPanel = new MainPanel(baseController);
         textPanel = new TextPanel(baseController);
