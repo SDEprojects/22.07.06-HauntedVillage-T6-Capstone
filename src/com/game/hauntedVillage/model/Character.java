@@ -37,17 +37,17 @@ public class Character {
         }
     }
 
-    void dropItem(String itemName, Character player, ItemList items, List<Location> rooms) {
-        for (int i = 0; i < player.getInventory().size(); i++) {
-            if (player.getInventory().get(i).equals(itemName)) {
-                inventory.remove(itemName);
-                System.out.println("\nYou drop " + itemName + " from your bag!");
-                items.setLocation(Location.currentRoom);
-            } else {
-                System.out.println("\nThere is no " + itemName + " to drop from your bag");
-            }
-        }
-    }
+//    void dropItem(String itemName, Character player, ItemList items, List<Location> rooms) {
+//        for (int i = 0; i < player.getInventory().size(); i++) {
+//            if (player.getInventory().get(i).equals(itemName)) {
+//                inventory.remove(itemName);
+//                System.out.println("\nYou drop " + itemName + " from your bag!");
+//                items.setLocation(Location.currentRoom);
+//            } else {
+//                System.out.println("\nThere is no " + itemName + " to drop from your bag");
+//            }
+//        }
+//    }
 
     void checkInventory() {
         if (getInventory().size() > 0) {

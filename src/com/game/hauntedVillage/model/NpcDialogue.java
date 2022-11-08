@@ -24,7 +24,7 @@ public class NpcDialogue {
     //Business Class data reader
     List<NpcDialogue> dataReader(){
         try {
-            String npcData = file.dataReader("npc.txt");
+            String npcData = file.dataReader("ReadingFile/npc.txt");
             listNpc = objectMapper.readValue(npcData, new TypeReference<>() {
             });
         } catch (IOException e) {

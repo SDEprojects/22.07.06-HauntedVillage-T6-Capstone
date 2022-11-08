@@ -29,7 +29,7 @@ public class ItemList {
     // This function loads all the items into a list
     List<ItemList> dataReader(){
         try {
-            String itemData = file.dataReader("items.txt");
+            String itemData = file.dataReader("ReadingFile/items.txt");
             listItem = objectMapper.readValue(itemData, new TypeReference<>() {
             });
         } catch (IOException e) {
