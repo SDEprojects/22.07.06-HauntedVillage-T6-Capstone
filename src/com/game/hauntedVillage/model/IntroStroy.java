@@ -17,13 +17,13 @@ public class IntroStroy {
 
     public void presentInfo() {
 //        Art.showArt("house"); //don't need it for GUI
-        InputStream logo = FileReading.getFileFromResourceAsStreamFortxt("info.txt");
+        InputStream logo = FileReading.getFileFromResourceAsStreamFortxt("ReadingFile/info.txt");
         FileReading.printInputStream(logo);
     }
 
     IntroStroy dataReader(){
         try {
-            String introData = file.dataReader("info.txt");
+            String introData = file.dataReader("ReadingFile/info.txt");
             intro = objectMapper.readValue(introData, new TypeReference<>() {
             });
         } catch (IOException e) {
