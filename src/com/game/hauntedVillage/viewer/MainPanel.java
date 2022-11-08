@@ -3,6 +3,7 @@ package com.game.hauntedVillage.viewer;
 import com.game.hauntedVillage.controller.GameManager;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;

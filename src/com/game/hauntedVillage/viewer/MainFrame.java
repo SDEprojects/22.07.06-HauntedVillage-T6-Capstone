@@ -8,18 +8,21 @@ import java.awt.*;
 public class MainFrame extends JFrame {
     private MainPanel backgroundPanel;
     private TextPanel textPanel;
+    private TopPanel topPanel;
     private SplashScreen splashScreen;
-    boolean startGame=false;
+    
     public MainFrame(GameManager baseController){
         backgroundPanel=new MainPanel(baseController);
         textPanel=new TextPanel(baseController);
         splashScreen=new SplashScreen(baseController);
+        topPanel = new TopPanel(baseController);
         setupFrame();
     }
-    private void setupFrame(){
+
+    private void setupFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
-        this.setSize(1000,1000);
+        this.setSize(1000, 1000);
         getContentPane().setBackground(Color.black);
         add(splashScreen);
         startGame=splashScreen.getGameStatus();
@@ -30,7 +33,9 @@ public class MainFrame extends JFrame {
         }
             //add textPanel on the main frame
         add(textPanel);
+        add(topPanel);
         textPanel.setVisible(true);
+
 
 
 
