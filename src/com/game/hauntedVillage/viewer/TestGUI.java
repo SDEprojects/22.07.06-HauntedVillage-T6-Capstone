@@ -1,16 +1,5 @@
 package com.game.hauntedVillage.viewer;
 
-import com.game.hauntedVillage.model.IntroStroy;
-import com.game.hauntedVillage.model.NpcDialogue;
-import com.game.hauntedVillage.controller.Engine;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.function.Consumer;
-
 //public class TestGUI extends JFrame{
 //    private GameManager game;
 //    private Engine engine;
