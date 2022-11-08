@@ -6,4 +6,4 @@
 
 #     Note that your application JAR stays on the classpath, regardless of whether you're using additional libraries or not.
 
-java -classpath HauntedVillage.jar:"lib/*" com.game.HauntedVillage.app.Main
+java -classpath 22.07.06-HauntedVillage-T6-Capstone.jar:"lib/*" com.game.hauntedVillage.app.Main
