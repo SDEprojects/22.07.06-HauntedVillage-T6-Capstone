@@ -9,10 +9,12 @@ public class MainFrame extends JFrame {
     private MainPanel backgroundPanel;
     private TextPanel textPanel;
     private TopPanel topPanel;
-
-    public MainFrame(GameManager baseController) {
-        backgroundPanel = new MainPanel(baseController);
-        textPanel = new TextPanel(baseController);
+    private SplashScreen splashScreen;
+    
+    public MainFrame(GameManager baseController){
+        backgroundPanel=new MainPanel(baseController);
+        textPanel=new TextPanel(baseController);
+        splashScreen=new SplashScreen(baseController);
         topPanel = new TopPanel(baseController);
         setupFrame();
     }
@@ -22,14 +24,21 @@ public class MainFrame extends JFrame {
         this.setLayout(null);
         this.setSize(1000, 1000);
         getContentPane().setBackground(Color.black);
-
+        add(splashScreen);
+        startGame=splashScreen.getGameStatus();
         //add background panel to the main frame
         for (JPanel backGround : backgroundPanel.getBgPanel()) {
             add(backGround);
+            backGround.setVisible(true);
         }
-        //add textPanel on the main frame
+            //add textPanel on the main frame
         add(textPanel);
         add(topPanel);
+        textPanel.setVisible(true);
+
+
+
+
         this.setVisible(true);
     }
 }

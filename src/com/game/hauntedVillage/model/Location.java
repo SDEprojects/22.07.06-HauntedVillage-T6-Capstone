@@ -5,21 +5,24 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Location {
-    public static String currentRoom = "home";
-    private String current;
+    //    public static String currentRoom = "home";
+    private String current = "home";
     private String north;
     private String south;
     private String west;
     private String east;
     private ArrayList<String> items;
     private String description;
+    private String direction;
     private ObjectMapper objectMapper = new ObjectMapper();
     private List<Location> locations;
     private List<String> locationNameList = new ArrayList<>();
     private FileReading file = new FileReading();
+
 
     public Location() {
         super();
@@ -37,7 +40,7 @@ public class Location {
 
     public List<Location> dataReader() {
         try {
-            String locationData = file.dataReader("location.txt");
+            String locationData = file.dataReader("ReadingFile/location.txt");
             locations = objectMapper.readValue(locationData, new TypeReference<>() {
             });
         } catch (IOException e) {
@@ -57,47 +60,41 @@ public class Location {
         return room;
     }
 
-    public void moving(String direction, List<Location> rooms) {
-        for (int i = 0; i < rooms.size(); i++) {
-            if (currentRoom.equals(rooms.get(i).getCurrent())) {
-                if (direction.equals("north")) {
-                    if (!rooms.get(i).getNorth().equals("no exit")) {
-                        currentRoom = rooms.get(i).getNorth();
-                        break;
-                    } else {
-                        System.out.println("Wrong way!");
-                    }
-                } else if (direction.equals("south")) {
-                    if (!rooms.get(i).getSouth().equals("no exit")) {
-                        currentRoom = rooms.get(i).getSouth();
-                        break;
-                    } else {
-                        System.out.println("Wrong way!");
-                    }
-                } else if (direction.equals("east")) {
-                    if (!rooms.get(i).getEast().equals("no exit")) {
-                        currentRoom = rooms.get(i).getEast();
-                        break;
-                    } else {
-                        System.out.println("Wrong way!");
-                    }
-                } else if (direction.equals("west")) {
-                    if (!rooms.get(i).getWest().equals("no exit")) {
-                        currentRoom = rooms.get(i).getWest();
-                        break;
-                    } else {
-                        System.out.println("Wrong way!");
-                    }
-                } else {
-                    System.out.println("Please enter a valid entry");
-                    currentRoom = currentRoom;
-                }
-            }
+    public void moving(String direction, Location room) {
+        if (room.getEast().equals("east")) {
+            current = room.getEast();
+        } else if (room.getSouth().equals("south")) {
+            current = room.getSouth();
+        } else if (room.getNorth().equals("north")) {
+            current = room.getNorth();
+        } else if (room.getWest().equals("west")) {
+            current = room.getWest();
+        } else {
+            current = current;
         }
     }
 
-    public static String getCurrentRoom() {
-        return currentRoom;
+    public List<String> directionList(String roomName) {
+        Location currentArea = getLocationByName(roomName);
+        List<String> validDirection = new LinkedList<>();
+        if (!currentArea.getNorth().equals("no exit")) {
+            validDirection.add("north");
+        }
+        if (!currentArea.getSouth().equals("no exit")) {
+            validDirection.add("south");
+        }
+        if (!currentArea.getWest().equals("no exit")) {
+            validDirection.add("west");
+        }
+        if (!currentArea.getEast().equals("no exit")) {
+            validDirection.add("east");
+        }
+        return validDirection;
+    }
+
+    public void movingDirection(String direction) {
+//        room = getLocationByName(room.getCurrent());
+//        moving(direction, room);
     }
 
     public String getCurrent() {
@@ -129,7 +126,6 @@ public class Location {
     public String getDescription() {
         return description;
     }
-
 
     @Override
     public String toString() {
