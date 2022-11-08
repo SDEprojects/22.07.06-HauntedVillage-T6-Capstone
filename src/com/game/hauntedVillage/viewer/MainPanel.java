@@ -42,14 +42,13 @@ public class MainPanel extends JPanel {
         bgPanel.get(locationOrder).add(bgLabel.get(locationOrder));
     }
 
-    public void createArrow(String direction, int arrowNum, int posX, int posY) {
+    public void createArrow(String direction) {
         ImageIcon arrow1 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/arrowClick_50_east.png"));
         ImageIcon arrow2 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/arrowClick_50_north.png"));
         ImageIcon arrow3 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/arrowClick_50_south.png"));
         ImageIcon arrow4 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/arrowClick_50_west.png"));
         JButton[] arrow = new JButton[4];
         List<String> directionList=baseController.getEngine().location().directionList(currentLocation);
-        System.out.println(directionList);
         for(int i=0;i<directionList.size();i++) {
             if (directionList.contains("north")) {
                 arrow[0] = new JButton();
@@ -100,21 +99,21 @@ public class MainPanel extends JPanel {
 
     public ArrayList<JPanel> generateScene() {
         createBackground("Background_images/home.jpg");
-        createArrow("church", 1, 50, 50);
-        createArrow("northern_square", 2, 450, 50);
+        createArrow("church");
+        createArrow("northern_square");
 //        createObject();
         bgPanel.get(locationOrder).add(bgLabel.get(locationOrder));
         locationOrder++;
 
 
         createBackground("Background_images/church2.jpg");
-        createArrow("northern_square", 1, 50, 50);
-        createArrow("home", 2, 450, 50);
+        createArrow("northern_square");
+        createArrow("home");
         bgPanel.get(locationOrder).add(bgLabel.get(locationOrder));
         locationOrder++;
 
         createBackground("Background_images/northern_square.jpg");
-        createArrow("church", 1, 50, 50);
+        createArrow("church");
         bgPanel.get(locationOrder).add(bgLabel.get(locationOrder));
         locationOrder++;
         return bgPanel;

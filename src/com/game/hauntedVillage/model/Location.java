@@ -76,8 +76,6 @@ public class Location {
 
     public List<String> directionList(String roomName) {
         Location currentArea = getLocationByName(roomName);
-        System.out.println(currentArea.getCurrent());
-        System.out.println(currentArea.getNorth());
         List<String> validDirection = new LinkedList<>();
         if (!currentArea.getNorth().equals("no exit")) {
             validDirection.add("north");
