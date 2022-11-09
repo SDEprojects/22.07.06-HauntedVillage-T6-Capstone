@@ -19,7 +19,6 @@ public class SplashScreen extends JPanel{
 
     public SplashScreen(GameManager baseController){
         this.baseController = baseController;
-
         splashscreenPanel = new JPanel();
         JLabel imageLabel = new JLabel();
         imageLabel.setBounds(0,0, 900,900);
@@ -33,8 +32,6 @@ public class SplashScreen extends JPanel{
         this.setBounds(50, 50, 900, 900);
         this.setBackground(Color.black);
         this.setLayout(null);
-
-
 
 
     }
@@ -71,7 +68,7 @@ public class SplashScreen extends JPanel{
         public void actionPerformed(ActionEvent e) {
 
             setGameStatus(true);
-            splashscreenPanel.setVisible(false);
+            setVisible(false);
             System.out.println(getGameStatus());
         }
     }

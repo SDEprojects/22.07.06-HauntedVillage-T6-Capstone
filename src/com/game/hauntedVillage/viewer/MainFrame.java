@@ -9,6 +9,7 @@ public class MainFrame extends JFrame {
     private MainPanel backgroundPanel;
     private TextPanel textPanel;
     private SplashScreen splashScreen;
+    private boolean isVisible;
     public MainFrame(GameManager baseController){
         backgroundPanel=new MainPanel(baseController);
         textPanel=new TextPanel(baseController);
@@ -38,4 +39,6 @@ public class MainFrame extends JFrame {
 
         this.setVisible(true);
     }
+
+
 }
