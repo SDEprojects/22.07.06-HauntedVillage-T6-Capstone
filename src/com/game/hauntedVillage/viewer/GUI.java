@@ -72,10 +72,10 @@ public class GUI {
 //
 //    }
 //    public void createArrow(int bgNum, String location, int arrowNum, int posX, int posY, String direction ){
-//     ImageIcon arrow1 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/arrowClick_50_east.png"));
-//        ImageIcon arrow2 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/arrowClick_50_north.png"));
-//        ImageIcon arrow3 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/arrowClick_50_south.png"));
-//        ImageIcon arrow4 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/arrowClick_50_west.png"));
+//     ImageIcon arrow1 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/east.png"));
+//        ImageIcon arrow2 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/north.png"));
+//        ImageIcon arrow3 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/south.png"));
+//        ImageIcon arrow4 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/west.png"));
 //     JButton[] arrow = new JButton[4];
 //     arrow[arrowNum] = new JButton();
 //     arrow[arrowNum].setBackground(null);

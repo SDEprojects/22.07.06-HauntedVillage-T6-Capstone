@@ -1,11 +1,14 @@
 package com.game.hauntedVillage.model;
 
 
+import java.util.List;
+
 public class Engine {
     private final Location location = new Location();
     private final ItemList gameItems = new ItemList();
     private final Character player = new Character();
     private NpcDialogue npc = new NpcDialogue();
+    private List<Location> rooms = location.dataReader();
 
 
     // CONSTRUCTOR
@@ -18,6 +21,9 @@ public class Engine {
 
     public Location location(){
         return location;
+    }
+    public void currentRoom(String direction){
+        location.moving(direction,rooms);
     }
 
     public ItemList gameItems(){

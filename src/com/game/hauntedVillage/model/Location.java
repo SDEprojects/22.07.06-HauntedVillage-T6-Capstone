@@ -18,10 +18,11 @@ public class Location {
     private ArrayList<String> items;
     private String description;
     private String direction;
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
     private List<Location> locations;
     private List<String> locationNameList = new ArrayList<>();
-    private FileReading file = new FileReading();
+    private final FileReading file = new FileReading();
+    private  Location currentRoom;
 
 
     public Location() {
@@ -60,18 +61,31 @@ public class Location {
         return room;
     }
 
-    public void moving(String direction, Location room) {
-        if (room.getEast().equals("east")) {
-            current = room.getEast();
-        } else if (room.getSouth().equals("south")) {
-            current = room.getSouth();
-        } else if (room.getNorth().equals("north")) {
-            current = room.getNorth();
-        } else if (room.getWest().equals("west")) {
-            current = room.getWest();
-        } else {
-            current = current;
+    public void moving(String direction, List<Location> rooms) {
+        for (int i = 0; i < rooms.size(); i++) {
+            if (current.equals(rooms.get(i).getCurrent())) {
+                if (direction.equals("north")&&!rooms.get(i).getNorth().equals("no exit")) {
+                    current = rooms.get(i).getNorth();
+                    break;
+                }
+                else if (direction.equals("south")&&!rooms.get(i).getSouth().equals("no exit")) {
+                    current = rooms.get(i).getSouth();
+                    break;
+                }
+                else if (direction.equals("east")&&!rooms.get(i).getEast().equals("no exit")) {
+                    current = rooms.get(i).getEast();
+                    break;
+                }
+                else if (direction.equals("west")&&!rooms.get(i).getWest().equals("no exit")) {
+                    current = rooms.get(i).getWest();
+                    break;
+                }
+            }
         }
+    }
+    public Location getCurrentRoom(){
+        currentRoom=getLocationByName(current);
+        return currentRoom;
     }
 
     public List<String> directionList(String roomName) {
@@ -92,7 +106,7 @@ public class Location {
         return validDirection;
     }
 
-    public void movingDirection(String direction) {
+    public void movingDirection(String direction, int areaNumber) {
 //        room = getLocationByName(room.getCurrent());
 //        moving(direction, room);
     }
