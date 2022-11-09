@@ -12,7 +12,6 @@ class TextPanel extends JTextArea{
     private GameManager baseController;
 
     public TextPanel(GameManager baseController){
-        this.baseController = baseController;
         messageArea=new JTextArea();
         setBounds(50,600, 900,150);
         setMargin(new Insets(20,15,10,15));

@@ -13,7 +13,7 @@ public class MainFrame extends JFrame {
     private boolean isVisible;
 
     public MainFrame(GameManager baseController){
-        backgroundPanel=new MainPanel(baseController);
+        backgroundPanel=new MainPanel(baseController,textPanel);
         textPanel=new TextPanel(baseController);
         splashScreen=new SplashScreen(baseController);
         topPanel = new TopPanel(baseController);
@@ -32,7 +32,7 @@ public class MainFrame extends JFrame {
             add(backGround);
             backGround.setVisible(true);
         }
-            //add textPanel on the main frame
+        //add textPanel on the main frame
         add(textPanel);
         add(topPanel);
         textPanel.setVisible(true);

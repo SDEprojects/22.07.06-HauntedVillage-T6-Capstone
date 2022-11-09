@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MainPanel extends JPanel {
+class MainPanel extends JPanel {
     private final GameManager baseController;
     private final ScreenChanger changeScreen;
     private final ArrayList<JPanel> bgPanel = new ArrayList<>();
@@ -18,10 +18,13 @@ public class MainPanel extends JPanel {
     private int locationOrder = 0;
     private String currentLocation;
     private final JButton[] arrow = new JButton[4];
+    private TextPanel textPanel;
+    private JTextArea textArea=new JTextArea();
 
 
-    public MainPanel(GameManager baseController) {
+    public MainPanel(GameManager baseController,TextPanel textPanel) {
         this.baseController = baseController;
+        this.textPanel=textPanel;
         currentLocation = baseController.getEngine().location().getCurrent();
         generateScene();
         changeScreen = new ScreenChanger(getBgPanel());
@@ -123,10 +126,10 @@ public class MainPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
-            System.out.println(baseController.getEngine().location().getCurrentRoom().getEast());
             if (command.equals("east")) {
                 changeScreen.currentRoom(baseController.getEngine().location().getCurrentRoom().getEast());
                 baseController.getEngine().currentRoom(command);
+//                System.out.println(baseController.getEngine().location().getCurrentRoom().getDescription());
             } else if (command.equals("north")) {
                 changeScreen.currentRoom(baseController.getEngine().location().getCurrentRoom().getNorth());
                 baseController.getEngine().currentRoom(command);
