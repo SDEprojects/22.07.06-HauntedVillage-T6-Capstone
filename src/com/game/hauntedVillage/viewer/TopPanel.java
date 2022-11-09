@@ -34,8 +34,8 @@ public class TopPanel extends JPanel {
     public JLabel createIcons() {
         heartLabel = new JLabel();
         heartLabel.setBounds(0,0, 20, 20);
-        ImageIcon heart = new ImageIcon(getClass().getClassLoader().getResource("cottage.png"));
-        heartLabel.setIcon(heart);
+        //ImageIcon heart = new ImageIcon(getClass().getClassLoader().getResource("cottage.png"));
+       // heartLabel.setIcon(heart);
         System.out.println("called icon method");
         return heartLabel;
     }

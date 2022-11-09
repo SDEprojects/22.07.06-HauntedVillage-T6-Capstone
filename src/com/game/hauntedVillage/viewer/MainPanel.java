@@ -117,10 +117,10 @@ class MainPanel extends JPanel {
         backGroundPanel("Background_images/center_courtyard.jpg", "center courtyard");
         backGroundPanel("Background_images/northern_square.jpg", "northern square");
         backGroundPanel("Background_images/southern_square.jpg", "southern square");
-        backGroundPanel("Background_images/farm.jpg", "farm");
-        backGroundPanel("Background_images/townhall.jpg", "town hall");
+        backGroundPanel("Background_images/farm3.jpg", "farm");
+        backGroundPanel("Background_images/townHall.jpg", "town hall");
         backGroundPanel("Background_images/tavern.jpg", "tavern");
-        backGroundPanel("Background_images/church.jpg", "church");
+        backGroundPanel("Background_images/church2.jpg", "church");
         backGroundPanel("Background_images/well.jpg", "well");
         backGroundPanel("Background_images/woods.jpg", "woods");
         return bgPanel;

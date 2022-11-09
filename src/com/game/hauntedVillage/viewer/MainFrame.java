@@ -34,7 +34,7 @@ public class MainFrame extends JFrame {
         add(splashScreen);
         add(backgroundPanel);
         backgroundPanel.setVisible(false);
-        startGame=splashScreen.getGameStatus();
+        //startGame=splashScreen.getGameStatus();
         //add textPanel on the main frame
         add(textPanel);
         add(topPanel);
