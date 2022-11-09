@@ -16,25 +16,24 @@ public class MainFrame extends JFrame {
         splashScreen=new SplashScreen(baseController);
         setupFrame();
     }
+
+    public void showGamePanel(){
+        splashScreen.setVisible(false);
+        backgroundPanel.setVisible(true);
+    }
+
     private void setupFrame(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
         this.setSize(1000,1000);
         getContentPane().setBackground(Color.black);
         add(splashScreen);
+        add(backgroundPanel);
+        backgroundPanel.setVisible(false);
         startGame=splashScreen.getGameStatus();
-        //add background panel to the main frame
-        for (JPanel backGround : backgroundPanel.getBgPanel()) {
-            add(backGround);
-            backGround.setVisible(true);
-        }
         //add textPanel on the main frame
         add(textPanel);
         textPanel.setVisible(true);
-
-
-
-
         this.setVisible(true);
     }
 }

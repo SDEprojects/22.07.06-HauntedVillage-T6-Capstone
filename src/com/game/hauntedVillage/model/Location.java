@@ -79,6 +79,8 @@ public class Location {
                 else if (direction.equals("west")&&!rooms.get(i).getWest().equals("no exit")) {
                     current = rooms.get(i).getWest();
                     break;
+                }else{
+                    System.out.println("Invalid the direction");
                 }
             }
         }
@@ -89,8 +91,12 @@ public class Location {
     }
 
     public List<String> directionList(String roomName) {
-        Location currentArea = getLocationByName(roomName);
         List<String> validDirection = new LinkedList<>();
+//        if(!roomName.equals(current)){
+//            return validDirection;
+//        }
+        Location currentArea = getLocationByName(roomName);
+
         if (!currentArea.getNorth().equals("no exit")) {
             validDirection.add("north");
         }

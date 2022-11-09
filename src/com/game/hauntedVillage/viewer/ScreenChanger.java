@@ -11,16 +11,7 @@ class ScreenChanger {
         this.getBgPanel = getBgPanel;
     }
     private void mainScreen(int mapNum){
-        getBgPanel.get(0).setVisible(false);
-        getBgPanel.get(1).setVisible(false);
-        getBgPanel.get(2).setVisible(false);
-        getBgPanel.get(3).setVisible(false);
-        getBgPanel.get(4).setVisible(false);
-        getBgPanel.get(5).setVisible(false);
-        getBgPanel.get(6).setVisible(false);
-        getBgPanel.get(7).setVisible(false);
-        getBgPanel.get(8).setVisible(false);
-        getBgPanel.get(9).setVisible(false);
+        getBgPanel.forEach(panel -> panel.setVisible(false));
         getBgPanel.get(mapNum).setVisible(true);
     }
     public void currentRoom(String roomName){

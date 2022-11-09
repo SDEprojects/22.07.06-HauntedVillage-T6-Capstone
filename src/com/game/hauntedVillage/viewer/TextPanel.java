@@ -16,13 +16,14 @@ class TextPanel extends JTextArea{
         setBounds(50,600, 900,150);
         setMargin(new Insets(20,15,10,15));
         setBackground(Color.white);
-        setFont(new Font("Comic sans", Font.PLAIN, 30));
+        setFont(new Font("Comic sans", Font.PLAIN, 15));
         setLineWrap(true);
         setEditable(false);
         setWrapStyleWord(true);
         Border innerBorder=BorderFactory.createTitledBorder("Description");
         Border outerBorder=BorderFactory.createEmptyBorder(5,5,5,5);
         setBorder(BorderFactory.createCompoundBorder(outerBorder,innerBorder));
+        setText(baseController.getEngine().location().getCurrentRoom().getDescription());
     }
 //    public JTextArea getMessageArea() {
 //        return messageArea;
