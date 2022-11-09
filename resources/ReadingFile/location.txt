@@ -122,7 +122,7 @@
     "north": "woods",
     "east": "no exit",
     "south": "northern square",
-    "west": "northern square",
+    "west": "no exit",
     "description": "
     The air is remarkably colder here. You’ve been avoiding this area due to the shrieks at night.
     It is a rough stone circle with a seemingly bottomless pit in the center. The sky seems to have become dim.

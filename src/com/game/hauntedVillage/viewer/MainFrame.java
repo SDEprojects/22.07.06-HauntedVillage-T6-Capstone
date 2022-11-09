@@ -11,7 +11,7 @@ public class MainFrame extends JFrame {
     private SplashScreen splashScreen;
     boolean startGame=false;
     public MainFrame(GameManager baseController){
-        backgroundPanel=new MainPanel(baseController);
+        backgroundPanel=new MainPanel(baseController,textPanel);
         textPanel=new TextPanel(baseController);
         splashScreen=new SplashScreen(baseController);
         setupFrame();
@@ -28,9 +28,10 @@ public class MainFrame extends JFrame {
             add(backGround);
             backGround.setVisible(true);
         }
-            //add textPanel on the main frame
+        //add textPanel on the main frame
         add(textPanel);
         textPanel.setVisible(true);
+
 
 
 
