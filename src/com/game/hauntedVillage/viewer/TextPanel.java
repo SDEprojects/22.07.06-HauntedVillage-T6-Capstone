@@ -13,7 +13,7 @@ class TextPanel extends JTextArea{
 
     public TextPanel(GameManager baseController){
         messageArea=new JTextArea();
-        setBounds(50,600, 900,150);
+        setBounds(50,700,600,200);
         setMargin(new Insets(20,15,10,15));
         setBackground(Color.white);
         setFont(new Font("Comic sans", Font.PLAIN, 15));
