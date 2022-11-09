@@ -1,6 +1,7 @@
 package com.game.hauntedVillage.controller;
 
 import com.game.hauntedVillage.model.Engine;
+import com.game.hauntedVillage.model.Location;
 import com.game.hauntedVillage.viewer.MainFrame;
 
 public class GameManager {
@@ -20,6 +21,10 @@ public class GameManager {
     }
     public void startGame(){
         theView.showGamePanel();
+    }
+
+    public void displayText(){
+         theView.updateText(theModel.location().getCurrentRoom().getDescription());
     }
 
 
