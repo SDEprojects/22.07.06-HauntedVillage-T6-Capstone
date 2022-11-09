@@ -3,7 +3,6 @@ package com.game.hauntedVillage.viewer;
 import com.game.hauntedVillage.controller.GameManager;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -19,50 +18,59 @@ class MainPanel extends JPanel {
     private String currentLocation;
     private final JButton[] arrow = new JButton[4];
     private TextPanel textPanel;
-    private JTextArea textArea=new JTextArea();
+
 
 
     public MainPanel(GameManager baseController,TextPanel textPanel) {
         this.baseController = baseController;
         this.textPanel=textPanel;
+
         currentLocation = baseController.getEngine().location().getCurrent();
+        setLayout(null);
+        setBounds(50,50,900,500);
+
         generateScene();
         changeScreen = new ScreenChanger(getBgPanel());
+        changeScreen.currentRoom("home");
     }
 
     // Building the completed mainPanel with arrow
     private void backGroundPanel(String fileName, String locationName) {
         // function to build the background image for the current location map
-        createBackground(fileName);
+        createBackground(fileName,locationName);
         // function for building existing direction to go
-        createArrow(locationName);
         // function to create the object in this map (such as NPC or item)
 //        createObject();
         // add panel with label and moving on next map
-        bgPanel.get(locationOrder).add(bgLabel.get(locationOrder));
+//        bgPanel.get(locationOrder).add(bgLabel.get(locationOrder));
         locationOrder++;
     }
 
     // function to build the background image for the current location map
-    private void createBackground(String picName) {
+    private void createBackground(String picName,String locationName) {
         JPanel backGround = new JPanel();
-        backGround.setBounds(50, 50, 900, 500);
         backGround.setLayout(null);
+        backGround.setBounds(0, 0, 900, 500);
         backGround.setBackground(null);
         bgPanel.add(backGround);
-        add(bgPanel.get(locationOrder));
+        add(backGround);
 
         JLabel backGroundLable = new JLabel();
-        backGroundLable.setBounds(0, 0, 900, 500);
         backGroundLable.setLayout(null);
+        backGroundLable.setBounds(0, 0, 900, 500);
         bgLabel.add(backGroundLable);
 
         ImageIcon bgImage = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(picName)));
-        bgLabel.get(locationOrder).setIcon(bgImage);
-        bgPanel.get(locationOrder).add(bgLabel.get(locationOrder));
+        backGroundLable.setIcon(bgImage);
+        backGroundLable.repaint();
+        createArrow(locationName,backGround);
+        backGround.add(backGroundLable);
+        backGround.repaint();
+
     }
 
-    private void createArrow(String roomName) {
+    private void createArrow(String roomName,JPanel panel) {
+
         ImageIcon arrow0 = loadingImageIcon("Images_clickTriggers/north.png");
         ImageIcon arrow1 = loadingImageIcon("Images_clickTriggers/south.png");
         ImageIcon arrow2 = loadingImageIcon("Images_clickTriggers/west.png");
@@ -72,19 +80,19 @@ class MainPanel extends JPanel {
         for (int i = 0; i < directionList.size(); i++) {
             if (directionList.contains("north")) {
                 arrowBtn(0, 350, 0, arrow0, "north");
-                bgPanel.get(locationOrder).add(arrow[0]);
+                panel.add(arrow[0]);
             }
             if (directionList.contains("south")) {
                 arrowBtn(1, 350, 350, arrow1, "south");
-                bgPanel.get(locationOrder).add(arrow[1]);
+                panel.add(arrow[1]);
             }
             if (directionList.contains("west")) {
                 arrowBtn(2, 0, 200, arrow2, "west");
-                bgPanel.get(locationOrder).add(arrow[2]);
+                panel.add(arrow[2]);
             }
             if (directionList.contains("east")) {
-                arrowBtn(3, 780, 200, arrow3, "east");
-                bgPanel.get(locationOrder).add(arrow[3]);
+                arrowBtn(3, 750, 200, arrow3, "east");
+                panel.add(arrow[3]);
             }
         }
     }
@@ -100,7 +108,7 @@ class MainPanel extends JPanel {
         arrow[arrowDirection].setBorder(null);
         arrow[arrowDirection].setIcon(arrowIcon);
         arrow[arrowDirection].setBounds(xPosition, yPosition, 100, 100);
-        arrow[arrowDirection].addActionListener(new arrowListener());
+        arrow[arrowDirection].addActionListener(new ArrowListener());
         arrow[arrowDirection].setActionCommand(direction);
     }
 
@@ -122,14 +130,14 @@ class MainPanel extends JPanel {
         return bgPanel;
     }
 
-    class arrowListener implements ActionListener {
+    private class ArrowListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
             if (command.equals("east")) {
                 changeScreen.currentRoom(baseController.getEngine().location().getCurrentRoom().getEast());
                 baseController.getEngine().currentRoom(command);
-//                System.out.println(baseController.getEngine().location().getCurrentRoom().getDescription());
+//                textPanel.setText(baseController.getEngine().location().getCurrentRoom().getDescription());
             } else if (command.equals("north")) {
                 changeScreen.currentRoom(baseController.getEngine().location().getCurrentRoom().getNorth());
                 baseController.getEngine().currentRoom(command);

@@ -23,17 +23,13 @@ public class SplashScreen extends JPanel{
         JLabel imageLabel = new JLabel();
         imageLabel.setBounds(0,0, 900,900);
         ImageIcon backGroundImage = new ImageIcon(getClass().getClassLoader().getResource("Background_images/splashscreenBackground.png"));
-
         imageLabel.setIcon(backGroundImage);
-
         this.add(startGameButton());
         this.add(quitGameButton());
         this.add(imageLabel);
         this.setBounds(50, 50, 900, 900);
         this.setBackground(Color.black);
         this.setLayout(null);
-
-
     }
 
 
@@ -66,10 +62,8 @@ public class SplashScreen extends JPanel{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            setVisible(false);
-            setGameStatus(true);
-            setVisible(false);
-            System.out.println(getGameStatus());
+            baseController.startGame();
+
         }
     }
 

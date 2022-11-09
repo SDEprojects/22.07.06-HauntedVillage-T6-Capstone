@@ -18,6 +18,9 @@ public class GameManager {
     public void start(){
         theView=new MainFrame(this);
     }
+    public void startGame(){
+        theView.showGamePanel();
+    }
 
 
 
