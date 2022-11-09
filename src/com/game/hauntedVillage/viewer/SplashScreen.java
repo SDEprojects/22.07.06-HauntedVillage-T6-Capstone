@@ -66,7 +66,7 @@ public class SplashScreen extends JPanel{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            setVisible(false);
             setGameStatus(true);
             setVisible(false);
             System.out.println(getGameStatus());

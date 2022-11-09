@@ -3,10 +3,12 @@ package com.game.hauntedVillage.viewer;
 import com.game.hauntedVillage.controller.GameManager;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MainPanel extends JPanel {
     private final GameManager baseController;
@@ -15,16 +17,31 @@ public class MainPanel extends JPanel {
     private final ArrayList<JLabel> bgLabel = new ArrayList<>();
     private int locationOrder = 0;
     private String currentLocation;
+    private final JButton[] arrow = new JButton[4];
 
 
     public MainPanel(GameManager baseController) {
         this.baseController = baseController;
-        currentLocation=baseController.getEngine().location().getCurrent();
+        currentLocation = baseController.getEngine().location().getCurrent();
         generateScene();
         changeScreen = new ScreenChanger(getBgPanel());
     }
 
-    public void createBackground(String picName) {
+    // Building the completed mainPanel with arrow
+    private void backGroundPanel(String fileName, String locationName) {
+        // function to build the background image for the current location map
+        createBackground(fileName);
+        // function for building existing direction to go
+        createArrow(locationName);
+        // function to create the object in this map (such as NPC or item)
+//        createObject();
+        // add panel with label and moving on next map
+        bgPanel.get(locationOrder).add(bgLabel.get(locationOrder));
+        locationOrder++;
+    }
+
+    // function to build the background image for the current location map
+    private void createBackground(String picName) {
         JPanel backGround = new JPanel();
         backGround.setBounds(50, 50, 900, 500);
         backGround.setLayout(null);
@@ -37,86 +54,64 @@ public class MainPanel extends JPanel {
         backGroundLable.setLayout(null);
         bgLabel.add(backGroundLable);
 
-        ImageIcon bgImage = new ImageIcon(getClass().getClassLoader().getResource(picName));
+        ImageIcon bgImage = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(picName)));
         bgLabel.get(locationOrder).setIcon(bgImage);
         bgPanel.get(locationOrder).add(bgLabel.get(locationOrder));
     }
 
-    public void createArrow(String direction, int arrowNum, int posX, int posY) {
-        ImageIcon arrow1 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/arrowClick_50_east.png"));
-        ImageIcon arrow2 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/arrowClick_50_north.png"));
-        ImageIcon arrow3 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/arrowClick_50_south.png"));
-        ImageIcon arrow4 = new ImageIcon(getClass().getClassLoader().getResource("Images_clickTriggers/arrowClick_50_west.png"));
-        JButton[] arrow = new JButton[4];
-        List<String> directionList=baseController.getEngine().location().directionList(currentLocation);
-        System.out.println(directionList);
-        for(int i=0;i<directionList.size();i++) {
+    private void createArrow(String roomName) {
+        ImageIcon arrow0 = loadingImageIcon("Images_clickTriggers/north.png");
+        ImageIcon arrow1 = loadingImageIcon("Images_clickTriggers/south.png");
+        ImageIcon arrow2 = loadingImageIcon("Images_clickTriggers/west.png");
+        ImageIcon arrow3 = loadingImageIcon("Images_clickTriggers/east.png");
+
+        List<String> directionList = baseController.getEngine().location().directionList(roomName);
+        for (int i = 0; i < directionList.size(); i++) {
             if (directionList.contains("north")) {
-                arrow[0] = new JButton();
-                arrow[0].setBackground(null);
-                arrow[0].setBorderPainted(false);
-                arrow[0].setIcon(arrow2);
-                arrow[0].setBorder(null);
-                arrow[0].setBounds(350, -40, 100, 100);
-                arrow[0].addActionListener(new arrowListener());
-                arrow[0].setActionCommand(direction);
+                arrowBtn(0, 350, 0, arrow0, "north");
                 bgPanel.get(locationOrder).add(arrow[0]);
             }
-            else if (directionList.contains("south")) {
-                arrow[1] = new JButton();
-                arrow[1].setBackground(null);
-                arrow[1].setBorderPainted(false);
-                arrow[1].setBorder(null);
-                arrow[1].setIcon(arrow3);
-                arrow[1].setBounds(350, 350, 100, 100);
-                arrow[1].addActionListener(new arrowListener());
-                arrow[1].setActionCommand(direction);
+            if (directionList.contains("south")) {
+                arrowBtn(1, 350, 350, arrow1, "south");
                 bgPanel.get(locationOrder).add(arrow[1]);
             }
-            else if (directionList.contains("west")) {
-                arrow[2] = new JButton();
-                arrow[2].setBackground(null);
-                arrow[2].setBorderPainted(false);
-                arrow[2].setBorder(null);
-                arrow[2].setIcon(arrow4);
-                arrow[2].setBounds(-40, 200, 100, 100);
-                arrow[2].addActionListener(new arrowListener());
-                arrow[2].setActionCommand(direction);
+            if (directionList.contains("west")) {
+                arrowBtn(2, 0, 200, arrow2, "west");
                 bgPanel.get(locationOrder).add(arrow[2]);
             }
-            else if (directionList.contains("east")) {
-                arrow[3] = new JButton();
-                arrow[3].setBackground(null);
-                arrow[3].setBorderPainted(false);
-                arrow[3].setBorder(null);
-                arrow[3].setIcon(arrow1);
-                arrow[3].setBounds(780, 200, 100, 100);
-                arrow[3].addActionListener(new arrowListener());
-                arrow[3].setActionCommand(direction);
+            if (directionList.contains("east")) {
+                arrowBtn(3, 780, 200, arrow3, "east");
                 bgPanel.get(locationOrder).add(arrow[3]);
             }
         }
     }
 
+    private ImageIcon loadingImageIcon(String file) {
+        return new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(file)));
+    }
+
+    private void arrowBtn(int arrowDirection, int xPosition, int yPosition, ImageIcon arrowIcon, String direction) {
+        arrow[arrowDirection] = new JButton();
+        arrow[arrowDirection].setBackground(null);
+        arrow[arrowDirection].setBorderPainted(false);
+        arrow[arrowDirection].setBorder(null);
+        arrow[arrowDirection].setIcon(arrowIcon);
+        arrow[arrowDirection].setBounds(xPosition, yPosition, 100, 100);
+        arrow[arrowDirection].addActionListener(new arrowListener());
+        arrow[arrowDirection].setActionCommand(direction);
+    }
+
     public ArrayList<JPanel> generateScene() {
-        createBackground("Background_images/home.jpg");
-        createArrow("church", 1, 50, 50);
-        createArrow("northern_square", 2, 450, 50);
-//        createObject();
-        bgPanel.get(locationOrder).add(bgLabel.get(locationOrder));
-        locationOrder++;
-
-
-        createBackground("Background_images/church2.jpg");
-        createArrow("northern_square", 1, 50, 50);
-        createArrow("home", 2, 450, 50);
-        bgPanel.get(locationOrder).add(bgLabel.get(locationOrder));
-        locationOrder++;
-
-        createBackground("Background_images/northern_square.jpg");
-        createArrow("church", 1, 50, 50);
-        bgPanel.get(locationOrder).add(bgLabel.get(locationOrder));
-        locationOrder++;
+        backGroundPanel("Background_images/home.jpg", "home");
+        backGroundPanel("Background_images/center_courtyard.jpg", "center courtyard");
+        backGroundPanel("Background_images/northern_square.jpg", "northern square");
+        backGroundPanel("Background_images/southern_square.jpg", "southern square");
+        backGroundPanel("Background_images/farm.jpg", "farm");
+        backGroundPanel("Background_images/townhall.jpg", "town hall");
+        backGroundPanel("Background_images/tavern.jpg", "tavern");
+        backGroundPanel("Background_images/church.jpg", "church");
+        backGroundPanel("Background_images/well.jpg", "well");
+        backGroundPanel("Background_images/woods.jpg", "woods");
         return bgPanel;
     }
 
@@ -128,17 +123,23 @@ public class MainPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
-
-            System.out.println(command);
-            if (command.equals("church")) {
-                changeScreen.showScreen2();
-            } else if (command.equals("northern_square")) {
-                changeScreen.showScreen3();
-            } else if (command.equals("home")) {
-                changeScreen.showScreen1();
+            System.out.println(baseController.getEngine().location().getCurrentRoom().getEast());
+            if (command.equals("east")) {
+                changeScreen.currentRoom(baseController.getEngine().location().getCurrentRoom().getEast());
+                baseController.getEngine().currentRoom(command);
+            } else if (command.equals("north")) {
+                changeScreen.currentRoom(baseController.getEngine().location().getCurrentRoom().getNorth());
+                baseController.getEngine().currentRoom(command);
+            } else if (command.equals("west")) {
+                changeScreen.currentRoom(baseController.getEngine().location().getCurrentRoom().getWest());
+                baseController.getEngine().currentRoom(command);
+            } else if (command.equals("south")) {
+                changeScreen.currentRoom(baseController.getEngine().location().getCurrentRoom().getSouth());
+                baseController.getEngine().currentRoom(command);
             } else {
                 System.out.println("you need more arrows");
             }
+
         }
     }
 }
