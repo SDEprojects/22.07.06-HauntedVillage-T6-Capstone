@@ -10,6 +10,7 @@ public class MainFrame extends JFrame {
     private TextPanel textPanel;
     private TopPanel topPanel;
     private SplashScreen splashScreen;
+    private InventoryPanel inventoryPanel;
     private boolean isVisible;
 
     public MainFrame(GameManager baseController){
@@ -17,6 +18,7 @@ public class MainFrame extends JFrame {
         textPanel=new TextPanel(baseController);
         splashScreen=new SplashScreen(baseController);
         topPanel = new TopPanel(baseController);
+        inventoryPanel = new InventoryPanel(baseController);
         setupFrame();
     }
 
@@ -24,6 +26,11 @@ public class MainFrame extends JFrame {
     public void showGamePanel(){
         splashScreen.setVisible(false);
         backgroundPanel.setVisible(true);
+    }
+
+    public void updateText(String text){
+        System.out.println(text);
+        textPanel.setText(text);
     }
 
     private void setupFrame() {
@@ -34,9 +41,9 @@ public class MainFrame extends JFrame {
         add(splashScreen);
         add(backgroundPanel);
         backgroundPanel.setVisible(false);
-        //startGame=splashScreen.getGameStatus();
         //add textPanel on the main frame
         add(textPanel);
+        add(inventoryPanel);
         add(topPanel);
         textPanel.setVisible(true);
         this.setVisible(true);

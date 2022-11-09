@@ -23,7 +23,7 @@ public class TopPanel extends JPanel {
     public void createTopLabel() {
 
         panel = new JPanel();
-        setBounds(50, 0, 900, 50);
+        setBounds(50, 20, 900, 50);
         setLayout(null);
         setOpaque(true);
         setBackground(Color.PINK);

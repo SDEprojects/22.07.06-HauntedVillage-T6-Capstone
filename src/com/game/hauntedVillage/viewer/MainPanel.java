@@ -27,7 +27,7 @@ class MainPanel extends JPanel {
 
         currentLocation = baseController.getEngine().location().getCurrent();
         setLayout(null);
-        setBounds(50,50,900,500);
+        setBounds(50,120,900,500);
 
         generateScene();
         changeScreen = new ScreenChanger(getBgPanel());
@@ -150,6 +150,7 @@ class MainPanel extends JPanel {
             } else {
                 System.out.println("you need more arrows");
             }
+            baseController.displayText();
 
         }
     }
