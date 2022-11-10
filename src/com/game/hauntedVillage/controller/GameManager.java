@@ -27,6 +27,12 @@ public class GameManager {
          theView.updateText(theModel.location().getCurrentRoom().getDescription());
     }
 
+    public void speak(String npcName){
+        theView.updateText(theModel.npc().speak(npcName));
+    }
+
+
+
 
 
 
