@@ -1,6 +1,5 @@
 package com.game.hauntedVillage.viewer;
 
-import com.game.hauntedVillage.controller.GameManager;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -13,6 +12,7 @@ class ScreenChanger {
     private void mainScreen(int mapNum){
         getBgPanel.forEach(panel -> panel.setVisible(false));
         getBgPanel.get(mapNum).setVisible(true);
+
     }
     public void currentRoom(String roomName){
         switch(roomName){
@@ -47,5 +47,7 @@ class ScreenChanger {
                 mainScreen(9);
                 break;
         }
+
     }
+
 }
