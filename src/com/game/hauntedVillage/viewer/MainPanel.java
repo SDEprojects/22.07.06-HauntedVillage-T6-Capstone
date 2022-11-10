@@ -34,17 +34,6 @@ class MainPanel extends JPanel {
         changeScreen.currentRoom("home");
     }
 
-    // Building the completed mainPanel with arrow
-    private void backGroundPanel(String fileName, String locationName) {
-        // function to build the background image for the current location map
-        createBackground(fileName,locationName);
-        // function for building existing direction to go
-        // function to create the object in this map (such as NPC or item)
-//        createObject();
-        // add panel with label and moving on next map
-//        bgPanel.get(locationOrder).add(bgLabel.get(locationOrder));
-        locationOrder++;
-    }
 
     // function to build the background image for the current location map
     private void createBackground(String picName,String locationName) {
@@ -66,11 +55,10 @@ class MainPanel extends JPanel {
         createArrow(locationName,backGround);
         backGround.add(backGroundLable);
         backGround.repaint();
-
+        locationOrder++;
     }
 
     private void createArrow(String roomName,JPanel panel) {
-
         ImageIcon arrow0 = loadingImageIcon("Images_clickTriggers/north.png");
         ImageIcon arrow1 = loadingImageIcon("Images_clickTriggers/south.png");
         ImageIcon arrow2 = loadingImageIcon("Images_clickTriggers/west.png");
@@ -113,16 +101,16 @@ class MainPanel extends JPanel {
     }
 
     public ArrayList<JPanel> generateScene() {
-        backGroundPanel("Background_images/home.jpg", "home");
-        backGroundPanel("Background_images/center_courtyard.jpg", "center courtyard");
-        backGroundPanel("Background_images/northern_square.jpg", "northern square");
-        backGroundPanel("Background_images/southern_square.jpg", "southern square");
-        backGroundPanel("Background_images/farm3.jpg", "farm");
-        backGroundPanel("Background_images/townHall.jpg", "town hall");
-        backGroundPanel("Background_images/tavern.jpg", "tavern");
-        backGroundPanel("Background_images/church2.jpg", "church");
-        backGroundPanel("Background_images/well.jpg", "well");
-        backGroundPanel("Background_images/woods.jpg", "woods");
+        createBackground("Background_images/home.jpg", "home");
+        createBackground("Background_images/center_courtyard.jpg", "center courtyard");
+        createBackground("Background_images/northern_square.jpg", "northern square");
+        createBackground("Background_images/southern_square.jpg", "southern square");
+        createBackground("Background_images/farm3.jpg", "farm");
+        createBackground("Background_images/townHall.jpg", "town hall");
+        createBackground("Background_images/tavern.jpg", "tavern");
+        createBackground("Background_images/church2.jpg", "church");
+        createBackground("Background_images/well.jpg", "well");
+        createBackground("Background_images/woods.jpg", "woods");
         return bgPanel;
     }
 
@@ -151,7 +139,6 @@ class MainPanel extends JPanel {
                 System.out.println("you need more arrows");
             }
             baseController.displayText();
-
         }
     }
 }

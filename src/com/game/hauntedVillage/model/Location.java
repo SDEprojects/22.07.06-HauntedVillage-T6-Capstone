@@ -9,7 +9,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Location {
-    //    public static String currentRoom = "home";
     private String current = "home";
     private String north;
     private String south;
@@ -112,11 +111,6 @@ public class Location {
         return validDirection;
     }
 
-    public void movingDirection(String direction, int areaNumber) {
-//        room = getLocationByName(room.getCurrent());
-//        moving(direction, room);
-    }
-
     public String getCurrent() {
         return current;
     }
@@ -141,6 +135,10 @@ public class Location {
 
     public ArrayList<String> getItems() {
         return items;
+    }
+
+    public void setItems(ArrayList<String> items) {
+        this.items = items;
     }
 
     public String getDescription() {

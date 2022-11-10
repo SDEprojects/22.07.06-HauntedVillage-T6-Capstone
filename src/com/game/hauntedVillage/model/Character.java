@@ -6,6 +6,7 @@ public class Character {
     private String description;
     private final List<String> inventory = new ArrayList<>();
     private String location;
+    private int hp=5;
 
     public Character() {
         super();
@@ -57,7 +58,15 @@ public class Character {
         }
     }
 
-    List<String> getInventory() {
+    public List<String> getInventory() {
         return inventory;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
     }
 }

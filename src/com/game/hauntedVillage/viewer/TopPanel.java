@@ -5,44 +5,58 @@ import com.game.hauntedVillage.controller.GameManager;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class TopPanel extends JPanel {
 
-    private JPanel panel;
     private GameManager baseController;
-    JLabel heartLabel;
+    private final ArrayList<JLabel> heart = new ArrayList<>();
 
     //generates top panel
     public TopPanel(GameManager baseController) {
         this.baseController = baseController;
-       // generatePanel();
-        createTopLabel();
-    }
-
-    //creates label
-    public void createTopLabel() {
-
-        panel = new JPanel();
-        setBounds(50, 20, 900, 50);
         setLayout(null);
+        setBounds(50,50,900,50);
+        setBackground(null);
         setOpaque(true);
-        setBackground(Color.PINK);
-        panel.add(createIcons());
+        createHeartIcons();
+        createMapIcons();
+        createSound();
+        createHelp();
     }
 
     //create icons
-    public JLabel createIcons() {
-        heartLabel = new JLabel();
-        heartLabel.setBounds(0,0, 20, 20);
-        //ImageIcon heart = new ImageIcon(getClass().getClassLoader().getResource("cottage.png"));
-       // heartLabel.setIcon(heart);
-        System.out.println("called icon method");
-        return heartLabel;
+    public void createHeartIcons() {
+        int hp=baseController.getEngine().getPlayer().getHp();
+        for(int i=0;i<hp;i++){
+            JLabel heartLabel = new JLabel();
+            heartLabel.setBounds(0+(44*i),0, 44, 30);
+            ImageIcon heart = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/heart.png")));
+            heartLabel.setIcon(heart);
+            add(heartLabel);
+        }
     }
 
-    //compiles icons and label
-    public void generatePanel() {
-        createTopLabel();
-        createIcons();
+    public void createMapIcons(){
+        JLabel mapLabel = new JLabel();
+        mapLabel.setBounds(750,0, 44, 30);
+        ImageIcon map = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/heart.png")));
+        mapLabel.setIcon(map);
+        add(mapLabel);
+    }
+
+    public void createSound(){
+        JLabel soundIcon = new JLabel();
+        soundIcon.setBounds(800,0, 44, 30);
+        ImageIcon map = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/heart.png")));
+        soundIcon.setIcon(map);
+        add(soundIcon);
+    }
+    public void createHelp(){
+        JLabel helpIcon = new JLabel();
+        helpIcon.setBounds(850,0, 44, 30);
+        ImageIcon map = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/heart.png")));
+        helpIcon.setIcon(map);
+        add(helpIcon);
     }
 }
