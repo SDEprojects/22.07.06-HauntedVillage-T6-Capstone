@@ -3,8 +3,7 @@ package com.game.hauntedVillage.viewer;
 import com.game.hauntedVillage.controller.GameManager;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +18,7 @@ class MainPanel extends JPanel {
     private final JButton[] arrow = new JButton[4];
     private TextPanel textPanel;
     private JLabel objectLabel;
+    JPopupMenu popupMenu;
 
 
 
@@ -88,27 +88,48 @@ class MainPanel extends JPanel {
         }
     }
 
-    private void createObject(String locationName, JPanel panel){
+    private void createObject(String locationName, JPanel panel) {
+
         objectLabel = new JLabel();
         objectLabel.setBounds(450, 230, 300, 300);
-        int num = 2;
+        objectLabel.addMouseListener(new ObjectListener());
         ImageIcon objectImage;
+
+        popupMenu = new JPopupMenu();
+        JMenuItem[] menuItems = new JMenuItem[3];
+       menuItems[0] = new JMenuItem("speak");
+       menuItems[0].addActionListener(new menuListener());
+       menuItems[0].setActionCommand("speak");
+       popupMenu.add(menuItems[0]);
+
+       menuItems[1] = new JMenuItem("attack");
+        menuItems[1].addActionListener(new menuListener());
+        menuItems[1].setActionCommand("attack");
+       popupMenu.add(menuItems[1]);
+
+       menuItems[2] = new JMenuItem("");
+        popupMenu.add(menuItems[2]);
+        menuItems[1].addActionListener(new menuListener());
+        menuItems[1].setActionCommand("");
+
+
         switch(locationName){
             case "home":
                 objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/npc_kids.png"));
+                objectLabel.setText("home");
                 objectLabel.setIcon(objectImage);
-                if(num != 2) {
-                    panel.add(objectLabel);
-                }
+                panel.add(objectLabel);
                 break;
             case "center courtyard":
                 objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/villagers.png"));
+                objectLabel.setText("villagers");
                 objectLabel.setBounds(500, 230, 300, 300);
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
             case "northern square":
                 objectLabel.setBounds(450, 280, 300, 300);
+                objectLabel.setText("children");
                 objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/kids.png"));
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
@@ -120,9 +141,11 @@ class MainPanel extends JPanel {
                 break;
             case "farm":
                 objectLabel.setBounds(450, 230, 300, 300);
+                objectLabel.setText("werewolf");
                 objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/werewolf.png"));
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
+
                 break;
             case "town hall":
                 objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/werewolf.png"));
@@ -130,12 +153,14 @@ class MainPanel extends JPanel {
                 panel.add(objectLabel);
                 break;
             case "tavern":
+                objectLabel.setText("keep");
                 objectLabel.setBounds(560, 230, 300, 300);
                 objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/keep.png"));
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
             case "church":
+                objectLabel.setText("pastor");
                 objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/pastor.png"));
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
@@ -150,6 +175,66 @@ class MainPanel extends JPanel {
 //                objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
+        }
+
+
+
+
+    }
+
+    private class menuListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String command = e.getActionCommand();
+            System.out.println(command);
+            JMenuItem text = (JMenuItem) e.getSource();
+
+            JPopupMenu clickedPopMenu = (JPopupMenu) text.getParent();
+            JLabel objectClicked = (JLabel) clickedPopMenu.getInvoker();
+
+            switch (command){
+                case "speak":
+                    baseController.speak(objectClicked.getText());
+                    break;
+                case "attack":
+                    objectClicked.setVisible(false);
+
+            }
+        }
+    }
+
+    private class ObjectListener implements MouseListener{
+
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            JLabel objectClicked = (JLabel) e.getSource();
+//            if(objectClicked.getText().equals("villagers")){
+//                popupMenu.getSubElements()[1].getComponent().setVisible(false);
+//            }
+            popupMenu.show(objectClicked, e.getX(), e.getY());
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
         }
     }
 
