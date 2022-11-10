@@ -18,20 +18,20 @@ class MainPanel extends JPanel {
     private String currentLocation;
     private final JButton[] arrow = new JButton[4];
     private TextPanel textPanel;
+    private JLabel objectLabel;
 
 
 
     public MainPanel(GameManager baseController,TextPanel textPanel) {
         this.baseController = baseController;
         this.textPanel=textPanel;
-
+        generateScene();
         currentLocation = baseController.getEngine().location().getCurrent();
         setLayout(null);
         setBounds(50,120,900,500);
-
-        generateScene();
         changeScreen = new ScreenChanger(getBgPanel());
         changeScreen.currentRoom("home");
+
     }
 
     // Building the completed mainPanel with arrow
@@ -60,9 +60,12 @@ class MainPanel extends JPanel {
         backGroundLable.setBounds(0, 0, 900, 500);
         bgLabel.add(backGroundLable);
 
+
+
         ImageIcon bgImage = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(picName)));
         backGroundLable.setIcon(bgImage);
         backGroundLable.repaint();
+        createObject(locationName, backGround);
         createArrow(locationName,backGround);
         backGround.add(backGroundLable);
         backGround.repaint();
@@ -97,6 +100,72 @@ class MainPanel extends JPanel {
         }
     }
 
+    private void createObject(String locationName, JPanel panel){
+        objectLabel = new JLabel();
+        objectLabel.setBounds(450, 230, 300, 300);
+        int num = 2;
+        ImageIcon objectImage;
+        switch(locationName){
+            case "home":
+                objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/npc_kids.png"));
+                objectLabel.setIcon(objectImage);
+                if(num != 2) {
+                    panel.add(objectLabel);
+                }
+                break;
+            case "center courtyard":
+                objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/villagers.png"));
+                objectLabel.setBounds(500, 230, 300, 300);
+                objectLabel.setIcon(objectImage);
+                panel.add(objectLabel);
+                break;
+            case "northern square":
+                objectLabel.setBounds(450, 280, 300, 300);
+                objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/kids.png"));
+                objectLabel.setIcon(objectImage);
+                panel.add(objectLabel);
+                break;
+            case "southern square":
+                objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/npc_kids.png"));
+                objectLabel.setIcon(objectImage);
+                panel.add(objectLabel);
+                break;
+            case "farm":
+                objectLabel.setBounds(450, 230, 300, 300);
+                objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/werewolf.png"));
+                objectLabel.setIcon(objectImage);
+                panel.add(objectLabel);
+                break;
+            case "town hall":
+                objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/werewolf.png"));
+                objectLabel.setIcon(objectImage);
+                panel.add(objectLabel);
+                break;
+            case "tavern":
+                objectLabel.setBounds(560, 230, 300, 300);
+                objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/keep.png"));
+                objectLabel.setIcon(objectImage);
+                panel.add(objectLabel);
+                break;
+            case "church":
+                objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/pastor.png"));
+                objectLabel.setIcon(objectImage);
+                panel.add(objectLabel);
+                break;
+            case "well":
+                objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/npc_kids.png"));
+                objectLabel.setIcon(objectImage);
+                panel.add(objectLabel);
+                break;
+            case "woods":
+//                objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/npc_kids.png"));
+//                objectLabel.setIcon(objectImage);
+                panel.add(objectLabel);
+                break;
+        }
+    }
+
+
     private ImageIcon loadingImageIcon(String file) {
         return new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(file)));
     }
@@ -126,9 +195,11 @@ class MainPanel extends JPanel {
         return bgPanel;
     }
 
+
     public ArrayList<JPanel> getBgPanel() {
         return bgPanel;
     }
+
 
     private class ArrowListener implements ActionListener {
         @Override
