@@ -12,6 +12,7 @@ class TextPanel extends JTextArea{
 
     private JTextArea messageArea;
     private GameManager baseController;
+    private FontStyle font = new FontStyle();
 
 
     public TextPanel(GameManager baseController){
@@ -28,20 +29,8 @@ class TextPanel extends JTextArea{
         Border outerBorder=BorderFactory.createEmptyBorder(5,5,5,5);
         setBorder(BorderFactory.createCompoundBorder(outerBorder,innerBorder));
         setText(baseController.getEngine().location().getCurrentRoom().getDescription());
-        setFont((getfont(Font.TRUETYPE_FONT,15)));
+        setFont((font.getfont(Font.TRUETYPE_FONT,15,"ReadingFile/Blood.ttf")));
     }
 
-    public Font getfont(int style,int size){
-        InputStream is=this.getClass().getClassLoader().getResourceAsStream("ReadingFile/Blood.ttf");
-        Font action=null;
-        try{
-            action=Font.createFont(Font.TRUETYPE_FONT,is);
-        }catch (FontFormatException e){
-            throw new RuntimeException(e);
-        }catch (IOException e){
-            throw new RuntimeException(e);
-        }
-        Font newFront=action.deriveFont(style,size);
-        return newFront;
-    }
+
 }

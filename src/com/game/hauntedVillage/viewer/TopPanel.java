@@ -50,7 +50,7 @@ public class TopPanel extends JPanel {
         JLabel mapLabel = new JLabel();
         mapLabel.setBounds(750, 0, 44, 30);
         mapLabel.addMouseListener(new Maplistener());
-        ImageIcon map = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/heart.png")));
+        ImageIcon map = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/mapIcon.png")));
         mapLabel.setIcon(map);
         add(mapLabel);
     }
