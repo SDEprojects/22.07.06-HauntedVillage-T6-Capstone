@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SplashScreen extends JPanel{
+public class SplashScreen extends JPanel {
 
     private JPanel splashscreenPanel;
     private GameManager baseController;
@@ -17,11 +17,11 @@ public class SplashScreen extends JPanel{
     private boolean gameStatus;
 
 
-    public SplashScreen(GameManager baseController){
+    public SplashScreen(GameManager baseController) {
         this.baseController = baseController;
         splashscreenPanel = new JPanel();
         JLabel imageLabel = new JLabel();
-        imageLabel.setBounds(0,0, 900,900);
+        imageLabel.setBounds(0, 0, 900, 900);
         ImageIcon backGroundImage = new ImageIcon(getClass().getClassLoader().getResource("Background_images/splashscreenBackground.png"));
         imageLabel.setIcon(backGroundImage);
         this.add(startGameButton());
@@ -33,20 +33,20 @@ public class SplashScreen extends JPanel{
     }
 
 
-    JButton startGameButton(){
+    JButton startGameButton() {
         startGame = new JButton("Start Game");
-        startGame.setBounds(240,500, 150, 50);
+        startGame.setBounds(240, 500, 150, 50);
         startGame.setFont(new Font("Comic sans", Font.PLAIN, 20));
         startGame.addActionListener(new StartGameListener());
 
         return startGame;
     }
 
-    JButton quitGameButton(){
+    JButton quitGameButton() {
         quitGame = new JButton("Quit Game");
-        quitGame.setBounds(470,500, 150, 50);
+        quitGame.setBounds(470, 500, 150, 50);
         quitGame.setFont(new Font("Comic sans", Font.PLAIN, 20));
-        return  quitGame;
+        return quitGame;
     }
 
     //getter and setters
@@ -58,7 +58,7 @@ public class SplashScreen extends JPanel{
         this.gameStatus = gameStatus;
     }
 
-    class StartGameListener implements ActionListener{
+    class StartGameListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {

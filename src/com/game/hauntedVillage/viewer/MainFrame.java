@@ -4,9 +4,8 @@ import com.game.hauntedVillage.controller.GameManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
     private MainPanel backgroundPanel;
@@ -16,13 +15,17 @@ public class MainFrame extends JFrame {
     private InventoryPanel inventoryPanel;
     private ItemDisplayPanel itemListPanel;
 
+    MainFrame(){
+        super();
+    }
+
     public MainFrame(GameManager baseController) {
         backgroundPanel = new MainPanel(baseController, textPanel);
         textPanel = new TextPanel(baseController);
         splashScreen = new SplashScreen(baseController);
         topPanel = new TopPanel(baseController);
         inventoryPanel = new InventoryPanel(baseController);
-        itemListPanel=new ItemDisplayPanel(baseController);
+        itemListPanel = new ItemDisplayPanel(baseController);
         setupFrame();
     }
 
@@ -32,10 +35,7 @@ public class MainFrame extends JFrame {
         inventoryPanel.setVisible(true);
         topPanel.setVisible(true);
         textPanel.setVisible(true);
-    }
-
-    public void updateText(String text) {
-        textPanel.setText(text);
+        itemListPanel.setVisible(false);
     }
 
     private void setupFrame() {
@@ -59,7 +59,6 @@ public class MainFrame extends JFrame {
         topPanel.setVisible(false);
         // (5) ItemList Panel for display the item when you search the map
         add(itemListPanel);
-        itemListPanel.setVisible(true);
 
         setJMenuBar(createMenuBar());
         this.setVisible(true);
@@ -90,5 +89,21 @@ public class MainFrame extends JFrame {
             }
         });
         return menuBar;
-        }
     }
+
+    public ArrayList<JPanel> getCurrentItem(){
+        return itemListPanel.getItemPanel();
+    }
+
+    public void itemPanelOn() {
+        itemListPanel.setVisible(true);
+    }
+
+    public void itemPanelOff() {
+        itemListPanel.setVisible(false);
+    }
+
+    public void updateText(String text) {
+        textPanel.setText(text);
+    }
+}

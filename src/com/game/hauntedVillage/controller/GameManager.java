@@ -1,52 +1,50 @@
 package com.game.hauntedVillage.controller;
 
 import com.game.hauntedVillage.model.Engine;
-import com.game.hauntedVillage.model.Location;
 import com.game.hauntedVillage.viewer.MainFrame;
 
 public class GameManager {
     private Engine theModel;
     private MainFrame theView;
 
-    public GameManager(){
-        theModel=new Engine();
+    public GameManager() {
+        theModel = new Engine();
     }
 
-    public Engine getEngine(){
+    public Engine getEngine() {
         return theModel;
     }
 
-    public void start(){
-        theView=new MainFrame(this);
+    public void start() {
+        theView = new MainFrame(this);
     }
-    public void startGame(){
+
+    public void startGame() {
         theView.showGamePanel();
     }
 
-    public void displayText(){
-         theView.updateText(theModel.location().getCurrentRoom().getDescription());
+    public void itemPanelControllerOn() {
+        theView.itemPanelOn();
     }
 
-    public void speak(String npcName){
+    public void itemPanelControllerOff() {
+        theView.itemPanelOff();
+    }
+    public void itemListPanel(){
+        theView.getCurrentItem();
+    }
+
+    public void displayText() {
+        theView.updateText(theModel.location().getCurrentRoom().getDescription());
+    }
+
+    public void speak(String npcName) {
         theView.updateText(theModel.npc().speak(npcName));
     }
 
+    public void displayItemPanelInTheMap() {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 
 //

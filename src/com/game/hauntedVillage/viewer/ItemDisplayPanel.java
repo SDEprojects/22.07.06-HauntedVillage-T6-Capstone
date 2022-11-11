@@ -3,7 +3,6 @@ package com.game.hauntedVillage.viewer;
 import com.game.hauntedVillage.controller.GameManager;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -11,8 +10,8 @@ import java.util.Objects;
 public class ItemDisplayPanel extends JPanel {
 
     private GameManager baseController;
-    private final ArrayList<JPanel> bgPanel = new ArrayList<>();
-    private final ArrayList<JLabel> bgLabel = new ArrayList<>();
+    private final ArrayList<JPanel> itemPanel = new ArrayList<>();
+    private final ArrayList<JLabel> itemLabel = new ArrayList<>();
     private ArrayList<JLabel> itemListInMap;
     private ArrayList<String> itemListName;
 
@@ -25,62 +24,63 @@ public class ItemDisplayPanel extends JPanel {
         generateScene();
     }
 
-    private JLabel ImageCreate(String picName,int xPosition){
+    private JLabel ImageCreate(String picName, int xPosition) {
         JLabel backGroundLable = new JLabel();
         backGroundLable.setLayout(null);
         backGroundLable.setBounds(xPosition, 0, 40, 40);
         ImageIcon bgImage = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(picName)));
         backGroundLable.setIcon(bgImage);
-        bgLabel.add(backGroundLable);
+        itemLabel.add(backGroundLable);
         return backGroundLable;
     }
 
-    private void createBackground(String picName,String locationName) {
+    private void createBackground(String picName, String locationName) {
         JPanel backGround = new JPanel();
         backGround.setLayout(null);
         backGround.setBounds(0, 0, 900, 40);
         backGround.setBackground(null);
-        bgPanel.add(backGround);
+        itemPanel.add(backGround);
         add(backGround);
         List<String> areaNameList = baseController.getEngine().location().allAreaNameList();
-        itemListName=baseController.getEngine().location().getItems();
+        itemListName = baseController.getEngine().location().getItems();
 
-        switch(locationName){
+        switch (locationName) {
             case "home":
-                JLabel matches= ImageCreate(picName,0);
+                JLabel matches = ImageCreate(picName, 0);
                 backGround.add(matches);
-                JLabel crucifix= ImageCreate(picName,50);
+                JLabel crucifix = ImageCreate(picName, 50);
                 backGround.add(crucifix);
-                JLabel knife= ImageCreate(picName,100);
+                JLabel knife = ImageCreate(picName, 100);
                 backGround.add(knife);
                 System.out.println("1");
                 break;
             case "farm":
-                JLabel shovel= ImageCreate(picName,0);
+                JLabel shovel = ImageCreate(picName, 0);
                 backGround.add(shovel);
-                JLabel musket= ImageCreate(picName,50);
+                JLabel musket = ImageCreate(picName, 50);
                 backGround.add(musket);
                 break;
             case "town hall":
-                JLabel bullet= ImageCreate(picName,0);
+                JLabel bullet = ImageCreate(picName, 0);
                 backGround.add(bullet);
                 break;
             case "tavern":
-                JLabel food= ImageCreate(picName,0);
+                JLabel food = ImageCreate(picName, 0);
                 backGround.add(food);
                 break;
             case "church":
-                JLabel amulet= ImageCreate(picName,0);
+                JLabel amulet = ImageCreate(picName, 0);
                 backGround.add(amulet);
                 break;
             case "well":
-                JLabel stone= ImageCreate(picName,0);
+                JLabel stone = ImageCreate(picName, 0);
                 backGround.add(stone);
                 break;
             default:
-                System.out.println("works");
+//                throw new IllegalArgumentException();
         }
     }
+
     public ArrayList<JPanel> generateScene() {
         createBackground("Icons/heart.png", "home");
         createBackground("Icons/heart.png", "center courtyard");
@@ -92,28 +92,11 @@ public class ItemDisplayPanel extends JPanel {
         createBackground("Icons/heart.png", "church");
         createBackground("Icons/heart.png", "well");
         createBackground("Icons/heart.png", "woods");
-        return bgPanel;
+        return itemPanel;
     }
 
-    // build the individual item panel for each map
-    public void singleItemDisplayPanel() {
-        setLayout(null);
-        setBounds(50, 640, 900, 40);
-        setBackground(Color.white);
-        setOpaque(true);
-    }
-
-    private void itemList(){
-        itemListName=baseController.getEngine().location().getItems();
-    }
-    private void createMapIcons(String fileName, int xPostion) {
-        JLabel itemLabel = new JLabel();
-        itemLabel.setBounds(xPostion, 0, 44, 30);
-        ImageIcon map = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(fileName)));
-        itemLabel.setIcon(map);
-        add(itemLabel);
-    }
-    public ArrayList<JPanel> getBgPanel() {
-        return bgPanel;
+    public ArrayList<JPanel> getItemPanel() {
+        System.out.println(itemPanel);
+        return itemPanel;
     }
 }
