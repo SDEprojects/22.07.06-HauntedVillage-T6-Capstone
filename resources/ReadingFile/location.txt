@@ -87,7 +87,7 @@
     The old clerk offers you a gift.
     Take the gift or go west to Southern Square.",
     "items": [
-      "gift"
+      "silver bullet"
     ]
   },
   {
@@ -113,8 +113,7 @@
     It is a bit dark for an early afternoon visit, but you remember seeing clouds up above, possibly signaling some rain later that evening.
     Here you can speak to the pastor, say a prayer, light a candle, or go west to back Northern Square.",
     "items": [
-      "corn",
-      "note"
+      "triangular amulet"
     ]
   },
   {
@@ -128,7 +127,7 @@
     It is a rough stone circle with a seemingly bottomless pit in the center. The sky seems to have become dim.
     To the North the tall trees block out the light and there is only the sound of creaking wood and the rustle of leaves. A discarded bucket and rope lay in the yellow grass.
     Search the area, use the well, or go back south to Northern Square.",
-    "items": []
+    "items": ["blue stone"]
   },
   {
     "current": "woods",
