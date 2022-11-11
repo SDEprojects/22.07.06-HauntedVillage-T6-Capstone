@@ -13,7 +13,6 @@ class MainPanel extends JPanel {
     private final ScreenChanger changeScreen;
     private final ArrayList<JPanel> bgPanel = new ArrayList<>();
     private final ArrayList<JLabel> bgLabel = new ArrayList<>();
-    private int locationOrder = 0;
     private String currentLocation;
     private final JButton[] arrow = new JButton[4];
     private TextPanel textPanel;
@@ -49,8 +48,6 @@ class MainPanel extends JPanel {
         backGroundLable.setBounds(0, 0, 900, 500);
         bgLabel.add(backGroundLable);
 
-
-
         ImageIcon bgImage = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(picName)));
         backGroundLable.setIcon(bgImage);
         backGroundLable.repaint();
@@ -58,7 +55,6 @@ class MainPanel extends JPanel {
         createArrow(locationName,backGround);
         backGround.add(backGroundLable);
         backGround.repaint();
-        locationOrder++;
     }
 
     private void createArrow(String roomName,JPanel panel) {
@@ -89,7 +85,6 @@ class MainPanel extends JPanel {
     }
 
     private void createObject(String locationName, JPanel panel) {
-
         objectLabel = new JLabel();
         objectLabel.setBounds(450, 230, 300, 300);
         objectLabel.addMouseListener(new ObjectListener());
@@ -204,41 +199,6 @@ class MainPanel extends JPanel {
         }
     }
 
-    private class ObjectListener implements MouseListener{
-
-
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            JLabel objectClicked = (JLabel) e.getSource();
-//            if(objectClicked.getText().equals("villagers")){
-//                popupMenu.getSubElements()[1].getComponent().setVisible(false);
-//            }
-            popupMenu.show(objectClicked, e.getX(), e.getY());
-
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
-    }
-
-
     private ImageIcon loadingImageIcon(String file) {
         return new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(file)));
     }
@@ -295,6 +255,40 @@ class MainPanel extends JPanel {
                 System.out.println("you need more arrows");
             }
             baseController.displayText();
+        }
+    }
+
+    private class ObjectListener implements MouseListener{
+
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            JLabel objectClicked = (JLabel) e.getSource();
+//            if(objectClicked.getText().equals("villagers")){
+//                popupMenu.getSubElements()[1].getComponent().setVisible(false);
+//            }
+            popupMenu.show(objectClicked, e.getX(), e.getY());
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
         }
     }
 }

@@ -26,7 +26,6 @@ public class MainFrame extends JFrame {
         setupFrame();
     }
 
-
     public void showGamePanel() {
         splashScreen.setVisible(false);
         backgroundPanel.setVisible(true);
@@ -61,7 +60,6 @@ public class MainFrame extends JFrame {
         // (5) ItemList Panel for display the item when you search the map
         add(itemListPanel);
         itemListPanel.setVisible(true);
-
 
         setJMenuBar(createMenuBar());
         this.setVisible(true);
