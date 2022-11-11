@@ -102,12 +102,8 @@ class MainPanel extends JPanel {
         menuItems[1].setActionCommand("attack");
        popupMenu.add(menuItems[1]);
 
-       menuItems[2] = new JMenuItem("");
+       menuItems[2] = new JMenuItem("rest");
         popupMenu.add(menuItems[2]);
-        menuItems[1].addActionListener(new menuListener());
-        menuItems[1].setActionCommand("");
-
-
         switch(locationName){
             case "home":
                 objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/npc_kids.png"));
@@ -139,7 +135,7 @@ class MainPanel extends JPanel {
                 objectLabel.setText("werewolf");
                 objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/werewolf.png"));
                 objectLabel.setIcon(objectImage);
-                panel.add(objectLabel);
+                    panel.add(objectLabel);
 
                 break;
             case "town hall":
