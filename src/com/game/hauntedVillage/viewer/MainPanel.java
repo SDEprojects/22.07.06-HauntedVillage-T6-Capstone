@@ -107,6 +107,7 @@ class MainPanel extends JPanel {
         menuItems[2] = new JMenuItem("search");
         menuItems[2].addActionListener(new menuListener());
         menuItems[2].setActionCommand("search");
+        popupMenu.add(menuItems[2]);
         switch(locationName){
             case "home":
                 objectImage = loadingImageIcon("npc_images/npc_kids.png");
@@ -248,7 +249,10 @@ class MainPanel extends JPanel {
                     break;
                 case "attack":
                     objectClicked.setVisible(false);
-
+                case "search":
+                    baseController.itemPanelControllerOn();
+                    changeScreen.currentList(baseController.getEngine().location().getCurrent());
+                    break;
             }
         }
     }
