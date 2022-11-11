@@ -19,6 +19,16 @@ public class LocationTest {
         assertEquals(expectList.size(),actualList.size());
     }
     @Test
+    public void buildingDirectionListWith_validInputWithMultiAnswer(){
+        List<String> expectList=new LinkedList<>();
+        expectList.add("north");
+        expectList.add("east");
+        expectList.add("south");
+        List<String> actualList=location.directionList( "southern square");
+        assertEquals(expectList.get(0),actualList.get(0));
+        assertEquals(expectList.size(),actualList.size());
+    }
+    @Test
     public void buildingDirectionListWith_InvalidInput(){
         List<String> expectList=new LinkedList<>();
         List<String> actualList=location.directionList( "");

@@ -3,6 +3,7 @@ package com.game.hauntedVillage.model;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -19,7 +20,7 @@ public class Location {
     private String direction;
     private final ObjectMapper objectMapper = new ObjectMapper();
     private List<Location> locations;
-    private List<String> locationNameList = new ArrayList<>();
+    private List<String> locationNameList=new ArrayList<>();
     private final FileReading file = new FileReading();
     private  Location currentRoom;
 
@@ -36,6 +37,14 @@ public class Location {
         this.east = east;
         this.items = items;
         this.description = description;
+    }
+
+    public List<String> allAreaNameList(){
+        List<Location> Locations = dataReader();
+        for (int i = 0; i < Locations.size(); i++) {
+            locationNameList.add(Locations.get(i).getCurrent());
+        }
+        return locationNameList;
     }
 
     public List<Location> dataReader() {
@@ -149,5 +158,11 @@ public class Location {
     public String toString() {
         return "Room: current Room=" + getCurrent() + ", north=" + getNorth() + ", south=" + getSouth() + ", west=" + getWest()
                 + ", east=" + getEast() + ", items=" + getItems() + ", description=" + getDescription();
+    }
+
+    public static void main(String[] args) {
+        Location avc=new Location();
+        avc.allAreaNameList();
+        System.out.println(avc.getCurrentRoom().getItems());
     }
 }

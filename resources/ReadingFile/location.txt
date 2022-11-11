@@ -126,7 +126,7 @@
     "description": "
     The air is remarkably colder here. You’ve been avoiding this area due to the shrieks at night.
     It is a rough stone circle with a seemingly bottomless pit in the center. The sky seems to have become dim.
-    To the North the tall trees block out the light and there is only the sound of creaking wood and the rustle of leaves. \nA discarded bucket and rope lay in the yellow grass.
+    To the North the tall trees block out the light and there is only the sound of creaking wood and the rustle of leaves. A discarded bucket and rope lay in the yellow grass.
     Search the area, use the well, or go back south to Northern Square.",
     "items": []
   },
