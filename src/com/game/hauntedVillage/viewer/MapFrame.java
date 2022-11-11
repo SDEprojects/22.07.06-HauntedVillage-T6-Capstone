@@ -3,11 +3,14 @@ package com.game.hauntedVillage.viewer;
 import com.game.hauntedVillage.controller.GameManager;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 
 class MapFrame extends JFrame{
 
     private GameManager baseController;
+    private FontStyle font = new FontStyle();
 
     public MapFrame(GameManager baseController){
         this.baseController = baseController;
@@ -20,17 +23,21 @@ class MapFrame extends JFrame{
     }
     private JPanel createRoomLabel (int xPos, int yPos, String locationName){
         JPanel roomPanel = new JPanel();
-        roomPanel.setBounds(xPos,yPos, 200, 75);
+        roomPanel.setBounds(xPos,yPos, 199, 74);
+        roomPanel.setBackground(Color.gray);
+        Border border = BorderFactory.createLineBorder(Color.black, 3);
+        roomPanel.setBorder(border);
+        roomPanel.setOpaque(true);
 
         JLabel roomLabel = new JLabel(locationName, SwingConstants.CENTER);
-        roomLabel.setBounds(25,10, 150, 30);
+        roomLabel.setBounds(25,20, 150, 30);
         roomPanel.add(roomLabel);
-
-        roomPanel.setOpaque(true);
-        roomPanel.setBackground(Color.GREEN);
+        roomLabel.setForeground(Color.decode("#7E2811"));
+        roomLabel.setFont(font.getfont(Font.BOLD, 18, "ReadingFile/Blood.ttf"));
 
         if(locationName.equals(baseController.getEngine().location().getCurrent())){
-            roomPanel.setBackground(Color.red);
+            roomPanel.setBackground(Color.gray);
+            roomLabel.setForeground(Color.green);
         }
         roomPanel.setLayout(null);
         return  roomPanel;
