@@ -48,7 +48,7 @@
     "boss_kill": "False"
   },
    {
-    "name": "birds food",
+    "name": "feed",
     "location": "tavern",
     "description": "some bird food",
     "use_location": "townHall",
