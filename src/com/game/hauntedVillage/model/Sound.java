@@ -1,7 +1,59 @@
 package com.game.hauntedVillage.model;
 
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.URL;
+
 public class Sound {
+    SoundHandler soundHandler = new SoundHandler();
+
+
+    public void playSound() {
+        JFrame window = new JFrame();
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setLayout(new GridLayout(1, 3));
+
+        //volume up button
+        JButton volumeUp = new JButton("volume up");
+        volumeUp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                soundHandler.volumeUp();
+            }
+        });
+        window.add(volumeUp);
+
+        //volume down button
+        JButton volumeDown = new JButton("volume down");
+        volumeDown.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                soundHandler.volumeDown();
+            }
+        });
+        window.add(volumeDown);
+
+        //mute button
+        JButton muteButton = new JButton("Mute");
+        muteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                soundHandler.toggleMute();
+            }
+        });
+        window.add(muteButton);
+        window.pack();
+        window.setVisible(true);
+
+        //Sound file
+        URL soundUrl = getClass().getResource("/Sound/music.wav");
+        // playMusic(soundUrl);
+    }
+}
+
 //
 //    private static Boolean SFX_On = true;
 //    private static Boolean musicOn = true;
@@ -261,4 +313,4 @@ public class Sound {
 //    public static void setSFX_On(Boolean SFX_On) {
 //        Sound.SFX_On = SFX_On;
 //    }
-}
+//}
