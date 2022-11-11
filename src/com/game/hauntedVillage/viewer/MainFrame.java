@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
     private MainPanel backgroundPanel;
@@ -15,14 +16,16 @@ public class MainFrame extends JFrame {
     private SplashScreen splashScreen;
     private InventoryPanel inventoryPanel;
     private ItemDisplayPanel itemListPanel;
+    private ArrayList<JPanel> item;
 
     public MainFrame(GameManager baseController) {
-        backgroundPanel = new MainPanel(baseController, textPanel);
         textPanel = new TextPanel(baseController);
         splashScreen = new SplashScreen(baseController);
         topPanel = new TopPanel(baseController);
         inventoryPanel = new InventoryPanel(baseController);
-        itemListPanel=new ItemDisplayPanel(baseController);
+        itemListPanel = new ItemDisplayPanel(baseController);
+        itemListPanel = new ItemDisplayPanel(baseController);
+        backgroundPanel = new MainPanel(baseController, textPanel, itemListPanel);
         setupFrame();
     }
 
@@ -32,10 +35,6 @@ public class MainFrame extends JFrame {
         inventoryPanel.setVisible(true);
         topPanel.setVisible(true);
         textPanel.setVisible(true);
-    }
-
-    public void updateText(String text) {
-        textPanel.setText(text);
     }
 
     private void setupFrame() {
@@ -59,11 +58,12 @@ public class MainFrame extends JFrame {
         topPanel.setVisible(false);
         // (5) ItemList Panel for display the item when you search the map
         add(itemListPanel);
-        itemListPanel.setVisible(true);
+        itemListPanel.setVisible(false);
 
         setJMenuBar(createMenuBar());
         this.setVisible(true);
     }
+
 
     private JMenuBar createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
@@ -90,5 +90,17 @@ public class MainFrame extends JFrame {
             }
         });
         return menuBar;
-        }
     }
+
+    public void itemPanelOn() {
+        itemListPanel.setVisible(true);
+    }
+
+    public void itemPanelOff() {
+        itemListPanel.setVisible(false);
+    }
+
+    public void updateText(String text) {
+        textPanel.setText(text);
+    }
+}

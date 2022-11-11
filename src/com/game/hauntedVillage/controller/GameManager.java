@@ -23,6 +23,14 @@ public class GameManager {
         theView.showGamePanel();
     }
 
+    public void itemPanelControllerOn() {
+        theView.itemPanelOn();
+    }
+
+    public void itemPanelControllerOff() {
+        theView.itemPanelOff();
+    }
+
     public void displayText(){
          theView.updateText(theModel.location().getCurrentRoom().getDescription());
     }
