@@ -1,6 +1,5 @@
-package com.game.hauntedVillage.model;
+package com.game.hauntedvillage.model;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.List;
