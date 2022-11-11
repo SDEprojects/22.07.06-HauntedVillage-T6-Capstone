@@ -63,7 +63,8 @@ public class Location {
         List<Location> Locations = dataReader();
         for (Location location : Locations) {
             if (location.getCurrent().equals(name)) {
-                return room = location;
+                room = location;
+                break;
             }
         }
         return room;
