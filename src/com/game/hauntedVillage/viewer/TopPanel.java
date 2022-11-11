@@ -7,6 +7,8 @@ import com.game.hauntedVillage.model.SoundHandler;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -46,6 +48,7 @@ public class TopPanel extends JPanel {
     public void createMapIcons() {
         JLabel mapLabel = new JLabel();
         mapLabel.setBounds(750, 0, 44, 30);
+        mapLabel.addMouseListener(new Maplistener());
         ImageIcon map = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/heart.png")));
         mapLabel.setIcon(map);
         add(mapLabel);
@@ -76,5 +79,34 @@ public class TopPanel extends JPanel {
         ImageIcon map = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/heart.png")));
         helpIcon.setIcon(map);
         add(helpIcon);
+    }
+
+    // Mouse/Action listener
+    private class Maplistener implements MouseListener{
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            MapFrame map = new MapFrame(baseController);
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
     }
 }
