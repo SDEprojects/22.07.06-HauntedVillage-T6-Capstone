@@ -18,9 +18,11 @@ public class Location {
     private ArrayList<String> items;
     private String description;
     private String direction;
+    private ArrayList<String> action;
     private final ObjectMapper objectMapper = new ObjectMapper();
     private List<Location> locations;
     private List<String> locationNameList=new ArrayList<>();
+    private ArrayList<String> actionList=new ArrayList<>();
     private final FileReading file = new FileReading();
     private  Location currentRoom;
 
@@ -45,6 +47,15 @@ public class Location {
             locationNameList.add(Locations.get(i).getCurrent());
         }
         return locationNameList;
+    }
+
+    public ArrayList<String> allAreaActionList(String locationName){
+        List<Location> Locations = dataReader();
+        for (int i = 0; i < Locations.size(); i++) {
+            if(locationName.equals(Locations.get(i).getCurrent()))
+            actionList = Locations.get(i).getAction();
+        }
+        return actionList;
     }
 
     public List<Location> dataReader() {
@@ -155,15 +166,23 @@ public class Location {
         return description;
     }
 
+    public ArrayList<String> getAction() {
+        return action;
+    }
+
+    public void setAction(ArrayList<String> action) {
+        this.action = action;
+    }
+
     @Override
     public String toString() {
         return "Room: current Room=" + getCurrent() + ", north=" + getNorth() + ", south=" + getSouth() + ", west=" + getWest()
-                + ", east=" + getEast() + ", items=" + getItems() + ", description=" + getDescription();
+                + ", east=" + getEast() + ", items=" + getItems() + ", description=" + getDescription() + ", action=" + getAction();
     }
 
     public static void main(String[] args) {
         Location avc=new Location();
-        avc.allAreaNameList();
-        System.out.println(avc.getCurrentRoom().getItems());
+      avc.allAreaNameList();
+        System.out.println(avc.allAreaActionList("home"));
     }
 }
