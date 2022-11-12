@@ -4,12 +4,16 @@ import java.util.*;
 
 public class Character {
     private String description;
-    private final List<String> inventory = new ArrayList<>();
+    private final ArrayList<String> inventory = new ArrayList<>();
     private String location;
     private int hp=5;
 
     public Character() {
         super();
+    }
+
+    public void addItemToinventory(String itemName){
+        inventory.add(itemName);
     }
 
     //business methods
@@ -50,15 +54,7 @@ public class Character {
 //        }
 //    }
 
-    void checkInventory() {
-        if (getInventory().size() > 0) {
-            System.out.println("You have following items: " + getInventory() + ".");
-        } else {
-            System.out.println("You have nothing in your bag");
-        }
-    }
-
-    public List<String> getInventory() {
+    public ArrayList<String> getInventory() {
         return inventory;
     }
 

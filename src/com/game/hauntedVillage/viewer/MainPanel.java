@@ -248,7 +248,6 @@ class MainPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
-            System.out.println(command);
             JMenuItem text = (JMenuItem) e.getSource();
 
             JPopupMenu clickedPopMenu = (JPopupMenu) text.getParent();
