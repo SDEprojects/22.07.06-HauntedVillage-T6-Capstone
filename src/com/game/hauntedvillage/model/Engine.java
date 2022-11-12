@@ -1,4 +1,4 @@
-package com.game.hauntedVillage.model;
+package com.game.hauntedvillage.model;
 
 
 import java.util.List;

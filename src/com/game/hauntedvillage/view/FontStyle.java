@@ -1,4 +1,4 @@
-package com.game.hauntedVillage.viewer;
+package com.game.hauntedvillage.view;
 
 import java.awt.*;
 import java.io.IOException;

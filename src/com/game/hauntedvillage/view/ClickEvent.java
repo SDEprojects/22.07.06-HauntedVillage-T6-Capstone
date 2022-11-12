@@ -1,4 +1,4 @@
-package com.game.hauntedVillage.viewer;
+package com.game.hauntedvillage.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

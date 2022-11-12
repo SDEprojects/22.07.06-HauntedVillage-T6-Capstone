@@ -1,4 +1,4 @@
-package com.game.hauntedVillage.model;
+package com.game.hauntedvillage.utility;
 
 import java.util.ArrayList;
 import java.util.Arrays;

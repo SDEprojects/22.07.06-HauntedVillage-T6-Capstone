@@ -1,6 +1,6 @@
-package com.game.hauntedVillage.app;
+package com.game.hauntedvillage.app;
 
-import com.game.hauntedVillage.controller.GameManager;
+import com.game.hauntedvillage.controller.GameManager;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.game.hauntedVillage.model;
+package com.game.hauntedvillage.utility;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

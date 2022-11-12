@@ -1,6 +1,6 @@
-package com.game.hauntedVillage.viewer;
+package com.game.hauntedvillage.view;
 
-import com.game.hauntedVillage.controller.GameManager;
+import com.game.hauntedvillage.controller.GameManager;
 
 
 import javax.swing.*;
@@ -22,7 +22,7 @@ public class SplashScreen extends JPanel{
         splashscreenPanel = new JPanel();
         JLabel imageLabel = new JLabel();
         imageLabel.setBounds(0,0, 900,900);
-        ImageIcon backGroundImage = new ImageIcon(getClass().getClassLoader().getResource("Background_images/splashscreenBackground.png"));
+        ImageIcon backGroundImage = new ImageIcon(getClass().getClassLoader().getResource("BackgroundImages/splashscreenBackground.png"));
         imageLabel.setIcon(backGroundImage);
         this.add(startGameButton());
         this.add(quitGameButton());
