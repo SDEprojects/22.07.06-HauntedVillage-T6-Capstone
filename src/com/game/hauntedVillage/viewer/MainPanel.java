@@ -3,6 +3,7 @@ package com.game.hauntedVillage.viewer;
 import com.game.hauntedVillage.controller.GameManager;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ class MainPanel extends JPanel {
     private JLabel objectLabel;
     private JPopupMenu popupMenu;
     private ItemDisplayPanel itemListPanel;
+    private List<String> actions;
 
 
 
@@ -55,8 +57,11 @@ class MainPanel extends JPanel {
         backGroundLable.repaint();
         createObject(locationName, backGround);
         createArrow(locationName,backGround);
+        popupMenu = createPopupMenu(locationName);
         backGround.add(backGroundLable);
         backGround.repaint();
+
+
     }
 
     private void createArrow(String roomName,JPanel panel) {
@@ -86,28 +91,30 @@ class MainPanel extends JPanel {
         }
     }
 
+    public JPopupMenu createPopupMenu(String locationName){
+        popupMenu = new JPopupMenu();
+        actions = baseController.getEngine().location().allAreaActionList(locationName);
+
+        ArrayList<JMenuItem> menuItems = new ArrayList<>();
+        for(int i = 0; i < actions.size(); i++){
+            menuItems.add(new JMenuItem(actions.get(i)));
+            menuItems.get(i).addActionListener(new menuListener());
+            menuItems.get(i).setActionCommand(actions.get(i));
+            popupMenu.add(menuItems.get(i));
+
+        }
+
+
+        return popupMenu;
+    }
+
     private void createObject(String locationName, JPanel panel) {
         objectLabel = new JLabel();
         objectLabel.setBounds(450, 230, 300, 300);
         objectLabel.addMouseListener(new ObjectListener());
         ImageIcon objectImage;
 
-        popupMenu = new JPopupMenu();
-        JMenuItem[] menuItems = new JMenuItem[3];
-       menuItems[0] = new JMenuItem("speak");
-       menuItems[0].addActionListener(new menuListener());
-       menuItems[0].setActionCommand("speak");
-       popupMenu.add(menuItems[0]);
 
-       menuItems[1] = new JMenuItem("attack");
-        menuItems[1].addActionListener(new menuListener());
-        menuItems[1].setActionCommand("attack");
-       popupMenu.add(menuItems[1]);
-
-        menuItems[2] = new JMenuItem("search");
-        menuItems[2].addActionListener(new menuListener());
-        menuItems[2].setActionCommand("search");
-        popupMenu.add(menuItems[2]);
         switch(locationName){
             case "home":
                 objectImage = loadingImageIcon("npc_images/npc_kids.png");
@@ -171,6 +178,9 @@ class MainPanel extends JPanel {
                 panel.add(objectLabel);
                 break;
         }
+
+
+
     }
 
     private ImageIcon loadingImageIcon(String file) {
@@ -230,6 +240,7 @@ class MainPanel extends JPanel {
                 System.out.println("you need more arrows");
             }
             baseController.displayText();
+            popupMenu=createPopupMenu(baseController.getEngine().location().getCurrent());
         }
     }
     private class menuListener implements ActionListener{
@@ -249,6 +260,7 @@ class MainPanel extends JPanel {
                     break;
                 case "attack":
                     objectClicked.setVisible(false);
+                    break;
                 case "search":
                     baseController.itemPanelControllerOn();
                     changeScreen.currentList(baseController.getEngine().location().getCurrent());

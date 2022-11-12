@@ -13,7 +13,8 @@
       "matches",
       "crucifix",
       "knife"
-    ]
+    ],
+    "action": ["search"],
   },
   {
     "current": "center courtyard",
@@ -26,7 +27,8 @@
     To the West is your house. To the north is the Northern Square. To the South is further outside. To the East is the tavern.
     You may speak to the villagers or go in a direction.
     East to Tarvern, North to Northern Square, South to Southern Square.",
-    "items": []
+    "items": [],
+    "action": ["speak"],
   },
   {
     "current": "northern square",
@@ -39,7 +41,8 @@
     To the North is the well and to the East is the Church.
     You may search the area, speak to the child,
     or go North to Well, East to Church, or South to Center Courtyard.",
-    "items": []
+    "items": [],
+    "action": ["speak","search"],
   },
   {
     "current": "southern square",
@@ -53,7 +56,8 @@
     To the South is your neighbor's farm.
     Go on to the direction you'd like.
     North to Center Courtyard, East to Town hall, South to Farm",
-    "items": []
+    "items": [],
+    "action": [],
   },
   {
     "current": "farm",
@@ -69,7 +73,8 @@
     "items": [
       "shovel",
       "musket"
-    ]
+    ],
+    "action": ["search", "wake farmer", "attack"],
   },
   {
     "current": "town hall",
@@ -88,7 +93,8 @@
     Take the gift or go west to Southern Square.",
     "items": [
       "silver bullet"
-    ]
+    ],
+    "action": ["speak"],
   },
   {
     "current": "tavern",
@@ -100,7 +106,8 @@
     "There are broken chairs on the floor and the tavern is empty except for the bar keep.",
     "items": [
       "feed"
-    ]
+    ],
+    "action": ["search"],
   },
   {
     "current": "church",
@@ -114,7 +121,8 @@
     Here you can speak to the pastor, say a prayer, light a candle, or go west to back Northern Square.",
     "items": [
       "triangular amulet"
-    ]
+    ],
+    "action": ["speak","search", "light candle", "pray"],
   },
   {
     "current": "well",
@@ -127,7 +135,8 @@
     It is a rough stone circle with a seemingly bottomless pit in the center. The sky seems to have become dim.
     To the North the tall trees block out the light and there is only the sound of creaking wood and the rustle of leaves. A discarded bucket and rope lay in the yellow grass.
     Search the area, use the well, or go back south to Northern Square.",
-    "items": ["blue stone"]
+    "items": ["blue stone"],
+    "action": ["search"],
   },
   {
     "current": "woods",
@@ -142,6 +151,7 @@
     I have been watching you, but you can’t stop me now, he roars!
     The beast raises his arms and a flaming vortex bursts from the ground as he murmurs an incantation.
     You can use something from your inventory to against, or you can go back south to the well.",
-    "items": []
+    "items": [],
+    "action": ["attack", "search"]
   }
 ]
