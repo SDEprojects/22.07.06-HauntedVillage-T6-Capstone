@@ -34,6 +34,7 @@ class MainPanel extends JPanel {
         setBounds(50,120,900,500);
         changeScreen = new ScreenChanger(getBgPanel(),itemListPanel.getItemPanel());
         changeScreen.currentRoom("home");
+        createPopupMenu("home");
 
     }
 
@@ -57,7 +58,6 @@ class MainPanel extends JPanel {
         backGroundLable.repaint();
         createObject(locationName, backGround);
         createArrow(locationName,backGround);
-        popupMenu = createPopupMenu(locationName);
         backGround.add(backGroundLable);
         backGround.repaint();
 
@@ -146,8 +146,7 @@ class MainPanel extends JPanel {
                 objectLabel.setText("werewolf");
                 objectImage = loadingImageIcon("npc_images/werewolf.png");
                 objectLabel.setIcon(objectImage);
-                    panel.add(objectLabel);
-
+                panel.add(objectLabel);
                 break;
             case "town hall":
                 objectImage = loadingImageIcon("npc_images/werewolf.png");
@@ -173,8 +172,6 @@ class MainPanel extends JPanel {
                 panel.add(objectLabel);
                 break;
             case "woods":
-//                objectImage = new ImageIcon(getClass().getClassLoader().getResource("npc_images/npc_kids.png"));
-//                objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
         }
@@ -274,9 +271,6 @@ class MainPanel extends JPanel {
         @Override
         public void mouseClicked(MouseEvent e) {
             JLabel objectClicked = (JLabel) e.getSource();
-//            if(objectClicked.getText().equals("villagers")){
-//                popupMenu.getSubElements()[1].getComponent().setVisible(false);
-//            }
             popupMenu.show(objectClicked, e.getX(), e.getY());
 
         }
