@@ -237,7 +237,6 @@ class MainPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
-            System.out.println(command);
             JMenuItem text = (JMenuItem) e.getSource();
 
             JPopupMenu clickedPopMenu = (JPopupMenu) text.getParent();
@@ -249,6 +248,7 @@ class MainPanel extends JPanel {
                     break;
                 case "attack":
                     objectClicked.setVisible(false);
+                    break;
                 case "search":
                     baseController.itemPanelControllerOn();
                     changeScreen.currentList(baseController.getEngine().location().getCurrent());
