@@ -8,7 +8,7 @@
     "description":"
     You are at home in your familiar log cabin.
     You look around and see some items that may be of use.
-    You can search the house for some useful items, rest to heal, or go east outside.",
+    You can search the house for some useful items,or go east outside.",
     "items": [
       "matches",
       "crucifix",
@@ -23,8 +23,10 @@
     "south": "southern square",
     "west": "home",
     "description": "
-    You are in the center courtyard. You see some of the villagers gathering there. They all look very concerned.
-    To the West is your house. To the north is the Northern Square. To the South is further outside. To the East is the tavern.
+    You are in the center courtyard. You see some of the villagers
+    gathering there. They all look very concerned.
+    To the West is your house. To the north is the Northern Square.
+    To the South is further outside. To the East is the tavern.
     You may speak to the villagers or go in a direction.
     East to Tarvern, North to Northern Square, South to Southern Square.",
     "items": [],
@@ -42,7 +44,7 @@
     You may search the area, speak to the child,
     or go North to Well, East to Church, or South to Center Courtyard.",
     "items": [],
-    "action": ["speak","search"],
+    "action": ["speak"],
   },
   {
     "current": "southern square",

@@ -26,29 +26,6 @@ public class Location {
     private final FileReading file = new FileReading();
     private  Location currentRoom;
 
-
-    public Location() {
-        super();
-    }
-
-    Location(String current, String north, String south, String west, String east, ArrayList<String> items, String description) {
-        this.current = current;
-        this.north = north;
-        this.south = south;
-        this.west = west;
-        this.east = east;
-        this.items = items;
-        this.description = description;
-    }
-
-    public List<String> allAreaNameList(){
-        List<Location> Locations = dataReader();
-        for (int i = 0; i < Locations.size(); i++) {
-            locationNameList.add(Locations.get(i).getCurrent());
-        }
-        return locationNameList;
-    }
-
     public ArrayList<String> allAreaActionList(String locationName){
         List<Location> Locations = dataReader();
         for (int i = 0; i < Locations.size(); i++) {
@@ -69,7 +46,7 @@ public class Location {
         return locations;
     }
 
-    public Location getLocationByName(String name) {
+    private Location getLocationByName(String name) {
         Location room = null;
         List<Location> Locations = dataReader();
         for (Location location : Locations) {
@@ -112,9 +89,6 @@ public class Location {
 
     public List<String> directionList(String roomName) {
         List<String> validDirection = new LinkedList<>();
-//        if(!roomName.equals(current)){
-//            return validDirection;
-//        }
         Location currentArea = getLocationByName(roomName);
 
         if (!currentArea.getNorth().equals("no exit")) {
@@ -178,11 +152,5 @@ public class Location {
     public String toString() {
         return "Room: current Room=" + getCurrent() + ", north=" + getNorth() + ", south=" + getSouth() + ", west=" + getWest()
                 + ", east=" + getEast() + ", items=" + getItems() + ", description=" + getDescription() + ", action=" + getAction();
-    }
-
-    public static void main(String[] args) {
-        Location avc=new Location();
-      avc.allAreaNameList();
-        System.out.println(avc.allAreaActionList("home"));
     }
 }

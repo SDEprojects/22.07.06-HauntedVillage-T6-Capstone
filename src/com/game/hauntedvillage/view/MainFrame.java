@@ -5,27 +5,25 @@ import com.game.hauntedvillage.controller.GameManager;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
-    private MainPanel backgroundPanel;
-    private TextPanel textPanel;
-    private TopPanel topPanel;
-    private SplashScreen splashScreen;
-    private InventoryPanel inventoryPanel;
-    private ItemDisplayPanel itemListPanel;
-    private ArrayList<JPanel> item;
+    private final MainPanel backgroundPanel;
+    private final TextPanel textPanel;
+    private final TopPanel topPanel;
+    private final SplashScreen splashScreen;
+    private final InventoryPanel inventoryPanel;
+    private final ItemDisplayPanel itemListPanel;
 
     public MainFrame(GameManager baseController) {
         textPanel = new TextPanel(baseController);
         splashScreen = new SplashScreen(baseController);
         topPanel = new TopPanel(baseController);
         inventoryPanel = new InventoryPanel(baseController);
-        itemListPanel = new ItemDisplayPanel(baseController);
-        itemListPanel = new ItemDisplayPanel(baseController);
+        itemListPanel = new ItemDisplayPanel(baseController, inventoryPanel);
         backgroundPanel = new MainPanel(baseController, textPanel, itemListPanel);
         setupFrame();
     }
+
 
     public void showGamePanel() {
         splashScreen.setVisible(false);
@@ -67,19 +65,26 @@ public class MainFrame extends JFrame {
         JMenuBar menuBar = new JMenuBar();
         JMenu gameMenu = new JMenu("Game");
 
+        JMenuItem newGame = new JMenuItem(("New Game"));
         JMenuItem saving = new JMenuItem("Saving Game");
         JMenuItem loading = new JMenuItem("Loading Game");
         JMenuItem exitItem = new JMenuItem("Exit");
 
+        gameMenu.add(newGame);
         gameMenu.add(saving);
         gameMenu.add(loading);
         gameMenu.addSeparator();
         gameMenu.add(exitItem);
 
         menuBar.add(gameMenu);
-
+        newGame.addActionListener(e -> {
+            int decision = JOptionPane.showConfirmDialog(MainFrame.this, "Play again?", "Confirm Start New Game", JOptionPane.OK_CANCEL_OPTION);
+            if (decision == JOptionPane.OK_OPTION) {
+                GameManager startNewGame = new GameManager();
+                startNewGame.startNewGame();
+            }
+        });
         gameMenu.setMnemonic(KeyEvent.VK_F);
-
         exitItem.addActionListener(e -> {
             int decision = JOptionPane.showConfirmDialog(MainFrame.this, "Are you sure to quit the " +
                     "Game? (make sure you saving the game)", "Confirm Quit Game", JOptionPane.OK_CANCEL_OPTION);

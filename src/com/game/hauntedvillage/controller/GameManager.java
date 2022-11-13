@@ -21,6 +21,10 @@ public class GameManager {
     public void startGame(){
         theView.showGamePanel();
     }
+    public MainFrame startNewGame(){
+        theModel=new Engine();
+        return new MainFrame(this);
+    }
 
     public void itemPanelControllerOn() {
         theView.itemPanelOn();
@@ -31,45 +35,15 @@ public class GameManager {
     }
 
     public void displayText(){
-         theView.updateText(theModel.location().getCurrentRoom().getDescription());
+         theView.updateText(theModel.getLocation().getCurrentRoom().getDescription());
+    }
+
+    public void displayItemInformation(String itemName){
+        theView.updateText(theModel.getGameItems().looking(itemName));
     }
 
     public void speak(String npcName){
-        theView.updateText(theModel.npc().speak(npcName));
+        theView.updateText(theModel.getNpc().speak(npcName));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//    public GameManager(GUI theView, Engine theModel){
-//        this.theModel=theModel;
-//        this.theView=theView;
-//    }
-//
-//
-//    public void move(String direction){
-//        //invoke the necessary methods in the model to update the location
-//        //invoke methods in the view to update itself.
-//
-//        // the GUI is going to need its reference to engine to get the data it needs to display
-//    }
-
 }
 
-//methods in the game manager that teh gui can invoke

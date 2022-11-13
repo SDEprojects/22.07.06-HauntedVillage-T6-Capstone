@@ -12,18 +12,14 @@ public class NpcDialogue {
 
     private String name;
     private String location;
-    private ArrayList<String> conversations = new ArrayList<>();
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ArrayList<String> conversations = new ArrayList<>();
+    private final ObjectMapper objectMapper = new ObjectMapper();
     private List<NpcDialogue> listNpc;
-    private List<String> npcNameList = new ArrayList<>();
-    private FileReading file = new FileReading();
-
-    public NpcDialogue(){
-        super();
-    }
+    private final List<String> npcNameList = new ArrayList<>();
+    private final FileReading file = new FileReading();
 
     //Business Class data reader
-    List<NpcDialogue> dataReader(){
+    private List<NpcDialogue> dataReader() {
         try {
             String npcData = file.dataReader("ReadingFile/npc.txt");
             listNpc = objectMapper.readValue(npcData, new TypeReference<>() {
@@ -35,16 +31,17 @@ public class NpcDialogue {
     }
 
     //This function returns a npc using the name
-    NpcDialogue getNpcByName(String name){
+    private NpcDialogue getNpcByName(String name) {
         List<NpcDialogue> listOfNpcs = dataReader();
         NpcDialogue npc = null;
-        for(int i = 0; i< listOfNpcs.size(); i++){
-            if(listOfNpcs.get(i).getName().equals(name)){
+        for (int i = 0; i < listOfNpcs.size(); i++) {
+            if (listOfNpcs.get(i).getName().equals(name)) {
                 npc = listOfNpcs.get(i);
             }
         }
         return npc;
     }
+
     // This function returns the name of all the npcs
     public List<String> npcNameList() {
         List<NpcDialogue> listNpc = dataReader();
@@ -55,23 +52,22 @@ public class NpcDialogue {
     }
 
     // This function implements the speak feature
-     public String speak(String name){
-         String dialogue;
+    public String speak(String name) {
+        String dialogue;
 
         // getting the npc by name
         NpcDialogue npc = getNpcByName(name);
 
         // getting all the conversations for that npc
-         ArrayList<String> npcConversations = npc.getConversations();
+        ArrayList<String> npcConversations = npc.getConversations();
 
-         //generating a random number based on the size of the array of dialogues
-         int randIndex = (int)(Math.random() * npcConversations.size());
+        //generating a random number based on the size of the array of dialogues
+        int randIndex = (int) (Math.random() * npcConversations.size());
 
-         dialogue = npcConversations.get(randIndex) ;
+        dialogue = npcConversations.get(randIndex);
 
-         return dialogue;
-     }
-
+        return dialogue;
+    }
 
     //getters
     public String getName() {
@@ -80,6 +76,10 @@ public class NpcDialogue {
 
     public String getLocation() {
         return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public ArrayList<String> getConversations() {
@@ -92,18 +92,4 @@ public class NpcDialogue {
         return "Item: name=" + getName() + ", location=" + getLocation()
                 + ", conversations=" + getConversations();
     }
-
-    public static void main(String[] args) {
-        NpcDialogue npcs = new NpcDialogue();
-        System.out.println("Testing dataReader() function");
-        System.out.println(npcs.dataReader());
-        System.out.println("Testing getNpcByName() function");
-        System.out.println(npcs.getNpcByName("children"));
-        System.out.println("Testing NpcNameList() function");
-        System.out.println(npcs.npcNameList());
-        System.out.println("Testing dialogue() function");
-        System.out.println(npcs.speak("children"));
-    }
-
-
 }

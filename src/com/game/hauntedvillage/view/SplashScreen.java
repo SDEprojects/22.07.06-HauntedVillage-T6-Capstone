@@ -7,22 +7,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
-public class SplashScreen extends JPanel{
+class SplashScreen extends JPanel {
 
-    private JPanel splashscreenPanel;
-    private GameManager baseController;
-    private JButton startGame;
-    private JButton quitGame;
-    private boolean gameStatus;
+    private final GameManager baseController;
 
-
-    public SplashScreen(GameManager baseController){
+    public SplashScreen(GameManager baseController) {
         this.baseController = baseController;
-        splashscreenPanel = new JPanel();
         JLabel imageLabel = new JLabel();
-        imageLabel.setBounds(0,0, 900,900);
-        ImageIcon backGroundImage = new ImageIcon(getClass().getClassLoader().getResource("BackgroundImages/splashscreenBackground.png"));
+        imageLabel.setBounds(0, 0, 900, 900);
+        ImageIcon backGroundImage = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("BackgroundImages/splashscreenBackground.png")));
         imageLabel.setIcon(backGroundImage);
         this.add(startGameButton());
         this.add(quitGameButton());
@@ -33,37 +28,33 @@ public class SplashScreen extends JPanel{
     }
 
 
-    JButton startGameButton(){
-        startGame = new JButton("Start Game");
-        startGame.setBounds(240,500, 150, 50);
+    private JButton startGameButton() {
+        JButton startGame = new JButton("Start Game");
+        startGame.setBounds(240, 500, 150, 50);
         startGame.setFont(new Font("Comic sans", Font.PLAIN, 20));
         startGame.addActionListener(new StartGameListener());
-
         return startGame;
     }
 
-    JButton quitGameButton(){
-        quitGame = new JButton("Quit Game");
-        quitGame.setBounds(470,500, 150, 50);
+    private JButton quitGameButton() {
+        JButton quitGame = new JButton("Quit Game");
+        quitGame.setBounds(470, 500, 150, 50);
         quitGame.setFont(new Font("Comic sans", Font.PLAIN, 20));
-        return  quitGame;
+        quitGame.addActionListener(new QuitGameListener());
+        return quitGame;
     }
 
-    //getter and setters
-    public boolean getGameStatus() {
-        return gameStatus;
-    }
-
-    private void setGameStatus(boolean gameStatus) {
-        this.gameStatus = gameStatus;
-    }
-
-    class StartGameListener implements ActionListener{
-
+    private class StartGameListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             baseController.startGame();
+        }
+    }
 
+    private class QuitGameListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.exit(0);
         }
     }
 
