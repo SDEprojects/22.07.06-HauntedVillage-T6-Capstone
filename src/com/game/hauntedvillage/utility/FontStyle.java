@@ -1,9 +1,9 @@
-package com.game.hauntedvillage.view;
+package com.game.hauntedvillage.utility;
 
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
-class FontStyle {
+public class FontStyle {
 
     public Font getfont(int style,int size, String fileName){
         InputStream is=this.getClass().getClassLoader().getResourceAsStream(fileName);

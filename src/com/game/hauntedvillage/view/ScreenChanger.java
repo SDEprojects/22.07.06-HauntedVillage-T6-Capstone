@@ -5,24 +5,26 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 class ScreenChanger {
-    private ArrayList<JPanel> getBgPanel;
-    private ArrayList<JPanel> getItemPanel;
+    private final ArrayList<JPanel> getBgPanel;
+    private final ArrayList<JPanel> getItemPanel;
 
-    public ScreenChanger(ArrayList<JPanel> getBgPanel,ArrayList<JPanel> getItemPanel){
+    ScreenChanger(ArrayList<JPanel> getBgPanel, ArrayList<JPanel> getItemPanel) {
         this.getBgPanel = getBgPanel;
-        this.getItemPanel=getItemPanel;
+        this.getItemPanel = getItemPanel;
     }
-    private void mainScreen(int mapNum){
+
+    private void mainScreen(int mapNum) {
         getBgPanel.forEach(panel -> panel.setVisible(false));
         getBgPanel.get(mapNum).setVisible(true);
     }
 
-    private void itemScreen(int mapNum){
+    private void itemScreen(int mapNum) {
         getItemPanel.forEach(panel -> panel.setVisible(false));
         getItemPanel.get(mapNum).setVisible(true);
     }
-    public void currentRoom(String roomName){
-        switch(roomName){
+
+    void currentRoom(String roomName) {
+        switch (roomName) {
             case "home":
                 mainScreen(0);
                 break;
@@ -57,8 +59,8 @@ class ScreenChanger {
 
     }
 
-    public void currentList(String roomName){
-        switch(roomName){
+    void currentList(String roomName) {
+        switch (roomName) {
             case "home":
                 itemScreen(0);
                 break;

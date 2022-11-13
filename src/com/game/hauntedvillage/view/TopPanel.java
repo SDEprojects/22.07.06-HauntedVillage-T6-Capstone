@@ -1,23 +1,18 @@
 package com.game.hauntedvillage.view;
 
 import com.game.hauntedvillage.controller.GameManager;
-//import com.game.hauntedVillage.model.Sound;
-import com.game.hauntedvillage.model.SoundHandler;
+import com.game.hauntedvillage.utility.SoundHandler;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Objects;
 
-public class TopPanel extends JPanel {
+class TopPanel extends JPanel {
 
-    private GameManager baseController;
-    private final ArrayList<JLabel> heart = new ArrayList<>();
+    private final GameManager baseController;
     SoundHandler soundHandler = new SoundHandler();
     //Sound sound = new Sound();
 
@@ -25,7 +20,7 @@ public class TopPanel extends JPanel {
     public TopPanel(GameManager baseController) {
         this.baseController = baseController;
         setLayout(null);
-        setBounds(50, 50, 900, 50);
+        setBounds(50, 10, 900, 50);
         setBackground(null);
         setOpaque(true);
         createHeartIcons();
@@ -35,27 +30,34 @@ public class TopPanel extends JPanel {
     }
 
     //create icons
-    public void createHeartIcons() {
+    private void createHeartIcons() {
         int hp = baseController.getEngine().getPlayer().getHp();
         for (int i = 0; i < hp; i++) {
             JLabel heartLabel = new JLabel();
-            heartLabel.setBounds(0 + (44 * i), 0, 44, 30);
+            heartLabel.setBounds((44 * i), 0, 44, 30);
             ImageIcon heart = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/heart.png")));
             heartLabel.setIcon(heart);
             add(heartLabel);
         }
     }
 
-    public void createMapIcons() {
+    private void createMapIcons() {
         JLabel mapLabel = new JLabel();
         mapLabel.setBounds(750, 0, 44, 30);
-        mapLabel.addMouseListener(new Maplistener());
-        ImageIcon map = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/mapIcon.png")));
+        mapLabel.addMouseListener(new MapListener());
+        ImageIcon map = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/map.png")));
         mapLabel.setIcon(map);
         add(mapLabel);
     }
+    private void createHelp() {
+        JLabel helpIcon = new JLabel();
+        helpIcon.setBounds(850, 0, 44, 30);
+        ImageIcon map = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/help.png")));
+        helpIcon.setIcon(map);
+        add(helpIcon);
+    }
 
-    public void createSound() {
+    private void createSound() {
         //Label/icon for music
         JLabel soundLabel = new JLabel();
         soundLabel.setBounds(800, 0, 44, 30);
@@ -73,12 +75,7 @@ public class TopPanel extends JPanel {
         ImageIcon volDownIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/volumeMinus.png")));
         volumeDownBtn.setIcon(volDownIcon);
         add(volumeDownBtn);
-        volumeDownBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                soundHandler.volumeDown();
-            }
-        });
+        volumeDownBtn.addActionListener(e -> soundHandler.volumeDown());
         item1.add(volumeDownBtn);
         popUp.add(item1);
 
@@ -88,12 +85,7 @@ public class TopPanel extends JPanel {
         ImageIcon muteIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/muteIcon.png")));
         muteBtn.setIcon(muteIcon);
         add(muteBtn);
-        muteBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                soundHandler.toggleMute();
-            }
-        });
+        muteBtn.addActionListener(e -> soundHandler.toggleMute());
         item2.add(muteBtn);
         popUp.add(item2);
 
@@ -103,12 +95,7 @@ public class TopPanel extends JPanel {
         ImageIcon volUpIcon = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/volumePlus.png")));
         volumeUpBtn.setIcon(volUpIcon);
         add(volumeUpBtn);
-        volumeUpBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                soundHandler.volumeUp();
-            }
-        });
+        volumeUpBtn.addActionListener(e -> soundHandler.volumeUp());
         item3.add(volumeUpBtn);
         popUp.add(item3);
 
@@ -138,23 +125,14 @@ public class TopPanel extends JPanel {
 
             }
         });
-
         popUp.pack();
         setVisible(true);
         URL soundUrl = getClass().getResource("/Sound/music.wav");
         soundHandler.playMusic(soundUrl);
     }
 
-    public void createHelp() {
-        JLabel helpIcon = new JLabel();
-        helpIcon.setBounds(850, 0, 44, 30);
-        ImageIcon map = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/heart.png")));
-        helpIcon.setIcon(map);
-        add(helpIcon);
-    }
-
     // Mouse/Action listener
-    private class Maplistener implements MouseListener{
+    private class MapListener implements MouseListener {
 
         @Override
         public void mouseClicked(MouseEvent e) {

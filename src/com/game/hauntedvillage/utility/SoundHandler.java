@@ -1,4 +1,4 @@
-package com.game.hauntedvillage.model;
+package com.game.hauntedvillage.utility;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -8,13 +8,13 @@ import java.net.URL;
 
 public class SoundHandler {
 
-    Clip clip;
-    float preVolume = 0;
-    float currentVolume = 0;
-    FloatControl floatControl;
-    boolean mute = false;
+    private Clip clip;
+    private float preVolume = 0;
+    private float currentVolume = 0;
+    private FloatControl floatControl;
+    private boolean mute = false;
 
-    public void setFile(URL url) {
+    private void setFile(URL url) {
         try {
             AudioInputStream sound = AudioSystem.getAudioInputStream(url);
             clip = AudioSystem.getClip();
