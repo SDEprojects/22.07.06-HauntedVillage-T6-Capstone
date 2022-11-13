@@ -2,7 +2,11 @@
   <artifact type="jar" name="22.07.06-HauntedVillage-T6-Capstone:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/22_07_06_HauntedVillage_T6_Capstone_jar</output-path>
     <root id="archive" name="22.07.06-HauntedVillage-T6-Capstone.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/resources/META-INF/MANIFEST.MF" />
+      </element>
       <element id="module-output" name="22.07.06-HauntedVillage-T6-Capstone" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jl1.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/junit-4.10.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/junit-4.13.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/app-utils-1.1.jar" path-in-jar="/" />
@@ -12,7 +16,6 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/jackson-core-2.13.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/jackson-databind-2.13.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/jackson-annotations-2.13.1.jar" path-in-jar="/" />
-      <element id="dir-copy" path="$PROJECT_DIR$/resources" />
     </root>
   </artifact>
 </component>

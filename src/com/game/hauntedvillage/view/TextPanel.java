@@ -1,12 +1,10 @@
-package com.game.hauntedVillage.viewer;
+package com.game.hauntedvillage.view;
 
-import com.game.hauntedVillage.controller.GameManager;
+import com.game.hauntedvillage.controller.GameManager;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.io.IOException;
-import java.io.InputStream;
 
 class TextPanel extends JTextArea{
 

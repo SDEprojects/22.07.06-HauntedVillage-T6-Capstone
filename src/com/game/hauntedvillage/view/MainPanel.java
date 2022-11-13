@@ -1,9 +1,8 @@
-package com.game.hauntedVillage.viewer;
+package com.game.hauntedvillage.view;
 
-import com.game.hauntedVillage.controller.GameManager;
+import com.game.hauntedvillage.controller.GameManager;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,10 +64,10 @@ class MainPanel extends JPanel {
     }
 
     private void createArrow(String roomName,JPanel panel) {
-        ImageIcon arrow0 = loadingImageIcon("Images_clickTriggers/north.png");
-        ImageIcon arrow1 = loadingImageIcon("Images_clickTriggers/south.png");
-        ImageIcon arrow2 = loadingImageIcon("Images_clickTriggers/west.png");
-        ImageIcon arrow3 = loadingImageIcon("Images_clickTriggers/east.png");
+        ImageIcon arrow0 = loadingImageIcon("ImagesClickTriggers/north.png");
+        ImageIcon arrow1 = loadingImageIcon("ImagesClickTriggers/south.png");
+        ImageIcon arrow2 = loadingImageIcon("ImagesClickTriggers/west.png");
+        ImageIcon arrow3 = loadingImageIcon("ImagesClickTriggers/east.png");
 
         List<String> directionList = baseController.getEngine().location().directionList(roomName);
         for (int i = 0; i < directionList.size(); i++) {
@@ -117,13 +116,13 @@ class MainPanel extends JPanel {
 
         switch(locationName){
             case "home":
-                objectImage = loadingImageIcon("npc_images/npc_kids.png");
+                objectImage = loadingImageIcon("NPCImages/npc_kids.png");
                 objectLabel.setText("home");
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
             case "center courtyard":
-                objectImage = loadingImageIcon("npc_images/villagers.png");
+                objectImage = loadingImageIcon("NPCImages/villagers.png");
                 objectLabel.setText("villagers");
                 objectLabel.setBounds(500, 230, 300, 300);
                 objectLabel.setIcon(objectImage);
@@ -132,42 +131,42 @@ class MainPanel extends JPanel {
             case "northern square":
                 objectLabel.setBounds(450, 280, 300, 300);
                 objectLabel.setText("children");
-                objectImage = loadingImageIcon("npc_images/kids.png");
+                objectImage = loadingImageIcon("NPCImages/kids.png");
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
             case "southern square":
-                objectImage =loadingImageIcon("npc_images/npc_kids.png");
+                objectImage =loadingImageIcon("NPCImages/npc_kids.png");
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
             case "farm":
                 objectLabel.setBounds(450, 230, 300, 300);
                 objectLabel.setText("werewolf");
-                objectImage = loadingImageIcon("npc_images/werewolf.png");
+                objectImage = loadingImageIcon("NPCImages/werewolf.png");
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
             case "town hall":
-                objectImage = loadingImageIcon("npc_images/werewolf.png");
+                objectImage = loadingImageIcon("NPCImages/werewolf.png");
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
             case "tavern":
                 objectLabel.setText("keep");
                 objectLabel.setBounds(560, 230, 300, 300);
-                objectImage =loadingImageIcon("npc_images/keep.png");
+                objectImage =loadingImageIcon("NPCImages/keep.png");
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
             case "church":
                 objectLabel.setText("pastor");
-                objectImage = loadingImageIcon("npc_images/pastor.png");
+                objectImage = loadingImageIcon("NPCImages/pastor.png");
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
             case "well":
-                objectImage = loadingImageIcon("npc_images/npc_kids.png");
+                objectImage = loadingImageIcon("NPCImages/npc_kids.png");
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
@@ -196,16 +195,16 @@ class MainPanel extends JPanel {
     }
 
     public ArrayList<JPanel> generateScene() {
-        createBackground("Background_images/home.jpg", "home");
-        createBackground("Background_images/center_courtyard.jpg", "center courtyard");
-        createBackground("Background_images/northern_square.jpg", "northern square");
-        createBackground("Background_images/southern_square.jpg", "southern square");
-        createBackground("Background_images/farm3.jpg", "farm");
-        createBackground("Background_images/townHall.jpg", "town hall");
-        createBackground("Background_images/tavern.jpg", "tavern");
-        createBackground("Background_images/church2.jpg", "church");
-        createBackground("Background_images/well.jpg", "well");
-        createBackground("Background_images/woods.jpg", "woods");
+        createBackground("BackgroundImages/home.jpg", "home");
+        createBackground("BackgroundImages/center_courtyard.jpg", "center courtyard");
+        createBackground("BackgroundImages/northern_square.jpg", "northern square");
+        createBackground("BackgroundImages/southern_square.jpg", "southern square");
+        createBackground("BackgroundImages/farm3.jpg", "farm");
+        createBackground("BackgroundImages/townHall.jpg", "town hall");
+        createBackground("BackgroundImages/tavern.jpg", "tavern");
+        createBackground("BackgroundImages/church2.jpg", "church");
+        createBackground("BackgroundImages/well.jpg", "well");
+        createBackground("BackgroundImages/woods.jpg", "woods");
         return bgPanel;
     }
 

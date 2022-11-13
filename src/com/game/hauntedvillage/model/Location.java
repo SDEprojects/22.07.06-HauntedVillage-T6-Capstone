@@ -1,9 +1,9 @@
-package com.game.hauntedVillage.model;
+package com.game.hauntedvillage.model;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.game.hauntedvillage.utility.FileReading;
 
-import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedList;

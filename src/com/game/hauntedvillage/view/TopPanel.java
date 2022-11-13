@@ -1,8 +1,8 @@
-package com.game.hauntedVillage.viewer;
+package com.game.hauntedvillage.view;
 
-import com.game.hauntedVillage.controller.GameManager;
+import com.game.hauntedvillage.controller.GameManager;
 //import com.game.hauntedVillage.model.Sound;
-import com.game.hauntedVillage.model.SoundHandler;
+import com.game.hauntedvillage.model.SoundHandler;
 
 import javax.swing.*;
 import java.awt.*;

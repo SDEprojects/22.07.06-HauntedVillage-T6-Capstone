@@ -1,4 +1,4 @@
-package com.game.hauntedVillage.model;
+package com.game.hauntedvillage.model;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;

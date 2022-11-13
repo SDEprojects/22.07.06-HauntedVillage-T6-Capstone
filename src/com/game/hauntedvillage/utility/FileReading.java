@@ -1,4 +1,4 @@
-package com.game.hauntedVillage.model;
+package com.game.hauntedvillage.utility;
 
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -7,10 +7,10 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 
-class FileReading {
+public class FileReading {
     private JSONParser parser = new JSONParser();
 
-    static InputStream getFileFromResourceAsStreamFortxt(String fileName) {
+    public static InputStream getFileFromResourceAsStreamFortxt(String fileName) {
         ClassLoader classLoader = FileReading.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream(fileName);
         if (inputStream == null) {
@@ -20,7 +20,7 @@ class FileReading {
         }
     }
 
-    static void printInputStream(InputStream content) {
+    public static void printInputStream(InputStream content) {
         try (InputStreamReader streamReader = new InputStreamReader(content, StandardCharsets.UTF_8);
              BufferedReader reader = new BufferedReader(streamReader)) {
             String line;

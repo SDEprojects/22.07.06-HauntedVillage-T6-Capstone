@@ -1,12 +1,11 @@
-package com.game.hauntedVillage.viewer;
+package com.game.hauntedvillage.view;
 
-import com.game.hauntedVillage.controller.GameManager;
+import com.game.hauntedvillage.controller.GameManager;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class ItemDisplayPanel extends JPanel {

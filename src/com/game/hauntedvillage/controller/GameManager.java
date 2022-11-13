@@ -1,8 +1,7 @@
-package com.game.hauntedVillage.controller;
+package com.game.hauntedvillage.controller;
 
-import com.game.hauntedVillage.model.Engine;
-import com.game.hauntedVillage.model.Location;
-import com.game.hauntedVillage.viewer.MainFrame;
+import com.game.hauntedvillage.model.Engine;
+import com.game.hauntedvillage.view.MainFrame;
 
 public class GameManager {
     private Engine theModel;

@@ -1,9 +1,4 @@
-package com.game.hauntedVillage.model;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.FileOutputStream;
-import java.util.ArrayList;
+package com.game.hauntedvillage.utility;
 
 
 public class SavePlayer {
