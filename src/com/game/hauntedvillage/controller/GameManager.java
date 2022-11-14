@@ -42,5 +42,9 @@ public class GameManager {
     public void speak(String npcName){
         theView.updateText(theModel.getNpc().speak(npcName));
     }
+
+    public void endGame(boolean gameStatus){
+    theView.endGamePanels(gameStatus);
+    }
 }
 
