@@ -22,9 +22,10 @@ public class MainFrame extends JFrame {
         topPanel = new TopPanel(baseController);
         inventoryPanel = new InventoryPanel(baseController);
         itemListPanel = new ItemDisplayPanel(baseController, inventoryPanel);
-        backgroundPanel = new MainPanel(baseController, textPanel, itemListPanel);
+        backgroundPanel = new MainPanel(baseController, textPanel, itemListPanel,inventoryPanel);
         winPanel = new WinPanel(baseController);
         losePanel = new LosePanel(baseController);
+
         setupFrame();
     }
 

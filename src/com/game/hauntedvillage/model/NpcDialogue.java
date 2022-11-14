@@ -92,4 +92,9 @@ public class NpcDialogue {
         return "Item: name=" + getName() + ", location=" + getLocation()
                 + ", conversations=" + getConversations();
     }
+
+    public static void main(String[] args) {
+        NpcDialogue ba=new NpcDialogue();
+        System.out.println( ba.speak("clerk"));
+    }
 }

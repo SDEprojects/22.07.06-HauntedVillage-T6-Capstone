@@ -55,7 +55,7 @@ class InventoryPanel extends JPanel {
 
     private void createPopupMenu(String itemName) {
         JPopupMenu popupMenu = new JPopupMenu();
-        JMenuItem inspect = new JMenuItem("inspect");
+        JMenuItem inspect = new JMenuItem("Look");
         inspect.addActionListener(new InspectListener());
         inspect.setActionCommand(itemName);
         popupMenu.add(inspect);
@@ -145,15 +145,12 @@ class InventoryPanel extends JPanel {
                     if (location.equals("church")) {
                         String message = "You light the Candle by using your matches, now you can use crucifix to pray.";
                         combine = true;
-                        information(message, "Message");
+                        baseController.displayAttackMessage(message);
                         baseController.getEngine().getPlayer().dropItem(itemName);
                         createItemInInventory();
-                    } else if (location.equals("church")) {
-                        String message = "You must find some item to defeat the pastor in order to light the candle";
-                        information(message, "Warning");
-                    } else {
+                    }  else {
                         String message = "You can not use " + itemName + " at here!!";
-                        information(message, "Warning");
+                        baseController.displayAttackMessage(message);
                     }
                     break;
                 case "crucifix":
@@ -161,13 +158,13 @@ class InventoryPanel extends JPanel {
                         baseController.getEngine().getPlayer().addItemToinventory("triangular amulet");
                         createItemInInventory();
                         String message = "After you pray to the God, you receive a holy triangular amulet";
-                        information(message, "Congratulation");
+                        baseController.displayAttackMessage(message);
                         baseController.getEngine().getPlayer().dropItem(itemName);
                         createItemInInventory();
                         combine = false;
                     } else {
                         String message = "Nothing happen after you use " + itemName + "! Maybe you can try different area or combine with other items";
-                        information(message, "Warning");
+                        baseController.displayAttackMessage(message);
                     }
                     break;
                 case "triangular amulet":
@@ -176,10 +173,10 @@ class InventoryPanel extends JPanel {
                         String message = "After you put the amulet to the stone, you receive a mysterious blue stone";
                         baseController.getEngine().getPlayer().dropItem(itemName);
                         createItemInInventory();
-                        information(message, "Congratulation");
+                        baseController.displayAttackMessage(message) ;
                     } else {
                         String message = "Nothing happen after you use " + itemName + "!";
-                        information(message, "Warning");
+                        baseController.displayAttackMessage(message);
                     }
                     break;
                 case "blue stone":
@@ -188,7 +185,7 @@ class InventoryPanel extends JPanel {
                         createItemInInventory();
                     } else {
                         String message = "Nothing happen after you use " + itemName + "!";
-                        information(message, "Warning");
+                        baseController.displayAttackMessage(message);
                     }
                     break;
                 case "feed":
@@ -196,47 +193,20 @@ class InventoryPanel extends JPanel {
                         baseController.getEngine().getPlayer().addItemToinventory("silver bullet");
                         String message = "the crows fly away from the ammo box because the food , you successfully" +
                                 "open the ammo box and get a silver bullet and some regular ammo!";
-                        information(message, "Congratulation");
+                        baseController.displayAttackMessage(message);
                         baseController.getEngine().getPlayer().dropItem(itemName);
                         createItemInInventory();
                     } else {
                         String message = "Nothing happen after you use " + itemName + "!";
-                        information(message, "Warning");
+                        baseController.displayAttackMessage(message);
                     }
                     break;
                 case "musket":
-                    if (location.equals("church")) {
-                        int decision = JOptionPane.showConfirmDialog(null, "Are you sure to use musket " +
-                                "to kill \"pastor\"?", "Warning", JOptionPane.OK_CANCEL_OPTION);
-                        if (decision == JOptionPane.OK_OPTION) {
-                            baseController.getEngine().getPlayer().dropItem(itemName);
-                            String message = "You killed the pastor, now you can enter to the church";
-                            information(message, "Warning");
-                            createItemInInventory();
-                        }
-                    } else {
-                        String message = "Nothing happen after you use " + itemName + "!";
-                        information(message, "Warning");
-                    }
-                    break;
                 case "silver bullet":
-                    if (location.equals("farm")) {
-                        baseController.getEngine().getPlayer().dropItem(itemName);
-                        String message = "You gave farmer the silver bullet, farmer loaded the silver bullet and killed the " +
-                                "werewolf. Then he gave you his musket for defeating the evil power";
-                        information(message, "Congratulation");
-                        baseController.getEngine().getPlayer().addItemToinventory("musket");
-                        createItemInInventory();
-                    } else {
-                        String message = "Nothing happen after you use " + itemName + "!";
-                        information(message, "Warning");
-                    }
+                    baseController.displayAttackMessage("Not the place to use " + itemName + "!");
+                    break;
                 default:
             }
-        }
-
-        private void information(String message, String title) {
-            JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
