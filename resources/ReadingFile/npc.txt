@@ -4,7 +4,7 @@
     "name": "children",
     "location": "northern square",
     "conversations": [
-      "You attempt to speak to the children, but they are too caught up in their game of tag. You hear one of the children teases,  'If you get caught you will go missing too!' ",
+      "You attempt to speak to the children, but they are too caught up in their game of tag. You hear one of the children teasing,  'If you get caught you will go missing too!' ",
       "My papa told me that the pastor is acting weird at the church"
     ]
   },
@@ -31,10 +31,10 @@
   {
       "name": "clerk",
       "location": "town hall",
-      "conversations": ["It looks like the townspeople aren't the only things avoiding the woods.
-      Something wicked has been happening at that Farm lately. Strange noises and a rotten smell is enough to keep anyone away.
-      I found this while cleaning the town hall earlier today.
-      It looks like a silver bullet. Maybe you can find a use for it"]
+      "conversations": ["It looks like the townspeople aren't the only thing avoiding the woods.
+      The birds avoid them day and night.",
+      "Something wicked has been happening at that Farm lately.
+      Strange noises and a rotten smell is enough to keep anyone away."]
   },
   {
       "name": "keep",
@@ -45,9 +45,8 @@
   {
       "name": "pastor",
       "location": "church",
-      "conversations": ["The pastor turns to you but he’s not who he seems.
-      He’s covered in blood with two fangs sneaking from his grin.
-      'I think you have too many sins,' he cries! as has lunges at you."],
+      "conversations": ["
+      'I think you have too many sins!' he cries as has lunges at you."],
   },
   {
       "name": "cat",
