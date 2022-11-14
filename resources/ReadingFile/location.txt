@@ -80,14 +80,14 @@
   },
   {
     "current": "town hall",
-     "north": "tavern",
+     "north": "no exit",
      "east": "no exit",
      "south": "no exit",
      "west": "southern square",
     "description": "
     You find yourself in the town hall, cool wind in the hair. It is quiet and dark.
     Wind blows through broken windows and makes squeaky noises.
-    An old clerk holding a candle in the hand walks slowly out of the shadow.
+    An old clerk walks slowly out of the shadow.
     You come forward and talk with the clerk. The clerk tells you the recent abnormality.
     Crows from the woods hide in the town hall day and night, staying away from their home,
     the woods in the north. Obviously, there is something unspeakable in the woods.
@@ -109,7 +109,7 @@
     "items": [
       "feed"
     ],
-    "action": ["search"],
+    "action": ["search", "speak"],
   },
   {
     "current": "church",
@@ -154,6 +154,6 @@
     The beast raises his arms and a flaming vortex bursts from the ground as he murmurs an incantation.
     You can use something from your inventory to against, or you can go back south to the well.",
     "items": [],
-    "action": ["attack", "search"]
+    "action": ["attack"]
   }
 ]
