@@ -5,8 +5,7 @@
     "location": "northern square",
     "conversations": [
       "You attempt to speak to the children, but they are too caught up in their game of tag. You hear one of the children teases,  'If you get caught you will go missing too!' ",
-      "I've never seen that cat before",
-      "My papa told me that the pastor won't come outside"
+      "My papa told me that the pastor is acting weird at the church"
     ]
   },
 {

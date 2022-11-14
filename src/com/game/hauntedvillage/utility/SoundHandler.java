@@ -29,13 +29,11 @@ public class SoundHandler {
         setFile(url);
         clip.setFramePosition(0);
         clip.loop(Clip.LOOP_CONTINUOUSLY);
-        //clip.start();
     }
 
     //volume up
     public void volumeUp() {
         currentVolume += 3.0f;
-        System.out.println("current volume: " + currentVolume);
         if (currentVolume > 4.0f) {
             currentVolume = 4.0f;
         }
@@ -45,7 +43,6 @@ public class SoundHandler {
     //volume down
     public void volumeDown() {
         currentVolume -= 3.0f;
-        System.out.println("current volume: " + currentVolume);
         if (currentVolume < -30.0f) {
             currentVolume = -30.0f;
         }
@@ -58,11 +55,9 @@ public class SoundHandler {
             preVolume = currentVolume;
             currentVolume = -80.0f;
             floatControl.setValue(currentVolume);
-            System.out.println(floatControl);
             mute = true;
         } else {
             currentVolume = preVolume;
-            System.out.println("current volume: " + currentVolume);
             floatControl.setValue(currentVolume);
             mute = false;
         }
