@@ -21,9 +21,9 @@ public class GameManager {
     public void startGame(){
         theView.showGamePanel();
     }
-    public MainFrame startNewGame(){
+    public void startNewGame(){
         theModel=new Engine();
-        return new MainFrame(this);
+        start();
     }
 
     public void itemPanelControllerOn() {
