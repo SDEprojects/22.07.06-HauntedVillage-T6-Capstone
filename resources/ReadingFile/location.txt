@@ -71,7 +71,7 @@
       "shovel",
       "musket"
     ],
-    "action": ["search", "wake farmer", "attack"],
+    "action": ["wake farmer", "attack"],
   },
   {
     "current": "town hall",
@@ -80,8 +80,8 @@
      "south": "no exit",
      "west": "southern square",
     "description": "
-    It is calm and quiet.
-    A clerk walks towards you and tells you about the recent abnormality.
+    Crows overcrowd the Town Hall.
+    A clerk walks towards you and expresses his frustration about the birds.
     You can talk to the clerk.",
     "items": [
       "silver bullet"

@@ -25,16 +25,15 @@
   {
       "name": "farmer",
       "location": "farm",
-      "conversations": ["Huh? what? Bloody Hell! I'm gettin my musket!,
-      I need to check on my livestock. You're going to need this to kill that damn thing."]
+      "conversations": ["Bloody Hell! My regular bullets won't kill that thing! I need special ammo!",
+      "My grandpappy once told me stories of these things being killed with silver!"]
   },
   {
       "name": "clerk",
       "location": "town hall",
-      "conversations": ["It looks like the townspeople aren't the only thing avoiding the woods.
-      The birds avoid them day and night.",
-      "Something wicked has been happening at that Farm lately.
-      Strange noises and a rotten smell is enough to keep anyone away."]
+      "conversations": ["These birds have been here ever since something scared them
+      away from the Woods! They torment the common folk for food!
+      If you get rid of them I'll make it worth your time.",]
   },
   {
       "name": "keep",
