@@ -13,6 +13,8 @@ public class MainFrame extends JFrame {
     private final SplashScreen splashScreen;
     private final InventoryPanel inventoryPanel;
     private final ItemDisplayPanel itemListPanel;
+    private final WinPanel winPanel;
+    private final LosePanel losePanel;
 
     public MainFrame(GameManager baseController) {
         textPanel = new TextPanel(baseController);
@@ -21,6 +23,8 @@ public class MainFrame extends JFrame {
         inventoryPanel = new InventoryPanel(baseController);
         itemListPanel = new ItemDisplayPanel(baseController, inventoryPanel);
         backgroundPanel = new MainPanel(baseController, textPanel, itemListPanel);
+        winPanel = new WinPanel(baseController);
+        losePanel = new LosePanel(baseController);
         setupFrame();
     }
 
@@ -31,6 +35,21 @@ public class MainFrame extends JFrame {
         inventoryPanel.setVisible(true);
         topPanel.setVisible(true);
         textPanel.setVisible(true);
+
+    }
+
+    public void endGamePanels(boolean win){
+        backgroundPanel.setVisible(false);
+        inventoryPanel.setVisible(false);
+        topPanel.setVisible(false);
+        textPanel.setVisible(false);
+
+        if(win == true){
+            winPanel.setVisible(true);
+        }else{
+           losePanel.setVisible(true);
+        }
+
     }
 
     private void setupFrame() {
@@ -55,6 +74,14 @@ public class MainFrame extends JFrame {
         // (5) ItemList Panel for display the item when you search the map
         add(itemListPanel);
         itemListPanel.setVisible(false);
+
+        //(6) Win Panel to display if user wins the game
+        add(winPanel);
+        winPanel.setVisible(false);
+
+        //(7) Lose Panel to display if user loses the game
+        add(losePanel);
+        losePanel.setVisible(false);
 
         setJMenuBar(createMenuBar());
         this.setVisible(true);
