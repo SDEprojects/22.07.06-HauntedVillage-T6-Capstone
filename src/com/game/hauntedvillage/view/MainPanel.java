@@ -93,6 +93,7 @@ class MainPanel extends JPanel {
         JLabel objectLabel = new JLabel();
         objectLabel.addMouseListener(new ObjectListener());
         objectLabel.setBounds(450, 230, 300, 300);
+
         ImageIcon objectImage;
 
         switch (locationName) {
