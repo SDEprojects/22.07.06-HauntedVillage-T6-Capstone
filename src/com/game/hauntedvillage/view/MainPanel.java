@@ -91,7 +91,6 @@ class MainPanel extends JPanel {
 
     private void createObject(String locationName, JPanel panel) {
         JLabel objectLabel = new JLabel();
-        objectLabel.setBounds(450, 230, 300, 300);
         objectLabel.addMouseListener(new ObjectListener());
         ImageIcon objectImage;
 
@@ -106,7 +105,7 @@ class MainPanel extends JPanel {
             case "center courtyard":
                 objectImage = loadingImageIcon("NPCImages/villagers.png");
                 objectLabel.setText("villagers");
-                objectLabel.setBounds(500, 230, 300, 300);
+                objectLabel.setBounds(480, 270, 280, 230);
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
@@ -130,7 +129,7 @@ class MainPanel extends JPanel {
                 panel.add(objectLabel);
                 break;
             case "town hall":
-                objectImage = loadingImageIcon("NPCImages/werewolf.png");
+                objectImage = loadingImageIcon("NPCImages/clerk.png");
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
@@ -225,20 +224,26 @@ class MainPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
             baseController.itemPanelControllerOff();
-            if (command.equals("east")) {
-                changeScreen.currentRoom(baseController.getEngine().getLocation().getCurrentRoom().getEast());
-                baseController.getEngine().getCurrentRoom(command);
-            } else if (command.equals("north")) {
-                changeScreen.currentRoom(baseController.getEngine().getLocation().getCurrentRoom().getNorth());
-                baseController.getEngine().getCurrentRoom(command);
-            } else if (command.equals("west")) {
-                changeScreen.currentRoom(baseController.getEngine().getLocation().getCurrentRoom().getWest());
-                baseController.getEngine().getCurrentRoom(command);
-            } else if (command.equals("south")) {
-                changeScreen.currentRoom(baseController.getEngine().getLocation().getCurrentRoom().getSouth());
-                baseController.getEngine().getCurrentRoom(command);
-            } else {
-                System.out.println("you need more arrows");
+            switch (command) {
+                case "east":
+                    changeScreen.currentRoom(baseController.getEngine().getLocation().getCurrentRoom().getEast());
+                    baseController.getEngine().getCurrentRoom(command);
+                    break;
+                case "north":
+                    changeScreen.currentRoom(baseController.getEngine().getLocation().getCurrentRoom().getNorth());
+                    baseController.getEngine().getCurrentRoom(command);
+                    break;
+                case "west":
+                    changeScreen.currentRoom(baseController.getEngine().getLocation().getCurrentRoom().getWest());
+                    baseController.getEngine().getCurrentRoom(command);
+                    break;
+                case "south":
+                    changeScreen.currentRoom(baseController.getEngine().getLocation().getCurrentRoom().getSouth());
+                    baseController.getEngine().getCurrentRoom(command);
+                    break;
+                default:
+                    System.out.println("you need more arrows");
+                    break;
             }
             baseController.displayText();
             popupMenu = createPopupMenu(baseController.getEngine().getLocation().getCurrent());

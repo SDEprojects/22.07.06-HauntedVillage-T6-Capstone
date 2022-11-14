@@ -53,6 +53,7 @@ class TopPanel extends JPanel {
         JLabel helpIcon = new JLabel();
         helpIcon.setBounds(850, 0, 44, 30);
         ImageIcon map = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Icons/help.png")));
+        helpIcon.addMouseListener(new HelpListener());
         helpIcon.setIcon(map);
         add(helpIcon);
     }
@@ -137,6 +138,33 @@ class TopPanel extends JPanel {
         @Override
         public void mouseClicked(MouseEvent e) {
             MapFrame map = new MapFrame(baseController);
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    }
+
+    private class HelpListener implements MouseListener{
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            HelpFrame help = new HelpFrame(baseController);
         }
 
         @Override
