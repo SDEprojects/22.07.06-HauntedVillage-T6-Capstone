@@ -302,7 +302,7 @@ class MainPanel extends JPanel {
                             String confirm = "Do you believe you are strong enough to kill werewolf? (you may need some items) ";
                             int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
                             if (decision == JOptionPane.OK_OPTION) {
-
+                                baseController.endGame(false);
                             }
                         }
                     } else if (objectClicked.getText().equals("pastor")) {
@@ -325,34 +325,10 @@ class MainPanel extends JPanel {
                             String confirm = "Do you believe you are strong enough to kill pastor? (you may need some items) ";
                             int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
                             if (decision == JOptionPane.OK_OPTION) {
-
+                                baseController.endGame(false);
                             }
                         }
-                        if (objectClicked.getText().equals("werewolf")) {
-                            if (baseController.getEngine().getPlayer().getInventory().contains("silver bullet")) {
-                                String confirm = "Do you want to give a silver bullet to the farmer?";
-                                int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
-                                if (decision == JOptionPane.OK_OPTION) {
-                                    String message = "You gave farmer the silver bullet, farmer loaded the silver bullet " +
-                                            "\nand killed the werewolf. Then he gave you his musket for defeating the evil power";
-                                    baseController.getEngine().getPlayer().dropItem("silver bullet");
-                                    baseController.getEngine().getPlayer().addItemToinventory("musket");
-                                    inventoryPanel.createItemInInventory();
-                                    baseController.displayAttackMessage(message);
-                                    objectClicked.setVisible(false);
-                                } else {
-                                    String message = "Farmer:\"I need find the silver bullet!!!!\"";
-                                    baseController.displayAttackMessage(message);
-                                }
-                            } else {
-                                String confirm = "Do you believe you are strong enough to kill werewolf? (you may need some items) ";
-                                int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
-                                if (decision == JOptionPane.OK_OPTION) {
-
-                                }
-                            }
-                        }
-                    } else if (objectClicked.getText().equals("demo")) {
+                    } else if (objectClicked.getText().equals("demon")) {
                         if (baseController.getEngine().getPlayer().getInventory().contains("blue stone")) {
                             String confirm = "In your bag, the blue stone start to shine, Do you want to use?";
                             int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
@@ -363,6 +339,7 @@ class MainPanel extends JPanel {
                                 inventoryPanel.createItemInInventory();
                                 baseController.displayAttackMessage(message);
                                 objectClicked.setVisible(false);
+                                baseController.endGame(true);
                             } else {
                                 String message = "\"Can not make!!!!\"";
                                 baseController.displayAttackMessage(message);
@@ -371,7 +348,7 @@ class MainPanel extends JPanel {
                             String confirm = "Do you believe you are strong enough to kill demo? (you may need some items) ";
                             int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
                             if (decision == JOptionPane.OK_OPTION) {
-
+                                baseController.endGame(false);
                             }
                         }
                     }

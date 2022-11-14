@@ -36,7 +36,6 @@ public class MainFrame extends JFrame {
         inventoryPanel.setVisible(true);
         topPanel.setVisible(true);
         textPanel.setVisible(true);
-
     }
 
     public void endGamePanels(boolean win){
@@ -45,8 +44,9 @@ public class MainFrame extends JFrame {
         topPanel.setVisible(false);
         textPanel.setVisible(false);
 
-        if(win == true){
+        if(win){
             winPanel.setVisible(true);
+            winPanel.loadFinalScreen();
         }else{
            losePanel.setVisible(true);
         }

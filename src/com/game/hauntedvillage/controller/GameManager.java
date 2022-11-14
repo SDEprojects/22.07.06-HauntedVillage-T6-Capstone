@@ -46,5 +46,6 @@ public class GameManager {
     public void endGame(boolean gameStatus){
     theView.endGamePanels(gameStatus);
     }
+
 }
 
