@@ -92,6 +92,8 @@ class MainPanel extends JPanel {
     private void createObject(String locationName, JPanel panel) {
         JLabel objectLabel = new JLabel();
         objectLabel.addMouseListener(new ObjectListener());
+        objectLabel.setBounds(450, 230, 300, 300);
+
         ImageIcon objectImage;
 
         switch (locationName) {
@@ -110,15 +112,15 @@ class MainPanel extends JPanel {
                 panel.add(objectLabel);
                 break;
             case "northern square":
-                objectLabel.setBounds(450, 280, 300, 300);
+                objectLabel.setBounds(450, 300, 300, 300);
                 objectLabel.setText("children");
                 objectImage = loadingImageIcon("NPCImages/kids.png");
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
             case "southern square":
-                objectImage = loadingImageIcon("NPCImages/npc_kids.png");
-                objectLabel.setIcon(objectImage);
+                //objectImage = loadingImageIcon("NPCImages/kids.png");
+                //objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
             case "farm":
@@ -135,7 +137,7 @@ class MainPanel extends JPanel {
                 break;
             case "tavern":
                 objectLabel.setText("keep");
-                objectLabel.setBounds(560, 230, 300, 300);
+                objectLabel.setBounds(560, 300, 300, 450);
                 objectImage = loadingImageIcon("NPCImages/keep.png");
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
@@ -148,11 +150,14 @@ class MainPanel extends JPanel {
                 break;
             case "well":
                 objectLabel.setText("stone");
-                objectImage = loadingImageIcon("NPCImages/npc_kids.png");
-                objectLabel.setIcon(objectImage);
+               // objectImage = loadingImageIcon("NPCImages/npc_kids.png");
+               // objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
             case "woods":
+                objectLabel.setText("demon");
+                objectImage = loadingImageIcon("NPCImages/demon.png");
+                objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
         }
