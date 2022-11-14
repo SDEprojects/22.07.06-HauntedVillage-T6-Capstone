@@ -7,19 +7,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
-class WinPanel extends JPanel{
+class LosePanel extends JPanel{
 
     private final GameManager baseController;
 
-    public WinPanel(GameManager baseController) {
+    public LosePanel(GameManager baseController) {
         this.baseController = baseController;
-        JLabel imageLabel = new JLabel("You Won");
+        JLabel imageLabel = new JLabel("You Lost");
         imageLabel.setBounds(0, 0, 900, 900);
         imageLabel.setHorizontalTextPosition(JLabel.CENTER);
-        imageLabel.setVerticalTextPosition(JLabel.TOP);
-        imageLabel.setFont(new Font("Libian TC", Font.BOLD, 56));
+        imageLabel.setVerticalTextPosition(JLabel.CENTER);
+        FontStyle font = new FontStyle();
+        Font textFont = (font.getfont(Font.TRUETYPE_FONT, 56, "ReadingFile/Blood.ttf"));
+        imageLabel.setFont(textFont);
         imageLabel.setForeground(Color.red);
-        ImageIcon backGroundImage = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("BackgroundImages/home.jpg")));
+        ImageIcon backGroundImage = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("BackgroundImages/church.jpg")));
         imageLabel.setIcon(backGroundImage);
         add(imageLabel);
         setBounds(50, 50, 900, 900);
