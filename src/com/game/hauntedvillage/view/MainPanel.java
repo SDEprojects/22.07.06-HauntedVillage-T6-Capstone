@@ -3,9 +3,11 @@ package com.game.hauntedvillage.view;
 import com.game.hauntedvillage.controller.GameManager;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 class MainPanel extends JPanel {
@@ -37,6 +39,18 @@ class MainPanel extends JPanel {
         JLabel backGroundLable = new JLabel();
         backGroundLable.setLayout(null);
         backGroundLable.setBounds(0, 0, 900, 500);
+
+        ImageIcon locationBoard = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("BackgroundImages/woodPostLocation.png")));
+        JLabel location = new JLabel();
+        location.setText(locationName.toUpperCase());
+        location.setBounds(0, 400, 200, 100);
+        location.setHorizontalTextPosition(JLabel.CENTER);
+        location.setVerticalTextPosition(JLabel.CENTER);
+        location.setLayout(new FlowLayout());
+        location.setFont(new Font("Hanzipen", Font.BOLD, 14));
+        location.setForeground(Color.yellow);
+        location.setIcon(locationBoard);
+        backGroundLable.add(location);
 
         ImageIcon bgImage = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource(picName)));
         backGroundLable.setIcon(bgImage);
