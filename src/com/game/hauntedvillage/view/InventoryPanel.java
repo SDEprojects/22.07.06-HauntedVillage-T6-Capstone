@@ -173,7 +173,7 @@ class InventoryPanel extends JPanel {
                         String message = "After you put the amulet to the stone, you receive a mysterious blue stone";
                         baseController.getEngine().getPlayer().dropItem(itemName);
                         createItemInInventory();
-                        baseController.displayAttackMessage(message) ;
+                        baseController.displayAttackMessage(message);
                     } else {
                         String message = "Nothing happen after you use " + itemName + "!";
                         baseController.displayAttackMessage(message);
@@ -202,8 +202,22 @@ class InventoryPanel extends JPanel {
                     }
                     break;
                 case "musket":
+                    if (location.equals("church")) {
+                        String message = "You can attack the pastor with" + itemName + "!";
+                        baseController.displayAttackMessage(message);
+                    } else {
+                        String message = "Nothing happen after you use " + itemName + "!";
+                        baseController.displayAttackMessage(message);
+                    }
+                    break;
                 case "silver bullet":
-                    baseController.displayAttackMessage("Not the place to use " + itemName + "!");
+                    if (location.equals("farmer")) {
+                        String message = "You can attack the werewolf with" + itemName + "!";
+                        baseController.displayAttackMessage(message);
+                    } else {
+                        String message = "Nothing happen after you use " + itemName + "!";
+                        baseController.displayAttackMessage(message);
+                    }
                     break;
                 default:
             }

@@ -95,6 +95,6 @@ public class NpcDialogue {
 
     public static void main(String[] args) {
         NpcDialogue ba=new NpcDialogue();
-        System.out.println( ba.speak("clerk"));
+        System.out.println( ba.speak("farmer"));
     }
 }
