@@ -18,9 +18,9 @@ class MainPanel extends JPanel {
     private final InventoryPanel inventoryPanel;
     private JPopupMenu popupMenu;
 
-    MainPanel(GameManager baseController, TextPanel textPanel, ItemDisplayPanel itemListPanel,InventoryPanel inventoryPanel) {
+    MainPanel(GameManager baseController, TextPanel textPanel, ItemDisplayPanel itemListPanel, InventoryPanel inventoryPanel) {
         this.baseController = baseController;
-        this.inventoryPanel=inventoryPanel;
+        this.inventoryPanel = inventoryPanel;
         generateScene();
         setLayout(null);
         setBounds(50, 70, 900, 500);
@@ -135,9 +135,7 @@ class MainPanel extends JPanel {
                 panel.add(objectLabel);
                 break;
             case "southern square":
-                //objectImage = loadingImageIcon("NPCImages/kids.png");
-                //objectLabel.setIcon(objectImage);
-                panel.add(objectLabel);
+            case "well":
                 break;
             case "farm":
                 objectLabel.setBounds(450, 230, 300, 300);
@@ -163,12 +161,6 @@ class MainPanel extends JPanel {
                 objectLabel.setText("pastor");
                 objectImage = loadingImageIcon("NPCImages/pastor.png");
                 objectLabel.setIcon(objectImage);
-                panel.add(objectLabel);
-                break;
-            case "well":
-                objectLabel.setText("stone");
-               // objectImage = loadingImageIcon("NPCImages/npc_kids.png");
-               // objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
             case "woods":
@@ -213,7 +205,7 @@ class MainPanel extends JPanel {
         return bgPanel;
     }
 
-    private class MapListener implements MouseListener{
+    private class MapListener implements MouseListener {
 
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -286,12 +278,15 @@ class MainPanel extends JPanel {
                 case "speak":
                     baseController.speak(objectClicked.getText());
                     break;
+                case "wake farmer":
+                    baseController.speak("farmer");
+                    break;
                 case "attack":
-                    if(objectClicked.getText().equals("werewolf")){
-                        if(baseController.getEngine().getPlayer().getInventory().contains("silver bullet")){
-                            String confirm="Do you want to give a silver bullet to the farmer?";
-                            int decision=JOptionPane.showConfirmDialog(null,confirm,"Confirm Action",JOptionPane.OK_CANCEL_OPTION);
-                            if(decision==JOptionPane.OK_OPTION){
+                    if (objectClicked.getText().equals("werewolf")) {
+                        if (baseController.getEngine().getPlayer().getInventory().contains("silver bullet")) {
+                            String confirm = "Do you want to give a silver bullet to the farmer?";
+                            int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
+                            if (decision == JOptionPane.OK_OPTION) {
                                 String message = "You gave farmer the silver bullet, farmer loaded the silver bullet " +
                                         "\nand killed the werewolf. Then he gave you his musket for defeating the evil power";
                                 baseController.getEngine().getPlayer().dropItem("silver bullet");
@@ -299,22 +294,22 @@ class MainPanel extends JPanel {
                                 inventoryPanel.createItemInInventory();
                                 baseController.displayAttackMessage(message);
                                 objectClicked.setVisible(false);
-                            }else{
+                            } else {
                                 String message = "Farmer:\"I need find the silver bullet!!!!\"";
                                 baseController.displayAttackMessage(message);
                             }
-                        }else{
-                            String confirm="Do you believe you are strong enough to kill werewolf? (you may need some items) ";
-                            int decision=JOptionPane.showConfirmDialog(null,confirm,"Confirm Action",JOptionPane.OK_CANCEL_OPTION);
-                            if(decision==JOptionPane.OK_OPTION) {
+                        } else {
+                            String confirm = "Do you believe you are strong enough to kill werewolf? (you may need some items) ";
+                            int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
+                            if (decision == JOptionPane.OK_OPTION) {
 
                             }
                         }
-                    }else if(objectClicked.getText().equals("pastor")){
-                        if(baseController.getEngine().getPlayer().getInventory().contains("musket")){
-                            String confirm="Do you want to use musket to kill the evil pastor?";
-                            int decision=JOptionPane.showConfirmDialog(null,confirm,"Confirm Action",JOptionPane.OK_CANCEL_OPTION);
-                            if(decision==JOptionPane.OK_OPTION){
+                    } else if (objectClicked.getText().equals("pastor")) {
+                        if (baseController.getEngine().getPlayer().getInventory().contains("musket")) {
+                            String confirm = "Do you want to use musket to kill the evil pastor?";
+                            int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
+                            if (decision == JOptionPane.OK_OPTION) {
                                 String message = "You kill the evil pastor, and enter to the church, you see the dead candle" +
                                         "in front the holy statue, you may want to light the candle to pray for blessing";
                                 baseController.displayAttackMessage(message);
@@ -322,14 +317,60 @@ class MainPanel extends JPanel {
                                 inventoryPanel.createItemInInventory();
                                 baseController.displayAttackMessage(message);
                                 objectClicked.setVisible(false);
-                            }else{
+                            } else {
                                 String message = "\"That pastor is strong, I may need some powerful weapon!!!!\"";
                                 baseController.displayAttackMessage(message);
                             }
-                        }else{
-                            String confirm="Do you believe you are strong enough to kill pastor? (you may need some items) ";
-                            int decision=JOptionPane.showConfirmDialog(null,confirm,"Confirm Action",JOptionPane.OK_CANCEL_OPTION);
-                            if(decision==JOptionPane.OK_OPTION) {
+                        } else {
+                            String confirm = "Do you believe you are strong enough to kill pastor? (you may need some items) ";
+                            int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
+                            if (decision == JOptionPane.OK_OPTION) {
+
+                            }
+                        }
+                        if (objectClicked.getText().equals("werewolf")) {
+                            if (baseController.getEngine().getPlayer().getInventory().contains("silver bullet")) {
+                                String confirm = "Do you want to give a silver bullet to the farmer?";
+                                int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
+                                if (decision == JOptionPane.OK_OPTION) {
+                                    String message = "You gave farmer the silver bullet, farmer loaded the silver bullet " +
+                                            "\nand killed the werewolf. Then he gave you his musket for defeating the evil power";
+                                    baseController.getEngine().getPlayer().dropItem("silver bullet");
+                                    baseController.getEngine().getPlayer().addItemToinventory("musket");
+                                    inventoryPanel.createItemInInventory();
+                                    baseController.displayAttackMessage(message);
+                                    objectClicked.setVisible(false);
+                                } else {
+                                    String message = "Farmer:\"I need find the silver bullet!!!!\"";
+                                    baseController.displayAttackMessage(message);
+                                }
+                            } else {
+                                String confirm = "Do you believe you are strong enough to kill werewolf? (you may need some items) ";
+                                int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
+                                if (decision == JOptionPane.OK_OPTION) {
+
+                                }
+                            }
+                        }
+                    } else if (objectClicked.getText().equals("demo")) {
+                        if (baseController.getEngine().getPlayer().getInventory().contains("blue stone")) {
+                            String confirm = "In your bag, the blue stone start to shine, Do you want to use?";
+                            int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
+                            if (decision == JOptionPane.OK_OPTION) {
+                                String message = "The demo is killed by the stone " +
+                                        "\nand killed the werewolf. Then he gave you his musket for defeating the evil power";
+                                baseController.getEngine().getPlayer().dropItem("silver bullet");
+                                inventoryPanel.createItemInInventory();
+                                baseController.displayAttackMessage(message);
+                                objectClicked.setVisible(false);
+                            } else {
+                                String message = "\"Can not make!!!!\"";
+                                baseController.displayAttackMessage(message);
+                            }
+                        } else {
+                            String confirm = "Do you believe you are strong enough to kill demo? (you may need some items) ";
+                            int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
+                            if (decision == JOptionPane.OK_OPTION) {
 
                             }
                         }
