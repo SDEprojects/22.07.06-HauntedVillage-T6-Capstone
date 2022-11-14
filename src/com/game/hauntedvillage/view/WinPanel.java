@@ -29,8 +29,8 @@ class WinPanel extends JPanel implements ActionListener {
         imageLabel.setVerticalTextPosition(JLabel.CENTER);
         imageLabel.setFont(new Font("Libian TC", Font.BOLD, 56));
         imageLabel.setForeground(Color.red);
-        loadFinalScreen();
-        timer.start();
+//        loadFinalScreen();
+//        timer.start();
 
         ImageIcon backGroundImage = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("BackgroundImages/home.jpg")));
         imageLabel.setIcon(backGroundImage);
@@ -38,27 +38,24 @@ class WinPanel extends JPanel implements ActionListener {
         setBounds(50, 50, 900, 900);
         setBackground(Color.black);
         setLayout(null);
-
-
     }
 
     public void loadFinalScreen(){
-
+        timer.start();
         try {
             finalScene = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResource("BackgroundImages/catEyes.jpeg")));
         }catch(IOException e){
             e.printStackTrace();
         }
-
-
-
     }
     public void paint(Graphics g){
         super.paint(g);
         Graphics2D graph = (Graphics2D) g;
         graph.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alphaValue));
         graph.drawImage(finalScene, 0, 0, null);
-
+    }
+    public void getWinPanel(){
+        new WinPanel(baseController);
     }
 
     @Override
