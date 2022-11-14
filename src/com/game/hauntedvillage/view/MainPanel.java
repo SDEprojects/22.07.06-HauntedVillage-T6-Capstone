@@ -15,10 +15,12 @@ class MainPanel extends JPanel {
     private final ScreenChanger changeScreen;
     private final ArrayList<JPanel> bgPanel = new ArrayList<>();
     private final JButton[] arrow = new JButton[4];
+    private final InventoryPanel inventoryPanel;
     private JPopupMenu popupMenu;
 
-    MainPanel(GameManager baseController, TextPanel textPanel, ItemDisplayPanel itemListPanel) {
+    MainPanel(GameManager baseController, TextPanel textPanel, ItemDisplayPanel itemListPanel,InventoryPanel inventoryPanel) {
         this.baseController = baseController;
+        this.inventoryPanel=inventoryPanel;
         generateScene();
         setLayout(null);
         setBounds(50, 70, 900, 500);
@@ -146,6 +148,7 @@ class MainPanel extends JPanel {
                 break;
             case "town hall":
                 objectImage = loadingImageIcon("NPCImages/clerk.png");
+                objectLabel.setText("clerk");
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
                 break;
@@ -284,7 +287,53 @@ class MainPanel extends JPanel {
                     baseController.speak(objectClicked.getText());
                     break;
                 case "attack":
-                    objectClicked.setVisible(false);
+                    if(objectClicked.getText().equals("werewolf")){
+                        if(baseController.getEngine().getPlayer().getInventory().contains("silver bullet")){
+                            String confirm="Do you want to give a silver bullet to the farmer?";
+                            int decision=JOptionPane.showConfirmDialog(null,confirm,"Confirm Action",JOptionPane.OK_CANCEL_OPTION);
+                            if(decision==JOptionPane.OK_OPTION){
+                                String message = "You gave farmer the silver bullet, farmer loaded the silver bullet " +
+                                        "\nand killed the werewolf. Then he gave you his musket for defeating the evil power";
+                                baseController.getEngine().getPlayer().dropItem("silver bullet");
+                                baseController.getEngine().getPlayer().addItemToinventory("musket");
+                                inventoryPanel.createItemInInventory();
+                                baseController.displayAttackMessage(message);
+                                objectClicked.setVisible(false);
+                            }else{
+                                String message = "Farmer:\"I need find the silver bullet!!!!\"";
+                                baseController.displayAttackMessage(message);
+                            }
+                        }else{
+                            String confirm="Do you believe you are strong enough to kill werewolf? (you may need some items) ";
+                            int decision=JOptionPane.showConfirmDialog(null,confirm,"Confirm Action",JOptionPane.OK_CANCEL_OPTION);
+                            if(decision==JOptionPane.OK_OPTION) {
+
+                            }
+                        }
+                    }else if(objectClicked.getText().equals("pastor")){
+                        if(baseController.getEngine().getPlayer().getInventory().contains("musket")){
+                            String confirm="Do you want to use musket to kill the evil pastor?";
+                            int decision=JOptionPane.showConfirmDialog(null,confirm,"Confirm Action",JOptionPane.OK_CANCEL_OPTION);
+                            if(decision==JOptionPane.OK_OPTION){
+                                String message = "You kill the evil pastor, and enter to the church, you see the dead candle" +
+                                        "in front the holy statue, you may want to light the candle to pray for blessing";
+                                baseController.displayAttackMessage(message);
+                                baseController.getEngine().getPlayer().dropItem("musket");
+                                inventoryPanel.createItemInInventory();
+                                baseController.displayAttackMessage(message);
+                                objectClicked.setVisible(false);
+                            }else{
+                                String message = "\"That pastor is strong, I may need some powerful weapon!!!!\"";
+                                baseController.displayAttackMessage(message);
+                            }
+                        }else{
+                            String confirm="Do you believe you are strong enough to kill pastor? (you may need some items) ";
+                            int decision=JOptionPane.showConfirmDialog(null,confirm,"Confirm Action",JOptionPane.OK_CANCEL_OPTION);
+                            if(decision==JOptionPane.OK_OPTION) {
+
+                            }
+                        }
+                    }
                     break;
                 case "search":
                     baseController.itemPanelControllerOn();

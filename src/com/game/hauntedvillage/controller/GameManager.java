@@ -35,6 +35,9 @@ public class GameManager {
     public void displayItemInformation(String itemName){
         theView.updateText(theModel.getGameItems().looking(itemName));
     }
+    public void displayAttackMessage(String message){
+        theView.updateText(message);
+    }
 
     public void speak(String npcName){
         theView.updateText(theModel.getNpc().speak(npcName));
