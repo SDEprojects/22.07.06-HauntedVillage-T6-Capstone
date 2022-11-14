@@ -81,7 +81,6 @@ public class MainFrame extends JFrame {
             int decision = JOptionPane.showConfirmDialog(MainFrame.this, "Play again?", "Confirm Start New Game", JOptionPane.OK_CANCEL_OPTION);
             if (decision == JOptionPane.OK_OPTION) {
                 GameManager startNewGame = new GameManager();
-                startNewGame.startNewGame();
             }
         });
         gameMenu.setMnemonic(KeyEvent.VK_F);

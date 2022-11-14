@@ -9,21 +9,15 @@ public class GameManager {
 
     public GameManager(){
         theModel=new Engine();
+        theView=new MainFrame(this);
     }
 
     public Engine getEngine(){
         return theModel;
     }
 
-    public void start(){
-        theView=new MainFrame(this);
-    }
     public void startGame(){
         theView.showGamePanel();
-    }
-    public void startNewGame(){
-        theModel=new Engine();
-        start();
     }
 
     public void itemPanelControllerOn() {
