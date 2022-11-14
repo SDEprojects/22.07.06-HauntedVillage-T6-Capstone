@@ -181,8 +181,8 @@ class InventoryPanel extends JPanel {
                     break;
                 case "blue stone":
                     if (location.equals("woods")) {
-                        baseController.getEngine().getPlayer().dropItem(itemName);
-                        createItemInInventory();
+                        String message = "Blue stone is shine, you may want to attack demon with this!";
+                        baseController.displayAttackMessage(message);
                     } else {
                         String message = "Nothing happen after you use " + itemName + "!";
                         baseController.displayAttackMessage(message);
