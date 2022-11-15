@@ -9,6 +9,8 @@
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+.DS_Store
+
 
 # Package Files #
 *.jar
@@ -24,6 +26,9 @@
 hs_err_pid*
 
 #intelliJ meta data
-.idea/
+.idea/*
+!.idea/artifacts/
+!.idea/libraries/
+
 *.iml
 out/
