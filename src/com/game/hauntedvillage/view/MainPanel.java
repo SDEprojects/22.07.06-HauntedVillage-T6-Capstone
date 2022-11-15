@@ -315,6 +315,7 @@ class MainPanel extends JPanel {
                                 baseController.displayAttackMessage(message);
                                 baseController.getEngine().getPlayer().dropItem("musket");
                                 inventoryPanel.createItemInInventory();
+                                baseController.getEngine().getNpc().removeNPC("pastor");
                                 baseController.displayAttackMessage(message);
                                 objectClicked.setVisible(false);
                             } else {

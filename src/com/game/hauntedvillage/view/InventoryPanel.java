@@ -123,7 +123,6 @@ class InventoryPanel extends JPanel {
     private class ItemActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println(e.getActionCommand());
             createPopupMenu(e.getActionCommand());
         }
     }
@@ -142,14 +141,14 @@ class InventoryPanel extends JPanel {
             String location = baseController.getEngine().getLocation().getCurrent();
             switch (itemName) {
                 case "matches":
-                    if (location.equals("church")) {
+                    if (location.equals("church") && !baseController.getEngine().getNpc().getNameList().contains("pastor")) {
                         String message = "You light the Candle by using your matches, now you can use crucifix to pray.";
                         combine = true;
                         baseController.displayAttackMessage(message);
                         baseController.getEngine().getPlayer().dropItem(itemName);
                         createItemInInventory();
-                    }  else {
-                        String message = "You can not use " + itemName + " at here!!";
+                    } else {
+                        String message = "You can not use " + itemName + " at here or this moment!!";
                         baseController.displayAttackMessage(message);
                     }
                     break;
@@ -191,8 +190,8 @@ class InventoryPanel extends JPanel {
                 case "feed":
                     if (location.equals("town hall")) {
                         baseController.getEngine().getPlayer().addItemToinventory("silver bullet");
-                        String message = "the crows fly away from the ammo box because the food , you successfully" +
-                                "open the ammo box and get a silver bullet and some regular ammo!";
+                        String message = "the crows fly away because the food , the clerk " +
+                                "give you small ammo box with a silver bullet inside!";
                         baseController.displayAttackMessage(message);
                         baseController.getEngine().getPlayer().dropItem(itemName);
                         createItemInInventory();
@@ -211,7 +210,7 @@ class InventoryPanel extends JPanel {
                     }
                     break;
                 case "silver bullet":
-                    if (location.equals("farmer")) {
+                    if (location.equals("farm")) {
                         String message = "You can attack the werewolf with" + itemName + "!";
                         baseController.displayAttackMessage(message);
                     } else {
