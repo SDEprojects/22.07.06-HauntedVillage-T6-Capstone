@@ -108,8 +108,10 @@ class MainPanel extends JPanel {
         JLabel objectLabel = new JLabel();
         objectLabel.addMouseListener(new ObjectListener());
         objectLabel.setBounds(450, 230, 300, 300);
-
         ImageIcon objectImage;
+        JLabel catNPC = new JLabel();
+        ImageIcon catImage;
+
 
         switch (locationName) {
             case "home":
@@ -131,9 +133,17 @@ class MainPanel extends JPanel {
                 objectLabel.setText("children");
                 objectImage = loadingImageIcon("NPCImages/kids.png");
                 objectLabel.setIcon(objectImage);
+                catNPC.setBounds(120, 275, 75,75);
+                catImage = loadingImageIcon("NPCImages/cat.png");
+                catNPC.setIcon(catImage);
                 panel.add(objectLabel);
+                panel.add(catNPC);
                 break;
             case "southern square":
+                objectLabel.setBounds(150, 15, 75, 75);
+                objectImage = loadingImageIcon("NPCImages/cat.png");
+                objectLabel.setIcon(objectImage);
+                panel.add(objectLabel);
             case "well":
                 break;
             case "farm":
@@ -160,10 +170,15 @@ class MainPanel extends JPanel {
                 objectLabel.setText("pastor");
                 objectImage = loadingImageIcon("NPCImages/pastor.png");
                 objectLabel.setIcon(objectImage);
+                catNPC.setBounds(685, 60, 74,75);
+                catImage = loadingImageIcon("NPCImages/cat.png");
+                catNPC.setIcon(catImage);
                 panel.add(objectLabel);
+                panel.add(catNPC);
                 break;
             case "woods":
                 objectLabel.setText("demon");
+                objectLabel.setBounds(450, 180, 350, 450);
                 objectImage = loadingImageIcon("NPCImages/demon.png");
                 objectLabel.setIcon(objectImage);
                 panel.add(objectLabel);
@@ -347,7 +362,7 @@ class MainPanel extends JPanel {
                                 baseController.displayAttackMessage(message);
                             }
                         } else {
-                            String confirm = "Do you believe you are strong enough to kill demo? (you may need a special item) ";
+                            String confirm = "Do you believe you are strong enough to kill demon? (you may need a special item) ";
                             int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
                             if (decision == JOptionPane.OK_OPTION) {
                                 baseController.endGame(false);

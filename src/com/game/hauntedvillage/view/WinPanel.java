@@ -28,7 +28,7 @@ class WinPanel extends JPanel implements ActionListener {
         ImageIcon backGroundImage = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("BackgroundImages/home.jpg")));
         imageLabel.setIcon(backGroundImage);
         add(imageLabel);
-        setBounds(50, 50, 900, 900);
+        setBounds(50, 50, 900, 800);
         setBackground(Color.black);
         setLayout(null);
     }
@@ -36,7 +36,7 @@ class WinPanel extends JPanel implements ActionListener {
     public void loadFinalScreen() {
         timer.start();
         try {
-            finalScene = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResource("BackgroundImages/catEyes.jpeg")));
+            finalScene = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResource("BackgroundImages/end.png")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -46,7 +46,7 @@ class WinPanel extends JPanel implements ActionListener {
         super.paint(g);
         Graphics2D graph = (Graphics2D) g;
         graph.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alphaValue));
-        graph.drawImage(finalScene, 0, 0, null);
+        graph.drawImage(finalScene, -60, 160, null);
     }
 
     @Override
