@@ -49,6 +49,7 @@ class TopPanel extends JPanel {
         mapLabel.setIcon(map);
         add(mapLabel);
     }
+
     private void createHelp() {
         JLabel helpIcon = new JLabel();
         helpIcon.setBounds(850, 0, 44, 30);
@@ -161,7 +162,7 @@ class TopPanel extends JPanel {
         }
     }
 
-    private class HelpListener implements MouseListener{
+    private class HelpListener implements MouseListener {
         @Override
         public void mouseClicked(MouseEvent e) {
             HelpFrame help = new HelpFrame(baseController);

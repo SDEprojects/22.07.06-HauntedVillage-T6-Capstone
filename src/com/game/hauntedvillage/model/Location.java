@@ -24,7 +24,6 @@ public class Location {
     private List<String> locationNameList=new ArrayList<>();
     private ArrayList<String> actionList=new ArrayList<>();
     private final FileReading file = new FileReading();
-    private  Location currentRoom;
 
     public ArrayList<String> allAreaActionList(String locationName){
         List<Location> Locations = dataReader();
@@ -83,7 +82,7 @@ public class Location {
         }
     }
     public Location getCurrentRoom(){
-        currentRoom=getLocationByName(current);
+        Location currentRoom = getLocationByName(current);
         return currentRoom;
     }
 

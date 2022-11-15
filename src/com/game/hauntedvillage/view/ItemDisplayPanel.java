@@ -34,6 +34,7 @@ class ItemDisplayPanel extends JPanel {
         return itemIcon;
     }
 
+    // building the
     private void createBackground(String locationName) {
         JPanel backGround = new JPanel();
         backGround.setLayout(null);
@@ -56,34 +57,10 @@ class ItemDisplayPanel extends JPanel {
                 knife.setActionCommand("knife");
                 backGround.add(knife);
                 break;
-            case "farm":
-                JButton shovel = ImageCreate("Icons/shovel.png", 0);
-                shovel.setActionCommand("shovel");
-                backGround.add(shovel);
-
-                JButton musket = ImageCreate("Icons/musket.png", 50);
-                musket.setActionCommand("musket");
-                backGround.add(musket);
-                break;
-            case "town hall":
-                JButton bullet = ImageCreate("Icons/silverBullet.png", 0);
-                bullet.setActionCommand("silver bullet");
-                backGround.add(bullet);
-                break;
             case "tavern":
                 JButton food = ImageCreate("Icons/food.png", 0);
                 food.setActionCommand("feed");
                 backGround.add(food);
-                break;
-            case "church":
-                JButton amulet = ImageCreate("Icons/amulet.png", 0);
-                amulet.setActionCommand("triangular amulet");
-                backGround.add(amulet);
-                break;
-            case "well":
-                JButton stone = ImageCreate("Icons/stone.png", 0);
-                stone.setActionCommand("blue stone");
-                backGround.add(stone);
                 break;
             default:
 //                throw new IllegalArgumentException();
@@ -92,11 +69,7 @@ class ItemDisplayPanel extends JPanel {
 
     private ArrayList<JPanel> generateScene() {
         createBackground("home");
-        createBackground("farm");
-        createBackground("town hall");
         createBackground("tavern");
-        createBackground("church");
-        createBackground("well");
         return itemPanel;
     }
 

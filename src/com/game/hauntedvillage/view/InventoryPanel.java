@@ -26,6 +26,7 @@ class InventoryPanel extends JPanel {
         setBorder(titleBorder);
     }
 
+    // function for Create item image Icon as JButton
     private JButton ImageCreate(String picName, int xPosition, int yPosition) {
         JButton itemIcon = new JButton();
         itemIcon.setLayout(null);
@@ -37,6 +38,7 @@ class InventoryPanel extends JPanel {
         return itemIcon;
     }
 
+    // Refresh the inventory panel every time when the item in inventory changed
     void createItemInInventory() {
         removeAll();
         repaint();
@@ -53,6 +55,7 @@ class InventoryPanel extends JPanel {
         updateUI();
     }
 
+    // Building the PopMenu for item in inventory
     private void createPopupMenu(String itemName) {
         JPopupMenu popupMenu = new JPopupMenu();
         JMenuItem inspect = new JMenuItem("Look");
@@ -67,6 +70,7 @@ class InventoryPanel extends JPanel {
         popupMenu.show(this, 100, 100);
     }
 
+    // Build the individual item through the image function
     private void itemImage(String itemName, int xPosition, int yPosition) {
         switch (itemName) {
             case "matches":
@@ -105,7 +109,7 @@ class InventoryPanel extends JPanel {
                 add(food);
                 break;
             case "triangular amulet":
-                JButton amulet = ImageCreate("Icons/amulet.png", xPosition, yPosition);
+                JButton amulet = ImageCreate("Icons/amulate.png", xPosition, yPosition);
                 amulet.setActionCommand("triangular amulet");
                 add(amulet);
                 break;
