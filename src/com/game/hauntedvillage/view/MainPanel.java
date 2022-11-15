@@ -72,11 +72,11 @@ class MainPanel extends JPanel {
         List<String> directionList = baseController.getEngine().getLocation().directionList(roomName);
         for (int i = 0; i < directionList.size(); i++) {
             if (directionList.contains("north")) {
-                arrowBtn(0, 350, 0, arrow0, "north");
+                arrowBtn(0, 375, 0, arrow0, "north");
                 panel.add(arrow[0]);
             }
             if (directionList.contains("south")) {
-                arrowBtn(1, 350, 350, arrow1, "south");
+                arrowBtn(1, 375, 400, arrow1, "south");
                 panel.add(arrow[1]);
             }
             if (directionList.contains("west")) {
@@ -84,7 +84,7 @@ class MainPanel extends JPanel {
                 panel.add(arrow[2]);
             }
             if (directionList.contains("east")) {
-                arrowBtn(3, 750, 200, arrow3, "east");
+                arrowBtn(3, 800, 200, arrow3, "east");
                 panel.add(arrow[3]);
             }
         }
