@@ -4,17 +4,28 @@
     "name": "children",
     "location": "northern square",
     "conversations": [
-      "You attempt to speak to the children, but they are too caught up in their game of tag. You hear one of the children teasing,  'If you get caught you will go missing too!' ",
-      "My papa told me that the pastor is acting weird at the church"
+      "
+      You attempt to speak to the children, but they are too caught up in
+      their game of tag. You hear one of the children teasing,
+      'If you get caught you will go missing too!' ",
+      "
+      My papa told me that the pastor is acting weird at the church",
+      "
+      I've never seen that cat before"
     ]
   },
 {
       "name": "villagers",
       "location": "center courtyard",
       "conversations": [
-        "The villagers tell you that another child went missing last night and that sightings of monsters have been becoming more frequent over the last week near the woods.",
-        "I wouldn't go to the Farm, if I were you. There's been strange happenings at night.",
-        "No one can be trusted these days. I saw my servant whispering spells"
+        "
+        The villagers tell you that another child went missing last night
+        and that sightings of monsters have been becoming more frequent
+        over the last week near the woods.",
+        "
+        I wouldn't go to the Farm, if I were you. There's been strange happenings at night.",
+        "
+        No one can be trusted these days. I saw my servant whispering spells"
       ]
     },
   {
@@ -25,27 +36,38 @@
   {
       "name": "farmer",
       "location": "farm",
-      "conversations": ["Bloody Hell! My regular bullets won't kill that thing! I need special ammo!",
-      "My grandpappy once told me stories of these things being killed with silver!"]
+      "conversations": [
+      "
+      Huh...Huh...Bloody Hell! My regular bullets won't kill that thing! I need
+      special ammo!",
+      "
+      ZzzZzz...?? Is that WereWolf?! My grandpappy once told me stories of
+      these things being killed with silver!"]
   },
   {
       "name": "clerk",
       "location": "town hall",
-      "conversations": ["These birds have been here ever since something scared them
-      away from the Woods! They torment the common folk for food!
-      If you get rid of them I'll make it worth your time.",]
+      "conversations": [
+      "
+      These birds have been here ever since something scared them away from
+      the Woods! They torment the common folk for food! If you get rid of
+      them I'll make it worth your time.",]
   },
   {
       "name": "keep",
       "location": "tavern",
-      "conversations": ["Sorry but we have no Ale or food. Nothing left here but some animal feed"]
+      "conversations": [
+      "
+      Sorry but we have no Ale or food. Nothing left here but
+      some animal feed"]
   },
 
   {
       "name": "pastor",
       "location": "church",
       "conversations": ["
-      'I think you have too many sins!' he cries as has lunges at you."],
+      'I think you have too many sins!' he cries as has lunges at you.",
+      ],
   },
   {
       "name": "cat",

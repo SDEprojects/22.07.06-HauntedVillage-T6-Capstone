@@ -22,7 +22,7 @@ public class MainFrame extends JFrame {
         topPanel = new TopPanel(baseController);
         inventoryPanel = new InventoryPanel(baseController);
         itemListPanel = new ItemDisplayPanel(baseController, inventoryPanel);
-        backgroundPanel = new MainPanel(baseController, textPanel, itemListPanel,inventoryPanel);
+        backgroundPanel = new MainPanel(baseController, textPanel, itemListPanel, inventoryPanel);
         winPanel = new WinPanel(baseController);
         losePanel = new LosePanel(baseController);
 
@@ -38,17 +38,17 @@ public class MainFrame extends JFrame {
         textPanel.setVisible(true);
     }
 
-    public void endGamePanels(boolean win){
+    public void endGamePanels(boolean win) {
         backgroundPanel.setVisible(false);
         inventoryPanel.setVisible(false);
         topPanel.setVisible(false);
         textPanel.setVisible(false);
 
-        if(win){
+        if (win) {
             winPanel.setVisible(true);
             winPanel.loadFinalScreen();
-        }else{
-           losePanel.setVisible(true);
+        } else {
+            losePanel.setVisible(true);
         }
 
     }

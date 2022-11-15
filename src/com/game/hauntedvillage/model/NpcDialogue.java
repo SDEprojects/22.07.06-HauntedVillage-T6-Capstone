@@ -15,7 +15,7 @@ public class NpcDialogue {
     private final ArrayList<String> conversations = new ArrayList<>();
     private final ObjectMapper objectMapper = new ObjectMapper();
     private List<NpcDialogue> listNpc;
-    private final List<String> npcNameList = new ArrayList<>();
+    private ArrayList<String> npcNameList = new ArrayList<>();
     private final FileReading file = new FileReading();
 
     //Business Class data reader
@@ -43,7 +43,7 @@ public class NpcDialogue {
     }
 
     // This function returns the name of all the npcs
-    public List<String> npcNameList() {
+    public ArrayList<String> npcNameList() {
         List<NpcDialogue> listNpc = dataReader();
         for (int i = 0; i < listNpc.size(); i++) {
             npcNameList.add(listNpc.get(i).getName());
@@ -81,6 +81,15 @@ public class NpcDialogue {
     public void setLocation(String location) {
         this.location = location;
     }
+    public ArrayList<String> getNameList(){
+        if(npcNameList.size()==0){
+            npcNameList=npcNameList();
+        }
+        return npcNameList;
+    }
+    public void removeNPC(String name){
+        npcNameList.remove(name);
+    }
 
     public ArrayList<String> getConversations() {
         return conversations;
@@ -91,10 +100,5 @@ public class NpcDialogue {
     public String toString() {
         return "Item: name=" + getName() + ", location=" + getLocation()
                 + ", conversations=" + getConversations();
-    }
-
-    public static void main(String[] args) {
-        NpcDialogue ba=new NpcDialogue();
-        System.out.println( ba.speak("farmer"));
     }
 }

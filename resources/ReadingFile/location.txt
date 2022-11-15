@@ -44,7 +44,8 @@
     "description": "
     You see some children playing nearby.
     You can speak to the children.
-    To the north is the Well. To the east is the Church. To the south is the Center Courtyard.",
+    To the north is the Well. To the east is the Church.
+    To the south is the Center Courtyard.",
     "items": [],
     "action": ["speak"],
   },
@@ -55,6 +56,7 @@
     "south": "farm",
     "west": "no exit"
     "description": "
+    A cat 'meows' and scurries into a building.
     Nothing apparent is happening here.
     To the east is the Town Hall. To the north is the Center Courtyard.
     To the south is your neighbor's Farm.",
@@ -69,7 +71,8 @@
      "west": "no exit"
     "description": "
     You see cows are lying on the floor, bleeding.
-    A werewolf is tearing a cow apart, drinking its blood, and eating its flesh.
+    A werewolf is tearing a cow apart, drinking its blood, and
+    eating its flesh.
     You can wake the farmer, or go back north to Southern Square.",
     "items": [
       "shovel",
@@ -85,8 +88,8 @@
      "west": "southern square",
     "description": "
     Crows overcrowd the Town Hall.
-    A clerk walks towards you and expresses his frustration about the birds.
-    You can talk to the clerk.",
+    A clerk walks towards you and expresses his frustration about the
+    birds. You can talk to the clerk.",
     "items": [
       "silver bullet"
     ],
@@ -99,8 +102,8 @@
     "south": "no exit",
     "west": "center courtyard",
     "description": 
-    "The tavern is empty except for the bar keep.
-    You can talk to the keep.",
+    "
+    The tavern is empty except for the bar keep. You can talk to the keep.",
     "items": [
       "feed"
     ],
@@ -113,7 +116,7 @@
     "south": "no exit",
     "west": "northern square"
     "description": "
-    You hear a cat >>MEOW<< from the side of the church.
+    You hear a cat 'meow' from the side of the church.
     It is a bit dark for a mid-evening visit...
     The pastor is not who he seems.
     He has fresh blood on his hands and on his mouth.
@@ -132,7 +135,8 @@
     "description": "
     You have been avoiding this
     area due to the shrieks at night.
-    The well is a rough stone circle with a 'triangular indentation' on it.
+    The well is a rough stone circle with a 'triangular indentation'
+    on it.
     It looks like something fits here...
     To the north are the Woods. To the south is the Northern Square.",
 
@@ -151,7 +155,8 @@
     'I have been watching you, but you can’t stop me now!', it roars.
     The beast raises its arms and the ground begins to rumble
     as he murmurs an incantation.
-    You can use something from your inventory against it or run back south to the well.",
+    You can use something from your inventory against it
+    or run back south to the well.",
     "items": [],
     "action": ["attack"]
   }

@@ -8,10 +8,7 @@ import java.util.Objects;
 
 class HelpFrame extends JFrame {
 
-    private final GameManager baseController;
-
     public HelpFrame(GameManager baseController) {
-        this.baseController = baseController;
         setTitle("Guidance");
         getContentPane().setBackground(Color.black);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

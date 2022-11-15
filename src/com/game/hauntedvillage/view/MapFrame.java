@@ -90,10 +90,7 @@ class MapFrame extends JFrame {
                 break;
             default:
                 System.out.println("works");
-
         }
-
-
     }
 
     private void generateRooms() {

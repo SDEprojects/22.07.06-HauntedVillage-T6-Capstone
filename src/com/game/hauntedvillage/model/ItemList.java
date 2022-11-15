@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+// Connect with ItemPanel
 public class ItemList {
     private String name;
     private String description;
@@ -39,8 +40,7 @@ public class ItemList {
         return listItem;
     }
 
-    //This function retrieves an item by name
-
+    //This function retrieves an item (as object) by name
     ItemList getItemByName(String name) {
         List<ItemList> listOfItems = dataReader();
         ItemList item = null;
