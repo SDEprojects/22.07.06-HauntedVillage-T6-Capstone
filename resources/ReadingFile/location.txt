@@ -88,7 +88,8 @@
      "west": "southern square",
     "description": "
     Crows overcrowd the Town Hall.
-    A clerk walks towards you and expresses his frustration about the birds. You can talk to the clerk.",
+    A clerk walks towards you and expresses his frustration about the
+    birds. You can talk to the clerk.",
     "items": [
       "silver bullet"
     ],
