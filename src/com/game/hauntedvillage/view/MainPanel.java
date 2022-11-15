@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
 class MainPanel extends JPanel {
@@ -63,7 +62,7 @@ class MainPanel extends JPanel {
         backGround.add(backGroundLable);
         backGround.repaint();
     }
-
+    // build the arrow for available direction in current map
     private void createArrow(String roomName, JPanel panel) {
         ImageIcon arrow0 = loadingImageIcon("ImagesClickTriggers/north.png");
         ImageIcon arrow1 = loadingImageIcon("ImagesClickTriggers/south.png");
@@ -104,7 +103,7 @@ class MainPanel extends JPanel {
         }
         return popupMenu;
     }
-
+    // function for building the NPC in the map
     private void createObject(String locationName, JPanel panel) {
         JLabel objectLabel = new JLabel();
         objectLabel.addMouseListener(new ObjectListener());
@@ -186,7 +185,7 @@ class MainPanel extends JPanel {
         arrow[arrowDirection].addActionListener(new ArrowListener());
         arrow[arrowDirection].setActionCommand(direction);
     }
-
+    // build the 9 panel for player to enter
     ArrayList<JPanel> generateScene() {
         createBackground("BackgroundImages/home.jpg", "home");
         createBackground("BackgroundImages/center_courtyard.jpg", "center courtyard");
@@ -263,7 +262,7 @@ class MainPanel extends JPanel {
             popupMenu = createPopupMenu(baseController.getEngine().getLocation().getCurrent());
         }
     }
-
+    // action listener for clicking NPC
     private class MenuListener implements ActionListener {
 
         @Override
@@ -315,7 +314,9 @@ class MainPanel extends JPanel {
                                 baseController.displayAttackMessage(message);
                                 baseController.getEngine().getPlayer().dropItem("musket");
                                 inventoryPanel.createItemInInventory();
+                                baseController.getEngine().getNpc().getNameList();
                                 baseController.getEngine().getNpc().removeNPC("pastor");
+                                System.out.println();
                                 baseController.displayAttackMessage(message);
                                 objectClicked.setVisible(false);
                             } else {

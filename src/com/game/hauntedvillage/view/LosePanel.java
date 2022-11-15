@@ -7,12 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
-class LosePanel extends JPanel{
-
-    private final GameManager baseController;
+class LosePanel extends JPanel {
 
     public LosePanel(GameManager baseController) {
-        this.baseController = baseController;
         JLabel imageLabel = new JLabel("You Lost");
         imageLabel.setBounds(0, 0, 900, 600);
         imageLabel.setHorizontalTextPosition(JLabel.CENTER);

@@ -64,20 +64,8 @@ class ScreenChanger {
             case "home":
                 itemScreen(0);
                 break;
-            case "farm":
-                itemScreen(1);
-                break;
-            case "town hall":
-                itemScreen(2);
-                break;
             case "tavern":
-                itemScreen(3);
-                break;
-            case "church":
-                itemScreen(4);
-                break;
-            case "well":
-                itemScreen(5);
+                itemScreen(1);
                 break;
             default:
                 System.out.println("There is no item in this room");
