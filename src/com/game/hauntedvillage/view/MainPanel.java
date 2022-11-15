@@ -301,7 +301,7 @@ class MainPanel extends JPanel {
                             String confirm = "Do you want to give a silver bullet to the farmer?";
                             int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
                             if (decision == JOptionPane.OK_OPTION) {
-                                String message = "You hand the farmer a silver bullet. He shoots and kills the werewolf " +
+                                String message = "\nYou hand the farmer a silver bullet. He shoots and kills the werewolf " +
                                         "\nHe gives you his musket for helping him save some of his livestock";
                                 baseController.getEngine().getPlayer().dropItem("silver bullet");
                                 baseController.getEngine().getPlayer().addItemToinventory("musket");
@@ -309,7 +309,7 @@ class MainPanel extends JPanel {
                                 baseController.displayAttackMessage(message);
                                 objectClicked.setVisible(false);
                             } else {
-                                String message = "Farmer:\"I need to find a silver bullet!!!!\"";
+                                String message = "\nFarmer:\"I need to find a silver bullet!!!!\"";
                                 baseController.displayAttackMessage(message);
                             }
                         } else {
@@ -324,7 +324,7 @@ class MainPanel extends JPanel {
                             String confirm = "Do you want to use the musket to kill the evil pastor?";
                             int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
                             if (decision == JOptionPane.OK_OPTION) {
-                                String message = "You kill the evil pastor and enter to the church You see a candle at the altar." +
+                                String message = "\nYou kill the evil pastor and enter to the church You see a candle at the altar." +
                                         "You may want to use something to light the candle and pray for a blessing";
                                 baseController.displayAttackMessage(message);
                                 baseController.getEngine().getPlayer().dropItem("musket");
@@ -350,7 +350,7 @@ class MainPanel extends JPanel {
                             String confirm = "In your bag, the blue stone start to shine, Do you want to use it?";
                             int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
                             if (decision == JOptionPane.OK_OPTION) {
-                                String message = "'NOOOOO!!!' the Demon roars. " +
+                                String message = "\n'NOOOOO!!!' the Demon roars. " +
                                         "\n The blue stone shines a blinding light and destroys the demon. ";
                                 baseController.getEngine().getPlayer().dropItem("silver bullet");
                                 inventoryPanel.createItemInInventory();
@@ -358,11 +358,11 @@ class MainPanel extends JPanel {
                                 objectClicked.setVisible(false);
                                 baseController.endGame(true);
                             } else {
-                                String message = "\"Can not make!!!!\"";
+                                String message = "\n\"Can not make!!!!\"";
                                 baseController.displayAttackMessage(message);
                             }
                         } else {
-                            String confirm = "Do you believe you are strong enough to kill demon? (you may need a special item) ";
+                            String confirm = "\nDo you believe you are strong enough to kill demon? (you may need a special item) ";
                             int decision = JOptionPane.showConfirmDialog(null, confirm, "Confirm Action", JOptionPane.OK_CANCEL_OPTION);
                             if (decision == JOptionPane.OK_OPTION) {
                                 baseController.endGame(false);
