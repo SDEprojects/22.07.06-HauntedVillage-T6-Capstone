@@ -14,14 +14,14 @@ class LosePanel extends JPanel{
     public LosePanel(GameManager baseController) {
         this.baseController = baseController;
         JLabel imageLabel = new JLabel("You Lost");
-        imageLabel.setBounds(0, 0, 900, 900);
+        imageLabel.setBounds(0, 0, 900, 600);
         imageLabel.setHorizontalTextPosition(JLabel.CENTER);
         imageLabel.setVerticalTextPosition(JLabel.CENTER);
         FontStyle font = new FontStyle();
         Font textFont = (font.getfont(Font.TRUETYPE_FONT, 56, "ReadingFile/Blood.ttf"));
         imageLabel.setFont(textFont);
         imageLabel.setForeground(Color.red);
-        ImageIcon backGroundImage = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("BackgroundImages/church.jpg")));
+        ImageIcon backGroundImage = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("BackgroundImages/lose.jpeg")));
         imageLabel.setIcon(backGroundImage);
         add(imageLabel);
         setBounds(50, 50, 900, 900);
